@@ -1,0 +1,56 @@
+{
+  "date": "2026-04-07",
+  "twse": {
+    "index": {
+      "close": 33229.82,
+      "change": 657.39,
+      "changePercent": 2.02
+    },
+    "institutional": {
+      "foreign": {
+        "buy": 212131932105.0,
+        "sell": 202035325361.0,
+        "net": 10096606744.0
+      },
+      "trust": {
+        "buy": 14097066767.0,
+        "sell": 9740422946.0,
+        "net": 4356643821.0
+      },
+      "dealer": {
+        "buy": 27872768820.0,
+        "sell": 20839983339.0,
+        "net": 7032785481.0
+      },
+      "total": {
+        "buy": 254101767692.0,
+        "sell": 232615731646.0,
+        "net": 21486036046.0
+      }
+    },
+    "margin": {
+      "marginBalance": 387735006.0,
+      "marginBalancePrev": 384200709.0,
+      "marginUnit": "仟元",
+      "shortBalance": 171413.0,
+      "shortBalancePrev": 170164.0,
+      "shortUnit": "張"
+    }
+  },
+  "tpex": {
+    "index": {
+      "close": 325.61,
+      "change": 7.71,
+      "changePercent": 2.4252909720037743
+    },
+    "institutional": null,
+    "margin": {
+      "marginBalance": 2146162.0,
+      "marginBalancePrev": 2119894.0,
+      "marginUnit": "張",
+      "shortBalance": 22487.0,
+      "shortBalancePrev": 23647.0,
+      "shortUnit": "張"
+    }
+  }
+}

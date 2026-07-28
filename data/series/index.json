@@ -1,0 +1,1217 @@
+[
+  {
+    "date": "2026-01-02",
+    "twseClose": 29349.81,
+    "twseChange": 386.21,
+    "twseChangePercent": 1.33,
+    "tpexClose": 278.03,
+    "tpexChange": 1.79,
+    "tpexChangePercent": 0.6479872574572837
+  },
+  {
+    "date": "2026-01-05",
+    "twseClose": 30105.04,
+    "twseChange": 755.23,
+    "twseChangePercent": 2.57,
+    "tpexClose": 275.66,
+    "tpexChange": -2.37,
+    "tpexChangePercent": -0.8524259971945473
+  },
+  {
+    "date": "2026-01-06",
+    "twseClose": 30576.3,
+    "twseChange": 471.26,
+    "twseChangePercent": 1.57,
+    "tpexClose": 278.97,
+    "tpexChange": 3.31,
+    "tpexChangePercent": 1.20075455270986
+  },
+  {
+    "date": "2026-01-07",
+    "twseClose": 30435.47,
+    "twseChange": -140.83,
+    "twseChangePercent": -0.46,
+    "tpexClose": 281.44,
+    "tpexChange": 2.47,
+    "tpexChangePercent": 0.8853998637846364
+  },
+  {
+    "date": "2026-01-08",
+    "twseClose": 30360.55,
+    "twseChange": -74.92,
+    "twseChangePercent": -0.25,
+    "tpexClose": 280.06,
+    "tpexChange": -1.38,
+    "tpexChangePercent": -0.49033541785105167
+  },
+  {
+    "date": "2026-01-09",
+    "twseClose": 30288.96,
+    "twseChange": -71.59,
+    "twseChangePercent": -0.24,
+    "tpexClose": 279.85,
+    "tpexChange": -0.21,
+    "tpexChangePercent": -0.07498393201456831
+  },
+  {
+    "date": "2026-01-12",
+    "twseClose": 30567.29,
+    "twseChange": 278.33,
+    "twseChangePercent": 0.92,
+    "tpexClose": 286.57,
+    "tpexChange": 6.72,
+    "tpexChangePercent": 2.4012864034304093
+  },
+  {
+    "date": "2026-01-13",
+    "twseClose": 30707.22,
+    "twseChange": 139.93,
+    "twseChangePercent": 0.46,
+    "tpexClose": 285.36,
+    "tpexChange": -1.21,
+    "tpexChangePercent": -0.42223540496213835
+  },
+  {
+    "date": "2026-01-14",
+    "twseClose": 30941.78,
+    "twseChange": 234.56,
+    "twseChangePercent": 0.76,
+    "tpexClose": 290.6,
+    "tpexChange": 5.24,
+    "tpexChangePercent": 1.8362769834594899
+  },
+  {
+    "date": "2026-01-15",
+    "twseClose": 30810.58,
+    "twseChange": -131.2,
+    "twseChangePercent": -0.42,
+    "tpexClose": 291.16,
+    "tpexChange": 0.56,
+    "tpexChangePercent": 0.19270474879559532
+  },
+  {
+    "date": "2026-01-16",
+    "twseClose": 31408.7,
+    "twseChange": 598.12,
+    "twseChangePercent": 1.94,
+    "tpexClose": 292.78,
+    "tpexChange": 1.62,
+    "tpexChangePercent": 0.5563951092182993
+  },
+  {
+    "date": "2026-01-19",
+    "twseClose": 31639.29,
+    "twseChange": 230.59,
+    "twseChangePercent": 0.73,
+    "tpexClose": 295.11,
+    "tpexChange": 2.33,
+    "tpexChangePercent": 0.795819386570121
+  },
+  {
+    "date": "2026-01-20",
+    "twseClose": 31759.99,
+    "twseChange": 120.7,
+    "twseChangePercent": 0.38,
+    "tpexClose": 297.61,
+    "tpexChange": 2.5,
+    "tpexChangePercent": 0.8471417437565653
+  },
+  {
+    "date": "2026-01-21",
+    "twseClose": 31246.37,
+    "twseChange": -513.62,
+    "twseChangePercent": -1.62,
+    "tpexClose": 293.16,
+    "tpexChange": -4.45,
+    "tpexChangePercent": -1.4952454554618462
+  },
+  {
+    "date": "2026-01-22",
+    "twseClose": 31746.08,
+    "twseChange": 499.71,
+    "twseChangePercent": 1.6,
+    "tpexClose": 297.82,
+    "tpexChange": 4.66,
+    "tpexChangePercent": 1.5895756583435667
+  },
+  {
+    "date": "2026-01-23",
+    "twseClose": 31961.51,
+    "twseChange": 215.43,
+    "twseChangePercent": 0.68,
+    "tpexClose": 299.26,
+    "tpexChange": 1.44,
+    "tpexChangePercent": 0.4835135316634208
+  },
+  {
+    "date": "2026-01-26",
+    "twseClose": 32064.52,
+    "twseChange": 103.01,
+    "twseChangePercent": 0.32,
+    "tpexClose": 302.65,
+    "tpexChange": 3.39,
+    "tpexChangePercent": 1.132794225756867
+  },
+  {
+    "date": "2026-01-27",
+    "twseClose": 32317.92,
+    "twseChange": 253.4,
+    "twseChangePercent": 0.79,
+    "tpexClose": 305.26,
+    "tpexChange": 2.61,
+    "tpexChangePercent": 0.8623822897736659
+  },
+  {
+    "date": "2026-01-28",
+    "twseClose": 32803.82,
+    "twseChange": 485.9,
+    "twseChangePercent": 1.5,
+    "tpexClose": 309.28,
+    "tpexChange": 4.02,
+    "tpexChangePercent": 1.316910174932844
+  },
+  {
+    "date": "2026-01-29",
+    "twseClose": 32536.27,
+    "twseChange": -267.55,
+    "twseChangePercent": -0.82,
+    "tpexClose": 305.48,
+    "tpexChange": -3.8,
+    "tpexChangePercent": -1.228660113812726
+  },
+  {
+    "date": "2026-01-30",
+    "twseClose": 32063.75,
+    "twseChange": -472.52,
+    "twseChangePercent": -1.45,
+    "tpexClose": 300.78,
+    "tpexChange": -4.7,
+    "tpexChangePercent": -1.5385622626685873
+  },
+  {
+    "date": "2026-02-02",
+    "twseClose": 31624.03,
+    "twseChange": -439.72,
+    "twseChangePercent": -1.37,
+    "tpexClose": 294.32,
+    "tpexChange": -6.46,
+    "tpexChangePercent": -2.1477491854511603
+  },
+  {
+    "date": "2026-02-03",
+    "twseClose": 32195.36,
+    "twseChange": 571.33,
+    "twseChangePercent": 1.81,
+    "tpexClose": 298.26,
+    "tpexChange": 3.94,
+    "tpexChangePercent": 1.3386789888556672
+  },
+  {
+    "date": "2026-02-04",
+    "twseClose": 32289.81,
+    "twseChange": 94.45,
+    "twseChangePercent": 0.29,
+    "tpexClose": 301.52,
+    "tpexChange": 3.26,
+    "tpexChangePercent": 1.0930061020586066
+  },
+  {
+    "date": "2026-02-05",
+    "twseClose": 31801.27,
+    "twseChange": -488.54,
+    "twseChangePercent": -1.51,
+    "tpexClose": 296.36,
+    "tpexChange": -5.16,
+    "tpexChangePercent": -1.711329265057044
+  },
+  {
+    "date": "2026-02-06",
+    "twseClose": 31782.92,
+    "twseChange": -18.35,
+    "twseChangePercent": -0.06,
+    "tpexClose": 290.72,
+    "tpexChange": -5.64,
+    "tpexChangePercent": -1.9030908354703737
+  },
+  {
+    "date": "2026-02-09",
+    "twseClose": 32404.62,
+    "twseChange": 621.7,
+    "twseChangePercent": 1.96,
+    "tpexClose": 296.62,
+    "tpexChange": 5.9,
+    "tpexChangePercent": 2.0294441386901485
+  },
+  {
+    "date": "2026-02-10",
+    "twseClose": 33072.97,
+    "twseChange": 668.35,
+    "twseChangePercent": 2.06,
+    "tpexClose": 296.52,
+    "tpexChange": -0.1,
+    "tpexChangePercent": -0.03371316836356281
+  },
+  {
+    "date": "2026-02-11",
+    "twseClose": 33605.71,
+    "twseChange": 532.74,
+    "twseChangePercent": 1.61,
+    "tpexClose": 297.71,
+    "tpexChange": 1.19,
+    "tpexChangePercent": 0.40132200188857414
+  },
+  {
+    "date": "2026-02-23",
+    "twseClose": 33773.26,
+    "twseChange": 167.55,
+    "twseChangePercent": 0.5,
+    "tpexClose": 303.83,
+    "tpexChange": 6.12,
+    "tpexChangePercent": 2.0556917805918515
+  },
+  {
+    "date": "2026-02-24",
+    "twseClose": 34700.82,
+    "twseChange": 927.56,
+    "twseChangePercent": 2.75,
+    "tpexClose": 311.44,
+    "tpexChange": 7.61,
+    "tpexChangePercent": 2.5046901227660205
+  },
+  {
+    "date": "2026-02-25",
+    "twseClose": 35413.07,
+    "twseChange": 712.25,
+    "twseChangePercent": 2.05,
+    "tpexClose": 313.24,
+    "tpexChange": 1.8,
+    "tpexChangePercent": 0.5779604418186489
+  },
+  {
+    "date": "2026-02-26",
+    "twseClose": 35414.49,
+    "twseChange": 1.42,
+    "twseChangePercent": 0.0,
+    "tpexClose": 316.73,
+    "tpexChange": 3.49,
+    "tpexChangePercent": 1.1141616651768613
+  },
+  {
+    "date": "2026-03-02",
+    "twseClose": 35095.09,
+    "twseChange": -319.4,
+    "twseChangePercent": -0.9,
+    "tpexClose": 316.01,
+    "tpexChange": -0.72,
+    "tpexChangePercent": -0.2273229564613393
+  },
+  {
+    "date": "2026-03-03",
+    "twseClose": 34323.65,
+    "twseChange": -771.44,
+    "twseChangePercent": -2.2,
+    "tpexClose": 308.81,
+    "tpexChange": -7.2,
+    "tpexChangePercent": -2.278408911110408
+  },
+  {
+    "date": "2026-03-04",
+    "twseClose": 32828.88,
+    "twseChange": -1494.77,
+    "twseChangePercent": -4.35,
+    "tpexClose": 293.8,
+    "tpexChange": -15.01,
+    "tpexChangePercent": -4.860593892684823
+  },
+  {
+    "date": "2026-03-05",
+    "twseClose": 33672.94,
+    "twseChange": 844.06,
+    "twseChangePercent": 2.57,
+    "tpexClose": 304.21,
+    "tpexChange": 10.41,
+    "tpexChangePercent": 3.543226684819606
+  },
+  {
+    "date": "2026-03-06",
+    "twseClose": 33599.54,
+    "twseChange": -73.4,
+    "twseChangePercent": -0.22,
+    "tpexClose": 306.49,
+    "tpexChange": 2.28,
+    "tpexChangePercent": 0.7494822655402517
+  },
+  {
+    "date": "2026-03-09",
+    "twseClose": 32110.42,
+    "twseChange": -1489.12,
+    "twseChangePercent": -4.43,
+    "tpexClose": 288.96,
+    "tpexChange": -17.53,
+    "tpexChangePercent": -5.719599334399165
+  },
+  {
+    "date": "2026-03-10",
+    "twseClose": 32771.87,
+    "twseChange": 661.45,
+    "twseChangePercent": 2.06,
+    "tpexClose": 297.53,
+    "tpexChange": 8.57,
+    "tpexChangePercent": 2.9658084163898124
+  },
+  {
+    "date": "2026-03-11",
+    "twseClose": 34114.19,
+    "twseChange": 1342.32,
+    "twseChangePercent": 4.1,
+    "tpexClose": 311.5,
+    "tpexChange": 13.97,
+    "tpexChangePercent": 4.695324841192485
+  },
+  {
+    "date": "2026-03-12",
+    "twseClose": 33581.86,
+    "twseChange": -532.33,
+    "twseChangePercent": -1.56,
+    "tpexClose": 311.59,
+    "tpexChange": 0.09,
+    "tpexChangePercent": 0.02889245585874799
+  },
+  {
+    "date": "2026-03-13",
+    "twseClose": 33400.32,
+    "twseChange": -181.54,
+    "twseChangePercent": -0.54,
+    "tpexClose": 312.9,
+    "tpexChange": 1.31,
+    "tpexChangePercent": 0.42042427549022754
+  },
+  {
+    "date": "2026-03-16",
+    "twseClose": 33342.51,
+    "twseChange": -57.81,
+    "twseChangePercent": -0.17,
+    "tpexClose": 317.19,
+    "tpexChange": 4.29,
+    "tpexChangePercent": 1.3710450623202304
+  },
+  {
+    "date": "2026-03-17",
+    "twseClose": 33836.57,
+    "twseChange": 494.06,
+    "twseChangePercent": 1.48,
+    "tpexClose": 321.03,
+    "tpexChange": 3.84,
+    "tpexChangePercent": 1.2106308521706233
+  },
+  {
+    "date": "2026-03-18",
+    "twseClose": 34348.58,
+    "twseChange": 512.01,
+    "twseChangePercent": 1.51,
+    "tpexClose": 329.4,
+    "tpexChange": 8.37,
+    "tpexChangePercent": 2.607232968881413
+  },
+  {
+    "date": "2026-03-19",
+    "twseClose": 33689.68,
+    "twseChange": -658.9,
+    "twseChangePercent": -1.92,
+    "tpexClose": 329.79,
+    "tpexChange": 0.39,
+    "tpexChangePercent": 0.11839708561020036
+  },
+  {
+    "date": "2026-03-20",
+    "twseClose": 33543.88,
+    "twseChange": -145.8,
+    "twseChangePercent": -0.43,
+    "tpexClose": 328.4,
+    "tpexChange": -1.39,
+    "tpexChangePercent": -0.42148033597137574
+  },
+  {
+    "date": "2026-03-23",
+    "twseClose": 32722.5,
+    "twseChange": -821.38,
+    "twseChangePercent": -2.45,
+    "tpexClose": 317.02,
+    "tpexChange": -11.38,
+    "tpexChangePercent": -3.4652862362971995
+  },
+  {
+    "date": "2026-03-24",
+    "twseClose": 32612.24,
+    "twseChange": -110.26,
+    "twseChangePercent": -0.34,
+    "tpexClose": 312.74,
+    "tpexChange": -4.28,
+    "tpexChangePercent": -1.3500725506277207
+  },
+  {
+    "date": "2026-03-25",
+    "twseClose": 33439.11,
+    "twseChange": 826.87,
+    "twseChangePercent": 2.54,
+    "tpexClose": 324.87,
+    "tpexChange": 12.13,
+    "tpexChangePercent": 3.878621218903882
+  },
+  {
+    "date": "2026-03-26",
+    "twseClose": 33337.62,
+    "twseChange": -101.49,
+    "twseChangePercent": -0.3,
+    "tpexClose": 322.8,
+    "tpexChange": -2.07,
+    "tpexChangePercent": -0.6371779481023178
+  },
+  {
+    "date": "2026-03-27",
+    "twseClose": 33112.59,
+    "twseChange": -225.03,
+    "twseChangePercent": -0.68,
+    "tpexClose": 325.0,
+    "tpexChange": 2.2,
+    "tpexChangePercent": 0.6815365551425031
+  },
+  {
+    "date": "2026-03-30",
+    "twseClose": 32518.16,
+    "twseChange": -594.43,
+    "twseChangePercent": -1.8,
+    "tpexClose": 320.4,
+    "tpexChange": -4.6,
+    "tpexChangePercent": -1.4153846153846152
+  },
+  {
+    "date": "2026-03-31",
+    "twseClose": 31722.99,
+    "twseChange": -795.17,
+    "twseChangePercent": -2.45,
+    "tpexClose": 307.73,
+    "tpexChange": -12.67,
+    "tpexChangePercent": -3.9544319600499374
+  },
+  {
+    "date": "2026-04-01",
+    "twseClose": 33174.82,
+    "twseChange": 1451.83,
+    "twseChangePercent": 4.58,
+    "tpexClose": 321.19,
+    "tpexChange": 13.46,
+    "tpexChangePercent": 4.3739641893868
+  },
+  {
+    "date": "2026-04-02",
+    "twseClose": 32572.43,
+    "twseChange": -602.39,
+    "twseChangePercent": -1.82,
+    "tpexClose": 317.9,
+    "tpexChange": -3.29,
+    "tpexChangePercent": -1.0243158255238334
+  },
+  {
+    "date": "2026-04-07",
+    "twseClose": 33229.82,
+    "twseChange": 657.39,
+    "twseChangePercent": 2.02,
+    "tpexClose": 325.61,
+    "tpexChange": 7.71,
+    "tpexChangePercent": 2.4252909720037743
+  },
+  {
+    "date": "2026-04-08",
+    "twseClose": 34761.38,
+    "twseChange": 1531.56,
+    "twseChangePercent": 4.61,
+    "tpexClose": 341.2,
+    "tpexChange": 15.59,
+    "tpexChangePercent": 4.7879364884370865
+  },
+  {
+    "date": "2026-04-09",
+    "twseClose": 34861.16,
+    "twseChange": 99.78,
+    "twseChangePercent": 0.29,
+    "tpexClose": 342.57,
+    "tpexChange": 1.37,
+    "tpexChangePercent": 0.40152403282532245
+  },
+  {
+    "date": "2026-04-10",
+    "twseClose": 35417.83,
+    "twseChange": 556.67,
+    "twseChangePercent": 1.6,
+    "tpexClose": 349.5,
+    "tpexChange": 6.93,
+    "tpexChangePercent": 2.0229442157807163
+  },
+  {
+    "date": "2026-04-13",
+    "twseClose": 35457.29,
+    "twseChange": 39.46,
+    "twseChangePercent": 0.11,
+    "tpexClose": 352.23,
+    "tpexChange": 2.73,
+    "tpexChangePercent": 0.7811158798283262
+  },
+  {
+    "date": "2026-04-14",
+    "twseClose": 36296.12,
+    "twseChange": 838.83,
+    "twseChangePercent": 2.37,
+    "tpexClose": 356.0,
+    "tpexChange": 3.77,
+    "tpexChangePercent": 1.070323368253698
+  },
+  {
+    "date": "2026-04-15",
+    "twseClose": 36722.14,
+    "twseChange": 426.02,
+    "twseChangePercent": 1.17,
+    "tpexClose": 359.86,
+    "tpexChange": 3.86,
+    "tpexChangePercent": 1.0842696629213482
+  },
+  {
+    "date": "2026-04-16",
+    "twseClose": 37132.02,
+    "twseChange": 409.88,
+    "twseChangePercent": 1.12,
+    "tpexClose": 365.96,
+    "tpexChange": 6.1,
+    "tpexChangePercent": 1.6951036514199966
+  },
+  {
+    "date": "2026-04-17",
+    "twseClose": 36804.34,
+    "twseChange": -327.68,
+    "twseChangePercent": -0.88,
+    "tpexClose": 372.34,
+    "tpexChange": 6.38,
+    "tpexChangePercent": 1.7433599300469997
+  },
+  {
+    "date": "2026-04-20",
+    "twseClose": 36958.8,
+    "twseChange": 154.46,
+    "twseChangePercent": 0.42,
+    "tpexClose": 383.5,
+    "tpexChange": 11.16,
+    "tpexChangePercent": 2.9972605682977926
+  },
+  {
+    "date": "2026-04-21",
+    "twseClose": 37605.11,
+    "twseChange": 646.31,
+    "twseChangePercent": 1.75,
+    "tpexClose": 390.57,
+    "tpexChange": 7.07,
+    "tpexChangePercent": 1.8435462842242505
+  },
+  {
+    "date": "2026-04-22",
+    "twseClose": 37878.47,
+    "twseChange": 273.36,
+    "twseChangePercent": 0.73,
+    "tpexClose": 395.08,
+    "tpexChange": 4.51,
+    "tpexChangePercent": 1.1547225849399596
+  },
+  {
+    "date": "2026-04-23",
+    "twseClose": 37714.15,
+    "twseChange": -164.32,
+    "twseChangePercent": -0.43,
+    "tpexClose": 381.32,
+    "tpexChange": -13.76,
+    "tpexChangePercent": -3.4828389187000104
+  },
+  {
+    "date": "2026-04-24",
+    "twseClose": 38932.4,
+    "twseChange": 1218.25,
+    "twseChangePercent": 3.23,
+    "tpexClose": 381.54,
+    "tpexChange": 0.22,
+    "tpexChangePercent": 0.05769432497639777
+  },
+  {
+    "date": "2026-04-27",
+    "twseClose": 39616.63,
+    "twseChange": 684.23,
+    "twseChangePercent": 1.76,
+    "tpexClose": 377.05,
+    "tpexChange": -4.49,
+    "tpexChangePercent": -1.1768097709283432
+  },
+  {
+    "date": "2026-04-28",
+    "twseClose": 39521.73,
+    "twseChange": -94.9,
+    "twseChangePercent": -0.24,
+    "tpexClose": 382.06,
+    "tpexChange": 5.01,
+    "tpexChangePercent": 1.328736241877735
+  },
+  {
+    "date": "2026-04-29",
+    "twseClose": 39303.5,
+    "twseChange": -218.23,
+    "twseChangePercent": -0.55,
+    "tpexClose": 382.75,
+    "tpexChange": 0.69,
+    "tpexChangePercent": 0.18059990577396218
+  },
+  {
+    "date": "2026-04-30",
+    "twseClose": 38926.63,
+    "twseChange": -376.87,
+    "twseChangePercent": -0.96,
+    "tpexClose": 384.58,
+    "tpexChange": 1.83,
+    "tpexChangePercent": 0.4781188765512737
+  },
+  {
+    "date": "2026-05-04",
+    "twseClose": 40705.14,
+    "twseChange": 1778.51,
+    "twseChangePercent": 4.57,
+    "tpexClose": 398.25,
+    "tpexChange": 13.67,
+    "tpexChangePercent": 3.5545270164855167
+  },
+  {
+    "date": "2026-05-05",
+    "twseClose": 40769.29,
+    "twseChange": 64.15,
+    "twseChangePercent": 0.16,
+    "tpexClose": 407.44,
+    "tpexChange": 9.19,
+    "tpexChangePercent": 2.307595731324545
+  },
+  {
+    "date": "2026-05-06",
+    "twseClose": 41138.85,
+    "twseChange": 369.56,
+    "twseChangePercent": 0.91,
+    "tpexClose": 410.29,
+    "tpexChange": 2.85,
+    "tpexChangePercent": 0.6994894953858237
+  },
+  {
+    "date": "2026-05-07",
+    "twseClose": 41933.78,
+    "twseChange": 794.93,
+    "twseChangePercent": 1.93,
+    "tpexClose": 416.41,
+    "tpexChange": 6.12,
+    "tpexChangePercent": 1.4916278729679007
+  },
+  {
+    "date": "2026-05-08",
+    "twseClose": 41603.94,
+    "twseChange": -329.84,
+    "twseChangePercent": -0.79,
+    "tpexClose": 409.44,
+    "tpexChange": -6.97,
+    "tpexChangePercent": -1.6738310799452463
+  },
+  {
+    "date": "2026-05-11",
+    "twseClose": 41790.06,
+    "twseChange": 186.12,
+    "twseChangePercent": 0.45,
+    "tpexClose": 422.01,
+    "tpexChange": 12.57,
+    "tpexChangePercent": 3.0700468933177025
+  },
+  {
+    "date": "2026-05-12",
+    "twseClose": 41898.32,
+    "twseChange": 108.26,
+    "twseChangePercent": 0.26,
+    "tpexClose": 425.71,
+    "tpexChange": 3.7,
+    "tpexChangePercent": 0.8767564749650483
+  },
+  {
+    "date": "2026-05-13",
+    "twseClose": 41374.5,
+    "twseChange": -523.82,
+    "twseChangePercent": -1.25,
+    "tpexClose": 420.54,
+    "tpexChange": -5.17,
+    "tpexChangePercent": -1.2144417561250616
+  },
+  {
+    "date": "2026-05-14",
+    "twseClose": 41751.75,
+    "twseChange": 377.25,
+    "twseChangePercent": 0.91,
+    "tpexClose": 426.57,
+    "tpexChange": 6.03,
+    "tpexChangePercent": 1.433870737623056
+  },
+  {
+    "date": "2026-05-15",
+    "twseClose": 41172.36,
+    "twseChange": -579.39,
+    "twseChangePercent": -1.39,
+    "tpexClose": 411.18,
+    "tpexChange": -15.39,
+    "tpexChangePercent": -3.607848653210493
+  },
+  {
+    "date": "2026-05-18",
+    "twseClose": 40891.82,
+    "twseChange": -280.54,
+    "twseChangePercent": -0.68,
+    "tpexClose": 409.63,
+    "tpexChange": -1.55,
+    "tpexChangePercent": -0.37696386010992755
+  },
+  {
+    "date": "2026-05-19",
+    "twseClose": 40175.56,
+    "twseChange": -716.26,
+    "twseChangePercent": -1.75,
+    "tpexClose": 398.18,
+    "tpexChange": -11.45,
+    "tpexChangePercent": -2.7952054292898465
+  },
+  {
+    "date": "2026-05-20",
+    "twseClose": 40020.82,
+    "twseChange": -154.74,
+    "twseChangePercent": -0.39,
+    "tpexClose": 396.42,
+    "tpexChange": -1.76,
+    "tpexChangePercent": -0.44201115073584807
+  },
+  {
+    "date": "2026-05-21",
+    "twseClose": 41368.21,
+    "twseChange": 1347.39,
+    "twseChangePercent": 3.37,
+    "tpexClose": 409.8,
+    "tpexChange": 13.38,
+    "tpexChangePercent": 3.37520811260784
+  },
+  {
+    "date": "2026-05-22",
+    "twseClose": 42267.97,
+    "twseChange": 899.76,
+    "twseChangePercent": 2.18,
+    "tpexClose": 423.25,
+    "tpexChange": 13.45,
+    "tpexChangePercent": 3.2820888238164954
+  },
+  {
+    "date": "2026-05-25",
+    "twseClose": 43644.4,
+    "twseChange": 1376.43,
+    "twseChangePercent": 3.26,
+    "tpexClose": 434.99,
+    "tpexChange": 11.74,
+    "tpexChangePercent": 2.773774365032487
+  },
+  {
+    "date": "2026-05-26",
+    "twseClose": 43525.37,
+    "twseChange": -119.03,
+    "twseChangePercent": -0.27,
+    "tpexClose": 439.3,
+    "tpexChange": 4.31,
+    "tpexChangePercent": 0.9908273753419617
+  },
+  {
+    "date": "2026-05-27",
+    "twseClose": 44256.8,
+    "twseChange": 731.43,
+    "twseChangePercent": 1.68,
+    "tpexClose": 440.19,
+    "tpexChange": 0.89,
+    "tpexChangePercent": 0.20259503755975417
+  },
+  {
+    "date": "2026-05-28",
+    "twseClose": 43636.44,
+    "twseChange": -620.36,
+    "twseChangePercent": -1.4,
+    "tpexClose": 432.48,
+    "tpexChange": -7.71,
+    "tpexChangePercent": -1.7515163906494922
+  },
+  {
+    "date": "2026-05-29",
+    "twseClose": 44732.94,
+    "twseChange": 1096.5,
+    "twseChangePercent": 2.51,
+    "tpexClose": 443.64,
+    "tpexChange": 11.16,
+    "tpexChangePercent": 2.580466148723641
+  },
+  {
+    "date": "2026-06-01",
+    "twseClose": 45337.91,
+    "twseChange": 604.97,
+    "twseChangePercent": 1.35,
+    "tpexClose": 446.02,
+    "tpexChange": 2.38,
+    "tpexChangePercent": 0.5364710125326841
+  },
+  {
+    "date": "2026-06-02",
+    "twseClose": 45557.31,
+    "twseChange": 219.4,
+    "twseChangePercent": 0.48,
+    "tpexClose": 440.64,
+    "tpexChange": -5.38,
+    "tpexChangePercent": -1.2062239361463611
+  },
+  {
+    "date": "2026-06-03",
+    "twseClose": 46459.16,
+    "twseChange": 901.85,
+    "twseChangePercent": 1.98,
+    "tpexClose": 446.82,
+    "tpexChange": 6.18,
+    "tpexChangePercent": 1.4025054466230935
+  },
+  {
+    "date": "2026-06-04",
+    "twseClose": 45677.46,
+    "twseChange": -781.7,
+    "twseChangePercent": -1.68,
+    "tpexClose": 440.1,
+    "tpexChange": -6.72,
+    "tpexChangePercent": -1.5039613267087415
+  },
+  {
+    "date": "2026-06-05",
+    "twseClose": 45070.94,
+    "twseChange": -606.52,
+    "twseChangePercent": -1.33,
+    "tpexClose": 431.07,
+    "tpexChange": -9.03,
+    "tpexChangePercent": -2.0518064076346287
+  },
+  {
+    "date": "2026-06-08",
+    "twseClose": 43502.78,
+    "twseChange": -1568.16,
+    "twseChangePercent": -3.48,
+    "tpexClose": 412.57,
+    "tpexChange": -18.5,
+    "tpexChangePercent": -4.291646368339249
+  },
+  {
+    "date": "2026-06-09",
+    "twseClose": 44704.44,
+    "twseChange": 1201.66,
+    "twseChangePercent": 2.76,
+    "tpexClose": 424.71,
+    "tpexChange": 12.14,
+    "tpexChangePercent": 2.942530964442398
+  },
+  {
+    "date": "2026-06-10",
+    "twseClose": 43225.54,
+    "twseChange": -1478.9,
+    "twseChangePercent": -3.31,
+    "tpexClose": 405.91,
+    "tpexChange": -18.8,
+    "tpexChangePercent": -4.426549881095335
+  },
+  {
+    "date": "2026-06-11",
+    "twseClose": 43149.46,
+    "twseChange": -76.08,
+    "twseChangePercent": -0.18,
+    "tpexClose": 407.09,
+    "tpexChange": 1.18,
+    "tpexChangePercent": 0.29070483604739966
+  },
+  {
+    "date": "2026-06-12",
+    "twseClose": 44169.04,
+    "twseChange": 1019.58,
+    "twseChangePercent": 2.36,
+    "tpexClose": 419.72,
+    "tpexChange": 12.63,
+    "tpexChangePercent": 3.1025080449040754
+  },
+  {
+    "date": "2026-06-15",
+    "twseClose": 45396.99,
+    "twseChange": 1227.95,
+    "twseChangePercent": 2.78,
+    "tpexClose": 429.37,
+    "tpexChange": 9.65,
+    "tpexChangePercent": 2.299151815496045
+  },
+  {
+    "date": "2026-06-16",
+    "twseClose": 45809.19,
+    "twseChange": 412.2,
+    "twseChangePercent": 0.91,
+    "tpexClose": 430.26,
+    "tpexChange": 0.89,
+    "tpexChangePercent": 0.20728043412441485
+  },
+  {
+    "date": "2026-06-17",
+    "twseClose": 45877.39,
+    "twseChange": 68.2,
+    "twseChangePercent": 0.15,
+    "tpexClose": 433.34,
+    "tpexChange": 3.08,
+    "tpexChangePercent": 0.715846232510575
+  },
+  {
+    "date": "2026-06-18",
+    "twseClose": 46465.2,
+    "twseChange": 587.81,
+    "twseChangePercent": 1.28,
+    "tpexClose": 447.06,
+    "tpexChange": 13.72,
+    "tpexChangePercent": 3.166105136844049
+  },
+  {
+    "date": "2026-06-22",
+    "twseClose": 47741.51,
+    "twseChange": 1276.31,
+    "twseChangePercent": 2.75,
+    "tpexClose": 453.5,
+    "tpexChange": 6.44,
+    "tpexChangePercent": 1.4405225249407239
+  },
+  {
+    "date": "2026-06-23",
+    "twseClose": 47100.65,
+    "twseChange": -640.86,
+    "twseChangePercent": -1.34,
+    "tpexClose": 440.81,
+    "tpexChange": -12.69,
+    "tpexChangePercent": -2.7982359426681365
+  },
+  {
+    "date": "2026-06-24",
+    "twseClose": 46043.6,
+    "twseChange": -1057.05,
+    "twseChangePercent": -2.24,
+    "tpexClose": 442.09,
+    "tpexChange": 1.28,
+    "tpexChangePercent": 0.2903745377827182
+  },
+  {
+    "date": "2026-06-25",
+    "twseClose": 46255.26,
+    "twseChange": 211.66,
+    "twseChangePercent": 0.46,
+    "tpexClose": 439.84,
+    "tpexChange": -2.25,
+    "tpexChangePercent": -0.5089461421882422
+  },
+  {
+    "date": "2026-06-26",
+    "twseClose": 44571.76,
+    "twseChange": -1683.5,
+    "twseChangePercent": -3.64,
+    "tpexClose": 415.26,
+    "tpexChange": -24.58,
+    "tpexChangePercent": -5.588395780283739
+  },
+  {
+    "date": "2026-06-29",
+    "twseClose": 44999.9,
+    "twseChange": 428.14,
+    "twseChangePercent": 0.96,
+    "tpexClose": 412.93,
+    "tpexChange": -2.33,
+    "tpexChangePercent": -0.5610942542021866
+  },
+  {
+    "date": "2026-06-30",
+    "twseClose": 46125.91,
+    "twseChange": 1126.01,
+    "twseChangePercent": 2.5,
+    "tpexClose": 426.97,
+    "tpexChange": 14.04,
+    "tpexChangePercent": 3.4000920252827354
+  },
+  {
+    "date": "2026-07-01",
+    "twseClose": 47018.99,
+    "twseChange": 893.08,
+    "twseChangePercent": 1.94,
+    "tpexClose": 431.23,
+    "tpexChange": 4.26,
+    "tpexChangePercent": 0.9977281776237206
+  },
+  {
+    "date": "2026-07-02",
+    "twseClose": 46744.16,
+    "twseChange": -274.83,
+    "twseChangePercent": -0.58,
+    "tpexClose": 439.51,
+    "tpexChange": 8.28,
+    "tpexChangePercent": 1.9200890476080048
+  },
+  {
+    "date": "2026-07-03",
+    "twseClose": 46780.62,
+    "twseChange": 36.46,
+    "twseChangePercent": 0.08,
+    "tpexClose": 445.38,
+    "tpexChange": 5.87,
+    "tpexChangePercent": 1.3355782576050603
+  },
+  {
+    "date": "2026-07-06",
+    "twseClose": 46556.39,
+    "twseChange": -224.23,
+    "twseChangePercent": -0.48,
+    "tpexClose": 439.8,
+    "tpexChange": -5.58,
+    "tpexChangePercent": -1.2528627239660515
+  },
+  {
+    "date": "2026-07-07",
+    "twseClose": 45479.11,
+    "twseChange": -1077.28,
+    "twseChangePercent": -2.31,
+    "tpexClose": 419.47,
+    "tpexChange": -20.33,
+    "tpexChangePercent": -4.622555707139608
+  },
+  {
+    "date": "2026-07-08",
+    "twseClose": 45734.41,
+    "twseChange": 255.3,
+    "twseChangePercent": 0.56,
+    "tpexClose": 421.39,
+    "tpexChange": 1.92,
+    "tpexChangePercent": 0.4577204567668725
+  },
+  {
+    "date": "2026-07-09",
+    "twseClose": 45354.61,
+    "twseChange": -379.8,
+    "twseChangePercent": -0.83,
+    "tpexClose": 424.99,
+    "tpexChange": 3.6,
+    "tpexChangePercent": 0.8543154797218729
+  },
+  {
+    "date": "2026-07-13",
+    "twseClose": 45380.52,
+    "twseChange": 25.91,
+    "twseChangePercent": 0.06,
+    "tpexClose": 419.9,
+    "tpexChange": -5.09,
+    "tpexChangePercent": -1.1976752394173982
+  },
+  {
+    "date": "2026-07-14",
+    "twseClose": 44737.95,
+    "twseChange": -642.57,
+    "twseChangePercent": -1.42,
+    "tpexClose": 407.41,
+    "tpexChange": -12.49,
+    "tpexChangePercent": -2.9745177423195996
+  },
+  {
+    "date": "2026-07-15",
+    "twseClose": 45631.59,
+    "twseChange": 893.64,
+    "twseChangePercent": 2.0,
+    "tpexClose": 416.41,
+    "tpexChange": 9.0,
+    "tpexChangePercent": 2.2090768513291277
+  },
+  {
+    "date": "2026-07-16",
+    "twseClose": 45624.98,
+    "twseChange": -6.61,
+    "twseChangePercent": -0.01,
+    "tpexClose": 407.01,
+    "tpexChange": -9.4,
+    "tpexChangePercent": -2.25739055258039
+  },
+  {
+    "date": "2026-07-17",
+    "twseClose": 42671.27,
+    "twseChange": -2953.71,
+    "twseChangePercent": -6.47,
+    "tpexClose": 378.44,
+    "tpexChange": -28.57,
+    "tpexChangePercent": -7.019483550772708
+  },
+  {
+    "date": "2026-07-20",
+    "twseClose": 42449.7,
+    "twseChange": -221.57,
+    "twseChangePercent": -0.52,
+    "tpexClose": 368.53,
+    "tpexChange": -9.91,
+    "tpexChangePercent": -2.61864496353451
+  },
+  {
+    "date": "2026-07-21",
+    "twseClose": 44232.87,
+    "twseChange": 1783.17,
+    "twseChangePercent": 4.2,
+    "tpexClose": 381.96,
+    "tpexChange": 13.43,
+    "tpexChangePercent": 3.64420806989933
+  },
+  {
+    "date": "2026-07-22",
+    "twseClose": 44825.78,
+    "twseChange": 592.91,
+    "twseChangePercent": 1.34,
+    "tpexClose": 395.18,
+    "tpexChange": 13.22,
+    "tpexChangePercent": 3.4610954026599647
+  },
+  {
+    "date": "2026-07-23",
+    "twseClose": 44850.81,
+    "twseChange": 25.03,
+    "twseChangePercent": 0.06,
+    "tpexClose": 392.11,
+    "tpexChange": -3.07,
+    "tpexChangePercent": -0.7768611771850802
+  },
+  {
+    "date": "2026-07-24",
+    "twseClose": 43654.84,
+    "twseChange": -1195.97,
+    "twseChangePercent": -2.67,
+    "tpexClose": 377.63,
+    "tpexChange": -14.48,
+    "tpexChangePercent": -3.6928412945346967
+  },
+  {
+    "date": "2026-07-27",
+    "twseClose": 43634.19,
+    "twseChange": -20.65,
+    "twseChangePercent": -0.05,
+    "tpexClose": 378.09,
+    "tpexChange": 0.46,
+    "tpexChangePercent": 0.12181235600985092
+  },
+  {
+    "date": "2026-07-28",
+    "twseClose": 41603.36,
+    "twseChange": -2030.83,
+    "twseChangePercent": -4.65,
+    "tpexClose": 352.42,
+    "tpexChange": -25.67,
+    "tpexChangePercent": -6.789388769869607
+  }
+]

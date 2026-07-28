@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>股市每日資訊</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1>股市每日資訊</h1>
+    <div class="controls">
+      <label for="date-select">日期</label>
+      <select id="date-select"></select>
+      <span id="last-updated" class="last-updated"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="market-grid">
+      <article class="market-column" data-market="twse">
+        <h2>上市（TWSE）</h2>
+        <div class="card index-card">
+          <div class="card-title">加權指數</div>
+          <div class="index-value"><span class="close">--</span></div>
+          <div class="index-change"><span class="change">--</span><span class="change-pct">--</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">三大法人買賣超（元）</div>
+          <table class="insti-table">
+            <tbody>
+              <tr><th>外資及陸資</th><td class="net" data-cat="foreign">--</td></tr>
+              <tr><th>投信</th><td class="net" data-cat="trust">--</td></tr>
+              <tr><th>自營商</th><td class="net" data-cat="dealer">--</td></tr>
+              <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">融資融券</div>
+          <table class="margin-table">
+            <tbody>
+              <tr><th>融資餘額</th><td class="margin-balance">--</td><td class="margin-delta">--</td></tr>
+              <tr><th>融券餘額</th><td class="short-balance">--</td><td class="short-delta">--</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="market-column" data-market="tpex">
+        <h2>上櫃（TPEx）</h2>
+        <div class="card index-card">
+          <div class="card-title">櫃買指數</div>
+          <div class="index-value"><span class="close">--</span></div>
+          <div class="index-change"><span class="change">--</span><span class="change-pct">--</span></div>
+        </div>
+        <div class="card">
+          <div class="card-title">三大法人買賣超（元）</div>
+          <table class="insti-table">
+            <tbody>
+              <tr><th>外資及陸資</th><td class="net" data-cat="foreign">--</td></tr>
+              <tr><th>投信</th><td class="net" data-cat="trust">--</td></tr>
+              <tr><th>自營商</th><td class="net" data-cat="dealer">--</td></tr>
+              <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-title">融資融券</div>
+          <table class="margin-table">
+            <tbody>
+              <tr><th>融資餘額</th><td class="margin-balance">--</td><td class="margin-delta">--</td></tr>
+              <tr><th>融券餘額</th><td class="short-balance">--</td><td class="short-delta">--</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section class="card chart-card">
+      <div class="card-title">大盤指數走勢</div>
+      <div class="chart-wrap">
+        <canvas id="index-chart" height="90"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    資料來源：<a href="https://openapi.twse.com.tw/" target="_blank" rel="noopener">台灣證券交易所</a>、
+    <a href="https://www.tpex.org.tw/openapi/" target="_blank" rel="noopener">證券櫃檯買賣中心</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

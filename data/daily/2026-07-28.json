@@ -1,0 +1,21 @@
+{
+  "date": "2026-07-28",
+  "twse": {
+    "index": {
+      "close": 41603.36,
+      "change": -2030.83,
+      "changePercent": -4.65
+    },
+    "institutional": null,
+    "margin": null
+  },
+  "tpex": {
+    "index": {
+      "close": 352.42,
+      "change": -25.67,
+      "changePercent": -6.789388769869607
+    },
+    "institutional": null,
+    "margin": null
+  }
+}

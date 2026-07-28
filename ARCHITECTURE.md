@@ -1,0 +1,107 @@
+# 股市資訊網站 — 架構文件
+
+每日呈現上市（TWSE）／上櫃（TPEx）大盤漲跌、三大法人買賣超、融資融券狀況的靜態網站。
+
+## 方案
+
+零維運靜態架構：GitHub Actions 排程抓資料 → 整理成 JSON commit 回 repo → GitHub Pages 直接讀 JSON 呈現，不需要自建伺服器。資料量小（一天一筆快照），這個方案完全免費、幾乎不用維運。
+
+歷史資料回補範圍：2026-01-01 至今。
+
+## 資料來源
+
+**TWSE 上市：**（`scripts/common.py`，`fetch_twse_*`，每日排程與回補共用同一組端點，只差 `date` 參數）
+
+| 項目 | 端點 | 說明 |
+|---|---|---|
+| 大盤指數 | `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?response=json&date=YYYYMMDD&type=ALL` | 從 `tables` 裡找列名為「發行量加權股價指數」的那一列。⚠️「漲跌點數」欄只給量值（要配合顏色 `color:red`/`color:green` 判斷正負），但「漲跌百分比」欄有時已經自帶負號——兩欄簽名慣例不一致，程式裡分開處理 |
+| 三大法人買賣金額（全市場合計） | `https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&dayDate=YYYYMMDD&type=day` | 回傳自營商(自行買賣)／自營商(避險)／投信／外資及陸資／外資自營商／合計 六列的買進、賣出、買賣差額。⚠️「外資及陸資」這列名稱偶爾會帶「(不含外資自營商)」字尾，比對時用前綴比對而非完全相等；「外資自營商」金額官方已經算進自營商合計裡了，不能再另外加總一次 |
+| 融資融券餘額（全市場合計） | `https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?response=json&date=YYYYMMDD&selectType=ALL` | 回傳的 `tables[0]`「信用交易統計」就是全市場彙總，不用自己加總個股：`融資金額(仟元)` 列有前日/今日餘額（新台幣仟元），`融券(交易單位)` 列有前日/今日餘額（張）；這份資料**沒有**融券金額的仟元合計，只有張數 |
+
+⚠️ 實測發現的兩個 TWSE 限制：(1) 每日 13:30–13:45（台北時間）尖峰時段會暫停「整批查詢」，改回傳提示訊息，程式遇到會自動 sleep 後重試；(2) 請求太密集（回補歷史時連續打很多天）偶爾會回傳空白內容（非合法 JSON），一樣視為暫時性錯誤、短暫等待後重試，回補腳本每個請求之間也加了 0.3 秒間隔。
+
+⚠️ **三大法人／融資融券的「今天」資料常常比大盤指數晚公布**——實測在台北時間下午跑排程時，大盤指數已經有今天的收盤資料，但三大法人與融資融券還停留在前一天，要到傍晚才會更新。這是把每日排程時間訂在台北時間 18:00 的原因；如果那個時間點資料還沒出來，`fetch_daily.py` 會把該欄位存成 `null`，之後可以用 `workflow_dispatch` 手動重跑同一天來補齊（重跑會覆蓋同一天的舊檔案）。
+
+**TPEx 上櫃：**（`scripts/common.py`，分「近期資料」與「歷史回補」兩組函式，因為新版 OpenAPI 不支援指定日期）
+
+*每日排程用（`fetch_tpex_*_latest`，新版 OpenAPI，已用 Python `requests` + 瀏覽器標頭實測）：*
+
+| 項目 | 端點 | 說明 |
+|---|---|---|
+| 大盤指數 | `https://www.tpex.org.tw/openapi/v1/tpex_index` | 欄位 `Date, Open, High, Low, Close, Change`。只回傳近期滾動資料（實測回傳當月 1 日至今），不支援日期參數 |
+| 三大法人買賣超（全市場合計） | `https://www.tpex.org.tw/openapi/v1/tpex_3insti_summary` | 欄位 `Date, Investor, PurchaseAmount, SaleAmount, Net`；`Investor` 用到的三個精確字串是「外資及陸資合計」「投信」「自營商合計」，另外有現成的「三大法人合計*」總計列可以直接用，不用自己加總 |
+| 融資融券餘額 | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance` | 欄位 `MarginPurchaseBalance, MarginPurchaseBalancePreviousDay, ShortSaleBalance, ShortSaleBalancePreviousDay`（張），是逐檔個股資料，腳本裡加總全部個股成大盤合計 |
+
+因為這幾個端點沒有日期參數，程式會核對回傳資料裡的 `Date` 是不是真的等於目標日期，對不上（代表當天還沒公布）就回傳 `null`，避免把前一天的資料誤標成今天。
+
+*回補歷史用（`fetch_tpex_index_month` / `fetch_tpex_margin_by_date`，legacy 網頁端點，民國年日期格式，已實測）：*
+
+| 項目 | 端點 | 說明 |
+|---|---|---|
+| 大盤指數 | `https://www.tpex.org.tw/web/stock/iNdex_info/inxh/Inx_result.php?l=zh-tw&d=115/07&o=json` | 帶「民國年/月」（不含日）一次回傳整個月每個交易日的開高低收與漲跌，回補時用月份迴圈抓，比逐日呼叫有效率 |
+| 融資融券餘額 | `https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&d=115/07/27&o=json` | 逐檔個股資料，欄位有清楚命名（`前資餘額(張)`、`資餘額`、`前券餘額(張)`、`券餘額`…），腳本裡加總成大盤合計 |
+| ~~三大法人買賣超~~ | ~~`3itrade_hedge_result.php`~~ | **沒有實作歷史回補**：這支 legacy 端點雖然存在（`/web/stock/3insti/daily_trade/3itrade_hedge_result.php`），但回傳的是逐檔個股、7 組買賣超股數，7 組欄位沒有標名稱、分類順序沒有官方文件佐證，貿然假設順序去加總誤植的風險太高，所以選擇不做，2026-01-01 到程式開始每日排程之間的 TPEx 三大法人資料會是空的 |
+
+⚠️ `www.tpex.org.tw` 對沒有瀏覽器標頭的請求會回 403（WAF 擋爬蟲），抓取時務必帶上 `User-Agent`（設成常見瀏覽器字串）與 `Referer: https://www.tpex.org.tw/`。
+
+⚠️ 這台開發機的 Python（3.14 + 新版 OpenSSL）對 `tpex.org.tw` 的憑證驗證預設會失敗（`Missing Subject Key Identifier`——瀏覽器與舊版 OpenSSL 都能接受，只有較新版 OpenSSL 的嚴格模式會拒絕）。`common.py` 用一個自訂的 `requests` `HTTPAdapter` 關掉 `ssl.VERIFY_X509_STRICT` 這個嚴格旗標解決，憑證鏈與主機名稱仍然正常驗證，不影響安全性。GitHub Actions 的 Ubuntu runner 未必會踩到這個問題，但兩邊統一用同一個 session 比較保險。
+
+## 檔案結構
+
+```
+股市資訊/
+├── .github/workflows/
+│   └── fetch-daily.yml        # 排程：平日 18:00 台北時間跑，另開 workflow_dispatch 手動觸發（可帶 date 參數補特定一天）
+├── scripts/
+│   ├── common.py              # 共用：呼叫 API、正規化 schema、寫入 data/ 的邏輯
+│   ├── fetch_daily.py         # 抓「今天」資料，寫入 daily + 附加進 series
+│   └── backfill.py            # 一次性：迴圈 2026-01-01 至今的交易日，補齊 data/
+├── data/
+│   ├── daily/{date}.json      # 當日完整快照（index / institutional / margin，各分 twse、tpex）
+│   ├── series/index.json      # 逐日累積的指數時間序列，前端畫趨勢圖用，避免要抓幾百個 daily 檔案
+│   ├── series/institutional.json
+│   ├── series/margin.json
+│   └── manifest.json          # 有資料的日期清單 + lastUpdated，前端用來產生日期選單
+├── index.html                 # 靜態前端：今日卡片 + Chart.js 趨勢圖 + 歷史日期選擇
+├── assets/style.css
+├── assets/app.js
+└── README.md
+```
+
+`fetch_daily.py` 與 `backfill.py` 共用 `common.py` 裡的抓取／正規化函式，差別只在日期迴圈範圍，避免兩份重複邏輯。
+
+## 排程邏輯
+
+- Cron：`0 10 * * 1-5`（UTC）= 台北時間平日 18:00。訂得比原先規劃的 15:30 晚，是因為實測發現三大法人／融資融券常常比大盤指數晚公布（見上面「資料來源」的說明）。
+- 另外開 `workflow_dispatch`，可帶一個 `date`（YYYY-MM-DD）輸入手動重跑或補資料；不帶就抓今天。`fetch_daily.py` 對同一天重跑是安全的，會直接覆蓋舊檔案。
+- 若當天不是交易日（TWSE 回傳空值），腳本直接結束，不寫檔、不 commit，維持 repo 乾淨、可重複執行（idempotent）。
+- 抓完資料後：`git add data/ && git commit && git push`，用 workflow 內建的 `GITHUB_TOKEN`（需開 `permissions: contents: write`）。
+
+## 前端
+
+純靜態頁面，讀取 `data/manifest.json` 取得可選日期，預設顯示最新一天：
+
+- 今日卡片：大盤指數（含漲跌／漲跌%）、三大法人買賣超金額、融資融券餘額（含較前日增減），上市／上櫃分開顯示
+- 趨勢圖（Chart.js）：讀 `data/series/*.json`，畫大盤指數走勢
+- 日期選單：切換查看任一歷史交易日的完整快照
+
+## 實作步驟
+
+0. **（本文件）** 先產出這份架構文件，確認方向後才開始寫程式／建 repo。
+1. **使用者手動**：在 GitHub 開一個新的 public repo，本機資料夾 `git init` 並加上 remote。
+2. 撰寫 `scripts/common.py` + `scripts/fetch_daily.py`，本機測試，確認能產生 `data/daily/{today}.json` 且假日會自動跳過。
+3. ~~用 Python `requests` 實測 TPEx 對應端點~~ 已於規劃階段驗證完成（見上表），`common.py` 直接依驗證結果實作上櫃抓取邏輯即可。
+4. 撰寫 `scripts/backfill.py`，本機執行一次回補 2026-01-01 至今的資料。
+5. 撰寫 `index.html` / `assets/app.js`，本機用 `python -m http.server` 測試畫面。
+6. 撰寫 `.github/workflows/fetch-daily.yml`。
+7. commit 全部檔案，push 到 GitHub repo（push 前會先確認）。
+8. Repo Settings → Pages，設定 Deploy from branch：`main` / `(root)`。
+9. 手動觸發一次 `workflow_dispatch`，確認 Actions 能成功寫入新 commit，GitHub Pages 網址能看到資料。
+
+## 驗證方式
+
+- 本機執行 `python scripts/fetch_daily.py`，檢查 `data/daily/{today}.json` 內容與欄位。
+- 本機執行 `python scripts/backfill.py`，抽查幾個日期（含週末、國定假日應自動跳過）。
+- 本機起 `python -m http.server` 開 `index.html`，確認畫面讀得到 `data/`、圖表與卡片正確、切換日期選單資料會變。
+- push 後檢查 GitHub repo 的 Actions 分頁 workflow 是否綠勾、`data/` 是否有新 commit。
+- 開啟 GitHub Pages 網址，確認能正常顯示當天資料。
