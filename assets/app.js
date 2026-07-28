@@ -1,3 +1,11 @@
+// GitHub Pages 的 CDN／瀏覽器對這些 JSON 檔常常快取超過資料實際更新的頻率，
+// 加上一個隨機查詢參數確保每次載入都拿到最新版本。
+async function fetchJSON(url) {
+  const sep = url.includes("?") ? "&" : "?";
+  const res = await fetch(`${url}${sep}_=${Date.now()}`);
+  return res.json();
+}
+
 function signClass(n) {
   if (n > 0) return "up";
   if (n < 0) return "down";
@@ -86,8 +94,7 @@ function renderMarket(market, data) {
 }
 
 async function loadDate(date) {
-  const res = await fetch(`data/daily/${date}.json`);
-  const data = await res.json();
+  const data = await fetchJSON(`data/daily/${date}.json`);
   renderMarket("twse", data.twse);
   renderMarket("tpex", data.tpex);
 }
@@ -142,12 +149,11 @@ function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginL
 }
 
 async function renderCharts() {
-  const [indexRes, marginRes] = await Promise.all([
-    fetch("data/series/index.json"),
-    fetch("data/series/margin.json"),
+  const [indexSeries, marginSeries] = await Promise.all([
+    fetchJSON("data/series/index.json"),
+    fetchJSON("data/series/margin.json"),
   ]);
-  const indexSeries = await indexRes.json();
-  const marginByDate = new Map((await marginRes.json()).map((r) => [r.date, r]));
+  const marginByDate = new Map(marginSeries.map((r) => [r.date, r]));
 
   const labels = indexSeries.map((r) => r.date);
   const marginYi = (date, market) => {
@@ -180,8 +186,7 @@ async function renderCharts() {
 }
 
 async function init() {
-  const res = await fetch("data/manifest.json");
-  const manifest = await res.json();
+  const manifest = await fetchJSON("data/manifest.json");
   const select = document.getElementById("date-select");
   const dates = [...manifest.dates].sort().reverse();
   select.innerHTML = dates.map((d) => `<option value="${d}">${d}</option>`).join("");
