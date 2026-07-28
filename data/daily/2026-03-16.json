@@ -43,11 +43,33 @@
       "change": 4.29,
       "changePercent": 1.3710450623202304
     },
-    "institutional": null,
+    "institutional": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2624000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 971599999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 835399999.9999999
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -816499999.9999999
+      }
+    },
     "margin": {
-      "marginBalance": 263948196030.0,
-      "marginBalancePrev": 260795305490.0,
+      "marginBalance": 137868000000.0,
+      "marginBalancePrev": 135531000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 44880.0,
       "shortBalancePrev": 43269.0,
       "shortUnit": "張"

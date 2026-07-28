@@ -41,7 +41,7 @@
 |---|---|---|
 | 融資金額（官方，優先使用） | `https://www.tpex.org.tw/data/home/dayChart.json` | TPEx 首頁走勢圖 widget 用的內部 API，**沒有出現在 `openapi/swagger.json` 裡，非正式文件化端點**，沒有官方保證長期可用。`dataDate`（民國年）是最新一筆的日期；`marginPurchaseValue.mbal`／`.mdif` 是當天的融資餘額／增減（億元）；`marginPurchaseValue10Days` 是最近約 10 個交易日的 `{date:"MM-DD", amt, dif}` 陣列（無年份，程式用 `dataDate` 的年份推回去、月份比 `dataDate` 大時代表跨年、要退一年）。已用 wantgoo 網站的公開數字交叉驗證，07/27 兩邊都是 1883.47 億，完全一致 |
 
-`fetch_tpex_margin_value_official()`（`common.py`）呼叫這支端點，回傳最近 10 天的 `{iso_date: {marginBalance, marginBalancePrev}}`（元）。`fetch_tpex_margin_latest()` 拿到估算值後，若該日期有官方資料就覆蓋掉，並在回傳的 `margin` 物件裡標記 `"source": "tpex_official"`；抓不到就維持估算值、標記 `"source": "estimated"`。**這支端點只回溯約 10 個交易日**，回補更久的歷史（`fetch_tpex_margin_by_date`）沒有官方資料可用，只能用估算值（一樣標記 `"source": "estimated"`）。融券維持張數（TWSE 那邊本來就只有張數、沒有金額，兩邊算是打平）。
+`fetch_tpex_margin_value_official()`（`common.py`）呼叫這支端點，回傳最近 10 天的 `{iso_date: {marginBalance, marginBalancePrev}}`（元）。`fetch_tpex_margin_latest()`（每日排程用）拿到估算值後，若該日期有官方資料就覆蓋掉，並在回傳的 `margin` 物件裡標記 `"source": "tpex_official"`；抓不到就維持估算值、標記 `"source": "estimated"`。**這支端點只回溯約 10 個交易日**，所以只能用在「今天」之後的每日排程；更久的歷史資料改用下面「用 Report.csv 補齊」那段的方式一次性匯入，不是靠這支端點回補。融券維持張數（TWSE 那邊本來就只有張數、沒有金額，兩邊算是打平）。
 
 *回補歷史用（`fetch_tpex_index_month` / `fetch_tpex_margin_by_date`，legacy 網頁端點，民國年日期格式，已實測）：*
 
@@ -49,7 +49,16 @@
 |---|---|---|
 | 大盤指數 | `https://www.tpex.org.tw/web/stock/iNdex_info/inxh/Inx_result.php?l=zh-tw&d=115/07&o=json` | 帶「民國年/月」（不含日）一次回傳整個月每個交易日的開高低收與漲跌，回補時用月份迴圈抓，比逐日呼叫有效率 |
 | 融資融券餘額 | `https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&d=115/07/27&o=json` | 逐檔個股資料，欄位有清楚命名（`前資餘額(張)`、`資餘額`、`前券餘額(張)`、`券餘額`…）；金額換算跟每日排程一樣，另外用 `stk_wn1430_result.php?l=zh-tw&d=115/07/27&se=EW&o=json`（同一天的收盤價，legacy 版）做 join |
-| ~~三大法人買賣超~~ | ~~`3itrade_hedge_result.php`~~ | **沒有實作歷史回補**：這支 legacy 端點雖然存在（`/web/stock/3insti/daily_trade/3itrade_hedge_result.php`），但回傳的是逐檔個股、7 組買賣超股數，7 組欄位沒有標名稱、分類順序沒有官方文件佐證，貿然假設順序去加總誤植的風險太高，所以選擇不做，2026-01-01 到程式開始每日排程之間的 TPEx 三大法人資料會是空的 |
+| ~~三大法人買賣超~~ | ~~`3itrade_hedge_result.php`~~ | **沒有用這支端點做歷史回補**：這支 legacy 端點雖然存在（`/web/stock/3insti/daily_trade/3itrade_hedge_result.php`），但回傳的是逐檔個股、7 組買賣超股數，7 組欄位沒有標名稱、分類順序沒有官方文件佐證，貿然假設順序去加總誤植的風險太高，所以選擇不做。歷史三大法人資料後來改用下面「用 Report.csv 補齊」的方式一次性匯入 |
+
+### 用 Report.csv 補齊歷史融資融券與三大法人（一次性匯入，已完成）
+
+`dayChart.json` 只回溯 10 個交易日，沒辦法補更久以前的歷史；歷史三大法人也一直沒有可靠端點。後來使用者直接從 TPEx 官網下載了官方報表 `Report.csv`，涵蓋 2026-01-02 ~ 2026-07-27（跟這個專案回補的範圍完全吻合），裡面同時有**融資餘額（億元）**與**三大法人買賣超淨額（億元）**的官方逐日數字，比估算或係數修正準確得多，直接拿來取代。
+
+- 格式：Big5 編碼、**Tab 分隔**（雖然副檔名是 `.csv`）；日期欄格式 `'26/07/27`（民國年 2 碼），千分位逗號的欄位有雙引號包住。欄位順序：期別／收盤／漲跌／漲跌(%)／成交量(億元)／融資增減／**融資餘額**／融卷增減／**融卷餘額**／**外資買賣超(億元)**／**投信買賣超(億元)**／**自營商買賣超(億元)**／**三大法人合計**。
+- `scripts/import_tpex_report_csv.py`（一次性，已執行）：解析 CSV，`marginBalancePrev`／`shortBalancePrev` 用「前一個交易日自己那列的餘額」串出來（不是用「增減」欄位反推，避免捨入誤差累積），覆蓋對應日期 `data/daily/{date}.json` 的 `tpex.margin`（標記 `source: "tpex_official"`）與 `tpex.institutional`。
+- ⚠️ CSV 只有三大法人的**買賣超淨額**，沒有個別買進／賣出金額，所以這段歷史資料的 `tpex.institutional.{foreign,trust,dealer,total}.buy` / `.sell` 是 `null`，只有 `.net` 有值——前端本來就只顯示 `net`，不受影響。
+- 這個匯入只覆蓋 CSV 涵蓋到的日期（到 2026-07-27 為止）；再更新的日期還是由 `fetch_daily.py` 每天即時抓取（含 `dayChart.json` 官方融資來源），跟這次匯入無關，不會被覆蓋。
 
 ⚠️ `www.tpex.org.tw` 對沒有瀏覽器標頭的請求會回 403（WAF 擋爬蟲），抓取時務必帶上 `User-Agent`（設成常見瀏覽器字串）與 `Referer: https://www.tpex.org.tw/`。
 
@@ -65,7 +74,8 @@
 │   ├── common.py                       # 共用：呼叫 API、正規化 schema、寫入 data/ 的邏輯
 │   ├── fetch_daily.py                  # 抓「今天」資料，寫入 daily + 附加進 series
 │   ├── backfill.py                     # 一次性：迴圈 2026-01-01 至今的交易日，補齊 data/
-│   └── apply_official_tpex_margin.py   # 一次性：把最近 10 個交易日的 TPEx 融資估算值換成官方值
+│   ├── apply_official_tpex_margin.py   # 一次性：把最近 10 個交易日的 TPEx 融資估算值換成 dayChart.json 官方值
+│   └── import_tpex_report_csv.py       # 一次性：用 Report.csv 補齊 TPEx 歷史融資融券與三大法人（見下方說明）
 ├── data/
 │   ├── daily/{date}.json      # 當日完整快照（index / institutional / margin，各分 twse、tpex）
 │   ├── series/index.json      # 逐日累積的指數時間序列，前端畫趨勢圖用，避免要抓幾百個 daily 檔案
@@ -114,7 +124,8 @@
 
 1. **TPEx 融資餘額單位跟 TWSE 對不起來**：原本 TPEx 顯示張數、TWSE 顯示金額，改成用張數×收盤價換算法，統一都用「元」，前端統一用「億元」呈現。因為這個改動影響所有歷史資料的 schema，`data/` 整批清空後用新版 `common.py` 重新跑過一次 `backfill.py`。
 2. **趨勢圖 Y 軸太短、沒刻度，且要求拆成上市／上櫃各一張**：原因是 canvas 寫死了 `height="90"` 又沒設 `maintainAspectRatio: false`，改成外層 `.chart-wrap` 給固定高度（320px）＋ `maintainAspectRatio: false`；並把單一圖表拆成 `#twse-chart` / `#tpex-chart` 兩張，各自疊加指數（左軸）與融資餘額（右軸）。
-3. **TPEx 融資金額（張數×收盤價換算法）比外部網站（wantgoo）高了約 40%**：漏乘融資成數，換算的其實是市值不是融資金額。找到 `data/home/dayChart.json` 這支非正式端點可以拿到官方正確數字後，改成「官方優先、估算 fallback」（見上面「資料來源」段落），並寫了一次性腳本 `scripts/apply_official_tpex_margin.py` 把已經回補的最近 10 個交易日換成官方值（10 天以前的歷史資料因為官方端點也回溯不到，維持估算值不動，`margin.source` 會顯示 `"estimated"` 跟 `"tpex_official"` 兩種混合存在，這是預期行為）。
+3. **TPEx 融資金額（張數×收盤價換算法）比外部網站（wantgoo）高了約 40%**：漏乘融資成數，換算的其實是市值不是融資金額。找到 `data/home/dayChart.json` 這支非正式端點可以拿到官方正確數字後，改成「官方優先、估算 fallback」（見上面「資料來源」段落），並寫了一次性腳本 `scripts/apply_official_tpex_margin.py` 把已經回補的最近 10 個交易日換成官方值。
+4. **10 天以前的 TPEx 融資餘額仍是市值估算、櫃買三大法人歷史資料整片空白**：`dayChart.json` 只能回溯 10 天，原本打算用融資成數 0.6 當係數修正舊資料。後來使用者直接從 TPEx 官網下載官方報表 `Report.csv`（涵蓋 2026-01-02 ~ 2026-07-27），改用 `scripts/import_tpex_report_csv.py` 一次性匯入真正的官方逐日數字，取代係數修正的做法，同時把整片空白的歷史三大法人資料補齊（見上面「用 Report.csv 補齊」段落）。匯入後全部 134 天的 `tpex.margin.source` 都是 `"tpex_official"`；`tpex.institutional` 的 `buy`／`sell` 是 `null`（CSV 只有淨額）。
 
 ## 驗證方式
 

@@ -10,9 +10,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 218805012820.0,
-      "marginBalancePrev": 217183681010.0,
+      "marginBalance": 119036999999.99998,
+      "marginBalancePrev": 117526999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 76412.0,
       "shortBalancePrev": 76198.0,
       "shortUnit": "張"
@@ -29,9 +30,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 217984189170.0,
-      "marginBalancePrev": 216640850670.0,
+      "marginBalance": 120276000000.0,
+      "marginBalancePrev": 119036999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 70454.0,
       "shortBalancePrev": 76412.0,
       "shortUnit": "張"
@@ -48,9 +50,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 222350648310.0,
-      "marginBalancePrev": 220831649180.0,
+      "marginBalance": 121560999999.99998,
+      "marginBalancePrev": 120276000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 71015.0,
       "shortBalancePrev": 70454.0,
       "shortUnit": "張"
@@ -67,9 +70,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 222636208500.0,
-      "marginBalancePrev": 223501524400.0,
+      "marginBalance": 121534999999.99998,
+      "marginBalancePrev": 121560999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 68843.0,
       "shortBalancePrev": 71015.0,
       "shortUnit": "張"
@@ -86,9 +90,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 222549619470.0,
-      "marginBalancePrev": 221782625010.0,
+      "marginBalance": 122366000000.00002,
+      "marginBalancePrev": 121534999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 68266.0,
       "shortBalancePrev": 68843.0,
       "shortUnit": "張"
@@ -105,9 +110,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 223755978880.0,
-      "marginBalancePrev": 222425469680.0,
+      "marginBalance": 123420000000.0,
+      "marginBalancePrev": 122366000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 67847.0,
       "shortBalancePrev": 68266.0,
       "shortUnit": "張"
@@ -124,9 +130,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 232686413100.0,
-      "marginBalancePrev": 229114546810.0,
+      "marginBalance": 125958999999.99998,
+      "marginBalancePrev": 123420000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 66818.0,
       "shortBalancePrev": 67847.0,
       "shortUnit": "張"
@@ -143,9 +150,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 228908218640.0,
-      "marginBalancePrev": 229632691420.0,
+      "marginBalance": 126016000000.00002,
+      "marginBalancePrev": 125958999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 65432.0,
       "shortBalancePrev": 66818.0,
       "shortUnit": "張"
@@ -162,9 +170,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 235553545870.0,
-      "marginBalancePrev": 233140434420.0,
+      "marginBalance": 127810999999.99998,
+      "marginBalancePrev": 126016000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 68884.0,
       "shortBalancePrev": 65432.0,
       "shortUnit": "張"
@@ -181,9 +190,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 236890065230.0,
-      "marginBalancePrev": 236694206810.0,
+      "marginBalance": 128234999999.99998,
+      "marginBalancePrev": 127810999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 70784.0,
       "shortBalancePrev": 68884.0,
       "shortUnit": "張"
@@ -200,9 +210,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 239510373430.0,
-      "marginBalancePrev": 238410917850.0,
+      "marginBalance": 129208000000.0,
+      "marginBalancePrev": 128234999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 72007.0,
       "shortBalancePrev": 70784.0,
       "shortUnit": "張"
@@ -219,9 +230,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 240931832500.0,
-      "marginBalancePrev": 242128456210.0,
+      "marginBalance": 128949000000.0,
+      "marginBalancePrev": 129208000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 71370.0,
       "shortBalancePrev": 72007.0,
       "shortUnit": "張"
@@ -238,9 +250,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 245699519360.0,
-      "marginBalancePrev": 244464528140.0,
+      "marginBalance": 130204000000.0,
+      "marginBalancePrev": 128949000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 70348.0,
       "shortBalancePrev": 71370.0,
       "shortUnit": "張"
@@ -257,9 +270,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 237079016900.0,
-      "marginBalancePrev": 240399256470.0,
+      "marginBalance": 129179000000.0,
+      "marginBalancePrev": 130204000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 66661.0,
       "shortBalancePrev": 70348.0,
       "shortUnit": "張"
@@ -276,11 +290,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 243629377500.0,
-      "marginBalancePrev": 242866902370.0,
+      "marginBalance": 130140000000.00002,
+      "marginBalancePrev": 129179000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 64735.0,
-      "shortBalancePrev": 66675.0,
+      "shortBalancePrev": 66661.0,
       "shortUnit": "張"
     }
   },
@@ -295,9 +310,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 243580431940.0,
-      "marginBalancePrev": 242789053780.0,
+      "marginBalance": 131254000000.0,
+      "marginBalancePrev": 130140000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 60664.0,
       "shortBalancePrev": 64735.0,
       "shortUnit": "張"
@@ -314,9 +330,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 248653482110.0,
-      "marginBalancePrev": 247491992440.0,
+      "marginBalance": 132292000000.0,
+      "marginBalancePrev": 131254000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 61890.0,
       "shortBalancePrev": 60664.0,
       "shortUnit": "張"
@@ -333,9 +350,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 252368448080.0,
-      "marginBalancePrev": 251381991190.0,
+      "marginBalance": 133447000000.0,
+      "marginBalancePrev": 132292000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 61193.0,
       "shortBalancePrev": 61890.0,
       "shortUnit": "張"
@@ -352,9 +370,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 261837569940.0,
-      "marginBalancePrev": 259004369650.0,
+      "marginBalance": 135866000000.00002,
+      "marginBalancePrev": 133447000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 61282.0,
       "shortBalancePrev": 61193.0,
       "shortUnit": "張"
@@ -371,9 +390,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 255453676020.0,
-      "marginBalancePrev": 258841741730.0,
+      "marginBalance": 134771000000.0,
+      "marginBalancePrev": 135866000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 60778.0,
       "shortBalancePrev": 61282.0,
       "shortUnit": "張"
@@ -390,9 +410,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 252023243620.0,
-      "marginBalancePrev": 252190101160.0,
+      "marginBalance": 135054000000.0,
+      "marginBalancePrev": 134771000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 56151.0,
       "shortBalancePrev": 60778.0,
       "shortUnit": "張"
@@ -409,9 +430,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 240331761800.0,
-      "marginBalancePrev": 243545997370.0,
+      "marginBalance": 133264000000.00002,
+      "marginBalancePrev": 135054000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 53481.0,
       "shortBalancePrev": 56151.0,
       "shortUnit": "張"
@@ -428,9 +450,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 243006634960.0,
-      "marginBalancePrev": 242792496550.0,
+      "marginBalance": 133733999999.99998,
+      "marginBalancePrev": 133264000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 53023.0,
       "shortBalancePrev": 53481.0,
       "shortUnit": "張"
@@ -447,9 +470,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 249719469860.0,
-      "marginBalancePrev": 247598244400.0,
+      "marginBalance": 135104000000.0,
+      "marginBalancePrev": 133733999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 54851.0,
       "shortBalancePrev": 53023.0,
       "shortUnit": "張"
@@ -466,9 +490,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 242941195070.0,
-      "marginBalancePrev": 245138744510.0,
+      "marginBalance": 134109999999.99998,
+      "marginBalancePrev": 135104000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 53068.0,
       "shortBalancePrev": 54851.0,
       "shortUnit": "張"
@@ -485,9 +510,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 234211390440.0,
-      "marginBalancePrev": 235691972250.0,
+      "marginBalance": 133140000000.00002,
+      "marginBalancePrev": 134109999999.99998,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 48232.0,
       "shortBalancePrev": 53068.0,
       "shortUnit": "張"
@@ -504,9 +530,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 239204319700.0,
-      "marginBalancePrev": 239937276970.0,
+      "marginBalance": 132895000000.0,
+      "marginBalancePrev": 133140000000.00002,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 47909.0,
       "shortBalancePrev": 48232.0,
       "shortUnit": "張"
@@ -523,9 +550,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 237003290520.0,
-      "marginBalancePrev": 238349202210.0,
+      "marginBalance": 132233000000.0,
+      "marginBalancePrev": 132895000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 46579.0,
       "shortBalancePrev": 47909.0,
       "shortUnit": "張"
@@ -542,9 +570,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 236719556900.0,
-      "marginBalancePrev": 238412852670.0,
+      "marginBalance": 131328000000.0,
+      "marginBalancePrev": 132233000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 47637.0,
       "shortBalancePrev": 46579.0,
       "shortUnit": "張"
@@ -561,11 +590,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 246165059280.0,
-      "marginBalancePrev": 244592390430.0,
+      "marginBalance": 132218000000.0,
+      "marginBalancePrev": 131328000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 53207.0,
-      "shortBalancePrev": 47573.0,
+      "shortBalancePrev": 47637.0,
       "shortUnit": "張"
     }
   },
@@ -580,9 +610,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 258123893010.0,
-      "marginBalancePrev": 256823756930.0,
+      "marginBalance": 133644000000.0,
+      "marginBalancePrev": 132218000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 58190.0,
       "shortBalancePrev": 53207.0,
       "shortUnit": "張"
@@ -599,9 +630,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 255465160960.0,
-      "marginBalancePrev": 255301911820.0,
+      "marginBalance": 134846000000.0,
+      "marginBalancePrev": 133644000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 55313.0,
       "shortBalancePrev": 58190.0,
       "shortUnit": "張"
@@ -618,9 +650,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 262618446140.0,
-      "marginBalancePrev": 258843645560.0,
+      "marginBalance": 137848000000.0,
+      "marginBalancePrev": 134846000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 53503.0,
       "shortBalancePrev": 55313.0,
       "shortUnit": "張"
@@ -637,9 +670,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 265039943250.0,
-      "marginBalancePrev": 264236440980.0,
+      "marginBalance": 138911000000.0,
+      "marginBalancePrev": 137848000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 52845.0,
       "shortBalancePrev": 53503.0,
       "shortUnit": "張"
@@ -656,9 +690,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 254863181600.0,
-      "marginBalancePrev": 258134486470.0,
+      "marginBalance": 137870000000.0,
+      "marginBalancePrev": 138911000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 51606.0,
       "shortBalancePrev": 52845.0,
       "shortUnit": "張"
@@ -675,9 +710,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 238183137080.0,
-      "marginBalancePrev": 239944910100.0,
+      "marginBalance": 136501000000.0,
+      "marginBalancePrev": 137870000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 49321.0,
       "shortBalancePrev": 51606.0,
       "shortUnit": "張"
@@ -694,9 +730,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 248670488840.0,
-      "marginBalancePrev": 245835100880.0,
+      "marginBalance": 138386000000.0,
+      "marginBalancePrev": 136501000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 51244.0,
       "shortBalancePrev": 49321.0,
       "shortUnit": "張"
@@ -713,9 +750,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 251124906080.0,
-      "marginBalancePrev": 249479612880.0,
+      "marginBalance": 139309000000.0,
+      "marginBalancePrev": 138386000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 48925.0,
       "shortBalancePrev": 51244.0,
       "shortUnit": "張"
@@ -732,9 +770,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 226908710310.0,
-      "marginBalancePrev": 237527392930.0,
+      "marginBalance": 131572000000.0,
+      "marginBalancePrev": 139309000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 44615.0,
       "shortBalancePrev": 48925.0,
       "shortUnit": "張"
@@ -751,9 +790,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 235108188980.0,
-      "marginBalancePrev": 234108977870.0,
+      "marginBalance": 132207000000.0,
+      "marginBalancePrev": 131572000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 43254.0,
       "shortBalancePrev": 44615.0,
       "shortUnit": "張"
@@ -770,9 +810,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 254472078570.0,
-      "marginBalancePrev": 249242176820.0,
+      "marginBalance": 135467000000.0,
+      "marginBalancePrev": 132207000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 45738.0,
       "shortBalancePrev": 43254.0,
       "shortUnit": "張"
@@ -789,9 +830,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 252145637900.0,
-      "marginBalancePrev": 253533809730.0,
+      "marginBalance": 135278000000.0,
+      "marginBalancePrev": 135467000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 44965.0,
       "shortBalancePrev": 45738.0,
       "shortUnit": "張"
@@ -808,9 +850,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 255122325410.0,
-      "marginBalancePrev": 255381025210.0,
+      "marginBalance": 135531000000.0,
+      "marginBalancePrev": 135278000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 43269.0,
       "shortBalancePrev": 44965.0,
       "shortUnit": "張"
@@ -827,9 +870,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 263948196030.0,
-      "marginBalancePrev": 260795305490.0,
+      "marginBalance": 137868000000.0,
+      "marginBalancePrev": 135531000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 44880.0,
       "shortBalancePrev": 43269.0,
       "shortUnit": "張"
@@ -846,9 +890,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 265630349960.0,
-      "marginBalancePrev": 264495602310.0,
+      "marginBalance": 139248000000.0,
+      "marginBalancePrev": 137868000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 44456.0,
       "shortBalancePrev": 44880.0,
       "shortUnit": "張"
@@ -865,9 +910,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 278627985500.0,
-      "marginBalancePrev": 273438124260.0,
+      "marginBalance": 142631000000.0,
+      "marginBalancePrev": 139248000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 38996.0,
       "shortBalancePrev": 44456.0,
       "shortUnit": "張"
@@ -884,9 +930,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 283332014330.0,
-      "marginBalancePrev": 282892249290.0,
+      "marginBalance": 143871000000.0,
+      "marginBalancePrev": 142631000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34565.0,
       "shortBalancePrev": 38996.0,
       "shortUnit": "張"
@@ -903,9 +950,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 278941335760.0,
-      "marginBalancePrev": 280168458650.0,
+      "marginBalance": 144157000000.0,
+      "marginBalancePrev": 143871000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 28849.0,
       "shortBalancePrev": 34565.0,
       "shortUnit": "張"
@@ -922,9 +970,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 261681131600.0,
-      "marginBalancePrev": 265740000820.0,
+      "marginBalance": 142158000000.0,
+      "marginBalancePrev": 144157000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 28231.0,
       "shortBalancePrev": 28849.0,
       "shortUnit": "張"
@@ -941,9 +990,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 255758876230.0,
-      "marginBalancePrev": 257166369340.0,
+      "marginBalance": 141025000000.0,
+      "marginBalancePrev": 142158000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 28826.0,
       "shortBalancePrev": 28231.0,
       "shortUnit": "張"
@@ -960,9 +1010,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 271276066610.0,
-      "marginBalancePrev": 267969870970.0,
+      "marginBalance": 143053000000.0,
+      "marginBalancePrev": 141025000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 29593.0,
       "shortBalancePrev": 28826.0,
       "shortUnit": "張"
@@ -979,9 +1030,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 265979075010.0,
-      "marginBalancePrev": 268949409040.0,
+      "marginBalance": 142227000000.0,
+      "marginBalancePrev": 143053000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 30309.0,
       "shortBalancePrev": 29593.0,
       "shortUnit": "張"
@@ -998,9 +1050,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 269834752310.0,
-      "marginBalancePrev": 268531917520.0,
+      "marginBalance": 142884000000.0,
+      "marginBalancePrev": 142227000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 29805.0,
       "shortBalancePrev": 30309.0,
       "shortUnit": "張"
@@ -1017,9 +1070,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 266231086310.0,
-      "marginBalancePrev": 267093022530.0,
+      "marginBalance": 142495000000.0,
+      "marginBalancePrev": 142884000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 27948.0,
       "shortBalancePrev": 29805.0,
       "shortUnit": "張"
@@ -1036,9 +1090,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 244143021880.0,
-      "marginBalancePrev": 251724423500.0,
+      "marginBalance": 137842000000.0,
+      "marginBalancePrev": 142495000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 27509.0,
       "shortBalancePrev": 27948.0,
       "shortUnit": "張"
@@ -1055,9 +1110,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 259963664140.0,
-      "marginBalancePrev": 256056266620.0,
+      "marginBalance": 140279000000.0,
+      "marginBalancePrev": 137842000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 26302.0,
       "shortBalancePrev": 27509.0,
       "shortUnit": "張"
@@ -1074,9 +1130,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 254954314630.0,
-      "marginBalancePrev": 256925906460.0,
+      "marginBalance": 139459000000.0,
+      "marginBalancePrev": 140279000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 23647.0,
       "shortBalancePrev": 26302.0,
       "shortUnit": "張"
@@ -1093,9 +1150,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 269883782040.0,
-      "marginBalancePrev": 263317282870.0,
+      "marginBalance": 143526000000.0,
+      "marginBalancePrev": 139459000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 22487.0,
       "shortBalancePrev": 23647.0,
       "shortUnit": "張"
@@ -1112,9 +1170,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 289616095890.0,
-      "marginBalancePrev": 285244581220.0,
+      "marginBalance": 146640000000.0,
+      "marginBalancePrev": 143526000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 22395.0,
       "shortBalancePrev": 22487.0,
       "shortUnit": "張"
@@ -1131,11 +1190,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 293658104010.0,
-      "marginBalancePrev": 291327243220.0,
+      "marginBalance": 148971000000.0,
+      "marginBalancePrev": 146640000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 22402.0,
-      "shortBalancePrev": 22029.0,
+      "shortBalancePrev": 22395.0,
       "shortUnit": "張"
     }
   },
@@ -1150,9 +1210,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 304136842300.0,
-      "marginBalancePrev": 301092405750.0,
+      "marginBalance": 151536000000.0,
+      "marginBalancePrev": 148971000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 20434.0,
       "shortBalancePrev": 22402.0,
       "shortUnit": "張"
@@ -1169,9 +1230,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 310852194600.0,
-      "marginBalancePrev": 309619137050.0,
+      "marginBalance": 153173000000.0,
+      "marginBalancePrev": 151536000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 21724.0,
       "shortBalancePrev": 20434.0,
       "shortUnit": "張"
@@ -1188,9 +1250,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 313764353840.0,
-      "marginBalancePrev": 314016449460.0,
+      "marginBalance": 154095000000.0,
+      "marginBalancePrev": 153173000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 21036.0,
       "shortBalancePrev": 21724.0,
       "shortUnit": "張"
@@ -1207,11 +1270,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 315489568880.0,
-      "marginBalancePrev": 315152820740.0,
+      "marginBalance": 155545000000.0,
+      "marginBalancePrev": 154095000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 21603.0,
-      "shortBalancePrev": 21035.0,
+      "shortBalancePrev": 21036.0,
       "shortUnit": "張"
     }
   },
@@ -1226,9 +1290,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 323603885400.0,
-      "marginBalancePrev": 320329452970.0,
+      "marginBalance": 158514000000.0,
+      "marginBalancePrev": 155545000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 24864.0,
       "shortBalancePrev": 21603.0,
       "shortUnit": "張"
@@ -1245,9 +1310,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 339425774550.0,
-      "marginBalancePrev": 334580125310.0,
+      "marginBalance": 162018000000.0,
+      "marginBalancePrev": 158514000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 26081.0,
       "shortBalancePrev": 24864.0,
       "shortUnit": "張"
@@ -1264,9 +1330,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 354711233860.0,
-      "marginBalancePrev": 353583958370.0,
+      "marginBalance": 164028000000.0,
+      "marginBalancePrev": 162018000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 27619.0,
       "shortBalancePrev": 26081.0,
       "shortUnit": "張"
@@ -1283,9 +1350,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 362740295060.0,
-      "marginBalancePrev": 362433590560.0,
+      "marginBalance": 166052000000.0,
+      "marginBalancePrev": 164028000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 26979.0,
       "shortBalancePrev": 27619.0,
       "shortUnit": "張"
@@ -1302,9 +1370,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 367303565350.0,
-      "marginBalancePrev": 365474247130.0,
+      "marginBalance": 168461000000.0,
+      "marginBalancePrev": 166052000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 27308.0,
       "shortBalancePrev": 26979.0,
       "shortUnit": "張"
@@ -1321,9 +1390,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 342149132950.0,
-      "marginBalancePrev": 351348834280.0,
+      "marginBalance": 164905000000.0,
+      "marginBalancePrev": 168461000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 25209.0,
       "shortBalancePrev": 27308.0,
       "shortUnit": "張"
@@ -1340,11 +1410,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 343769952960.0,
-      "marginBalancePrev": 340368002800.0,
+      "marginBalance": 167609000000.0,
+      "marginBalancePrev": 164905000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 25887.0,
-      "shortBalancePrev": 25199.0,
+      "shortBalancePrev": 25209.0,
       "shortUnit": "張"
     }
   },
@@ -1359,11 +1430,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 339612278800.0,
-      "marginBalancePrev": 336647877630.0,
+      "marginBalance": 169875000000.0,
+      "marginBalancePrev": 167609000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 25542.0,
-      "shortBalancePrev": 25893.0,
+      "shortBalancePrev": 25887.0,
       "shortUnit": "張"
     }
   },
@@ -1378,9 +1450,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 357505069470.0,
-      "marginBalancePrev": 347801842930.0,
+      "marginBalance": 176102000000.0,
+      "marginBalancePrev": 169875000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 25778.0,
       "shortBalancePrev": 25542.0,
       "shortUnit": "張"
@@ -1397,11 +1470,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 363110384790.0,
-      "marginBalancePrev": 359701874580.0,
+      "marginBalance": 178701000000.0,
+      "marginBalancePrev": 176102000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 26942.0,
-      "shortBalancePrev": 25779.0,
+      "shortBalancePrev": 25778.0,
       "shortUnit": "張"
     }
   },
@@ -1416,9 +1490,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 366039480110.0,
-      "marginBalancePrev": 365131647560.0,
+      "marginBalance": 180438000000.0,
+      "marginBalancePrev": 178701000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 27703.0,
       "shortBalancePrev": 26942.0,
       "shortUnit": "張"
@@ -1435,9 +1510,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 386195438200.0,
-      "marginBalancePrev": 379919043900.0,
+      "marginBalance": 184850000000.0,
+      "marginBalancePrev": 180438000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 28849.0,
       "shortBalancePrev": 27703.0,
       "shortUnit": "張"
@@ -1454,9 +1530,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 407324500280.0,
-      "marginBalancePrev": 398017456620.0,
+      "marginBalance": 191787000000.0,
+      "marginBalancePrev": 184850000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 30391.0,
       "shortBalancePrev": 28849.0,
       "shortUnit": "張"
@@ -1473,9 +1550,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 406734887680.0,
-      "marginBalancePrev": 407457952520.0,
+      "marginBalance": 193797000000.0,
+      "marginBalancePrev": 191787000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 30351.0,
       "shortBalancePrev": 30391.0,
       "shortUnit": "張"
@@ -1492,9 +1570,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 417650244890.0,
-      "marginBalancePrev": 413216802730.0,
+      "marginBalance": 198522000000.0,
+      "marginBalancePrev": 193797000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32977.0,
       "shortBalancePrev": 30351.0,
       "shortUnit": "張"
@@ -1511,9 +1590,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 403835184020.0,
-      "marginBalancePrev": 411292704190.0,
+      "marginBalance": 195481000000.0,
+      "marginBalancePrev": 198522000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32503.0,
       "shortBalancePrev": 32977.0,
       "shortUnit": "張"
@@ -1530,9 +1610,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 423295685450.0,
-      "marginBalancePrev": 418702470730.0,
+      "marginBalance": 198571000000.0,
+      "marginBalancePrev": 195481000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 33578.0,
       "shortBalancePrev": 32503.0,
       "shortUnit": "張"
@@ -1549,9 +1630,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 425082285280.0,
-      "marginBalancePrev": 428217409670.0,
+      "marginBalance": 198503000000.0,
+      "marginBalancePrev": 198571000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32859.0,
       "shortBalancePrev": 33578.0,
       "shortUnit": "張"
@@ -1568,9 +1650,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 411322469480.0,
-      "marginBalancePrev": 414906704200.0,
+      "marginBalance": 197555000000.0,
+      "marginBalancePrev": 198503000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 31553.0,
       "shortBalancePrev": 32859.0,
       "shortUnit": "張"
@@ -1587,9 +1670,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 418260837570.0,
-      "marginBalancePrev": 416936579620.0,
+      "marginBalance": 199250000000.0,
+      "marginBalancePrev": 197555000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32302.0,
       "shortBalancePrev": 31553.0,
       "shortUnit": "張"
@@ -1606,9 +1690,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 392071627670.0,
-      "marginBalancePrev": 400939061720.0,
+      "marginBalance": 195028000000.0,
+      "marginBalancePrev": 199250000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34703.0,
       "shortBalancePrev": 32302.0,
       "shortUnit": "張"
@@ -1625,9 +1710,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 395264977170.0,
-      "marginBalancePrev": 393178899690.0,
+      "marginBalance": 196502000000.0,
+      "marginBalancePrev": 195028000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37507.0,
       "shortBalancePrev": 34703.0,
       "shortUnit": "張"
@@ -1644,9 +1730,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 378249735980.0,
-      "marginBalancePrev": 381768783660.0,
+      "marginBalance": 194774000000.0,
+      "marginBalancePrev": 196502000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36887.0,
       "shortBalancePrev": 37507.0,
       "shortUnit": "張"
@@ -1663,9 +1750,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 375173175510.0,
-      "marginBalancePrev": 376910850070.0,
+      "marginBalance": 193659000000.0,
+      "marginBalancePrev": 194774000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 38268.0,
       "shortBalancePrev": 36887.0,
       "shortUnit": "張"
@@ -1682,9 +1770,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 396004121220.0,
-      "marginBalancePrev": 390438173220.0,
+      "marginBalance": 197028000000.0,
+      "marginBalancePrev": 193659000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 39117.0,
       "shortBalancePrev": 38268.0,
       "shortUnit": "張"
@@ -1701,9 +1790,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 414348796390.0,
-      "marginBalancePrev": 411969325370.0,
+      "marginBalance": 198941000000.0,
+      "marginBalancePrev": 197028000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 40737.0,
       "shortBalancePrev": 39117.0,
       "shortUnit": "張"
@@ -1720,9 +1810,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 431168390960.0,
-      "marginBalancePrev": 428472578200.0,
+      "marginBalance": 201668000000.0,
+      "marginBalancePrev": 198941000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 39828.0,
       "shortBalancePrev": 40737.0,
       "shortUnit": "張"
@@ -1739,9 +1830,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 439214425910.0,
-      "marginBalancePrev": 436882388400.0,
+      "marginBalance": 204036000000.0,
+      "marginBalancePrev": 201668000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 41036.0,
       "shortBalancePrev": 39828.0,
       "shortUnit": "張"
@@ -1758,9 +1850,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 429531442290.0,
-      "marginBalancePrev": 436060734880.0,
+      "marginBalance": 202728000000.0,
+      "marginBalancePrev": 204036000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 43055.0,
       "shortBalancePrev": 41036.0,
       "shortUnit": "張"
@@ -1777,9 +1870,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 414882271200.0,
-      "marginBalancePrev": 421295735930.0,
+      "marginBalance": 200767000000.0,
+      "marginBalancePrev": 202728000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 39349.0,
       "shortBalancePrev": 43055.0,
       "shortUnit": "張"
@@ -1796,9 +1890,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 437144673820.0,
-      "marginBalancePrev": 427584814070.0,
+      "marginBalance": 206853000000.00003,
+      "marginBalancePrev": 200767000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 38364.0,
       "shortBalancePrev": 39349.0,
       "shortUnit": "張"
@@ -1815,9 +1910,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 445733476160.0,
-      "marginBalancePrev": 443883408700.0,
+      "marginBalance": 208829000000.0,
+      "marginBalancePrev": 206853000000.00003,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37526.0,
       "shortBalancePrev": 38364.0,
       "shortUnit": "張"
@@ -1834,9 +1930,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 435827984890.0,
-      "marginBalancePrev": 439055608500.0,
+      "marginBalance": 208601000000.00003,
+      "marginBalancePrev": 208829000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36341.0,
       "shortBalancePrev": 37526.0,
       "shortUnit": "張"
@@ -1853,9 +1950,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 444796891110.0,
-      "marginBalancePrev": 440084207530.0,
+      "marginBalance": 212753000000.00003,
+      "marginBalancePrev": 208601000000.00003,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37010.0,
       "shortBalancePrev": 36341.0,
       "shortUnit": "張"
@@ -1872,11 +1970,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 428790941120.0,
-      "marginBalancePrev": 432428129630.0,
+      "marginBalance": 211300000000.0,
+      "marginBalancePrev": 212753000000.00003,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37819.0,
-      "shortBalancePrev": 37009.0,
+      "shortBalancePrev": 37010.0,
       "shortUnit": "張"
     }
   },
@@ -1891,9 +1990,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 418496743180.0,
-      "marginBalancePrev": 420629696150.0,
+      "marginBalance": 210286000000.0,
+      "marginBalancePrev": 211300000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36428.0,
       "shortBalancePrev": 37819.0,
       "shortUnit": "張"
@@ -1910,9 +2010,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 381965339110.0,
-      "marginBalancePrev": 396387215840.0,
+      "marginBalance": 201089000000.0,
+      "marginBalancePrev": 210286000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 38685.0,
       "shortBalancePrev": 36428.0,
       "shortUnit": "張"
@@ -1929,9 +2030,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 397572350140.0,
-      "marginBalancePrev": 395048069370.0,
+      "marginBalance": 202788000000.0,
+      "marginBalancePrev": 201089000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36532.0,
       "shortBalancePrev": 38685.0,
       "shortUnit": "張"
@@ -1948,9 +2050,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 361099573420.0,
-      "marginBalancePrev": 374684337940.0,
+      "marginBalance": 194883000000.0,
+      "marginBalancePrev": 202788000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37307.0,
       "shortBalancePrev": 36532.0,
       "shortUnit": "張"
@@ -1967,9 +2070,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 356660765800.0,
-      "marginBalancePrev": 359379255510.0,
+      "marginBalance": 192771000000.0,
+      "marginBalancePrev": 194883000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34454.0,
       "shortBalancePrev": 37307.0,
       "shortUnit": "張"
@@ -1986,9 +2090,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 371917012130.0,
-      "marginBalancePrev": 368044668020.0,
+      "marginBalance": 195360000000.0,
+      "marginBalancePrev": 192771000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34120.0,
       "shortBalancePrev": 34454.0,
       "shortUnit": "張"
@@ -2005,9 +2110,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 388009015920.0,
-      "marginBalancePrev": 382612736880.0,
+      "marginBalance": 199191000000.0,
+      "marginBalancePrev": 195360000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 35866.0,
       "shortBalancePrev": 34120.0,
       "shortUnit": "張"
@@ -2024,9 +2130,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 388598888890.0,
-      "marginBalancePrev": 387956052730.0,
+      "marginBalance": 200300000000.0,
+      "marginBalancePrev": 199191000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36921.0,
       "shortBalancePrev": 35866.0,
       "shortUnit": "張"
@@ -2043,9 +2150,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 396568367300.0,
-      "marginBalancePrev": 391860950130.0,
+      "marginBalance": 203628000000.0,
+      "marginBalancePrev": 200300000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 40117.0,
       "shortBalancePrev": 36921.0,
       "shortUnit": "張"
@@ -2062,11 +2170,12 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 414308237320.0,
-      "marginBalancePrev": 412238352450.0,
+      "marginBalance": 205469000000.0,
+      "marginBalancePrev": 203628000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 40982.0,
-      "shortBalancePrev": 40173.0,
+      "shortBalancePrev": 40117.0,
       "shortUnit": "張"
     }
   },
@@ -2081,9 +2190,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 424537228300.0,
-      "marginBalancePrev": 421186199940.0,
+      "marginBalance": 208450000000.0,
+      "marginBalancePrev": 205469000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 40629.0,
       "shortBalancePrev": 40982.0,
       "shortUnit": "張"
@@ -2100,9 +2210,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 406740758190.0,
-      "marginBalancePrev": 408684374910.0,
+      "marginBalance": 208334000000.0,
+      "marginBalancePrev": 208450000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 38377.0,
       "shortBalancePrev": 40629.0,
       "shortUnit": "張"
@@ -2119,9 +2230,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 408526576510.0,
-      "marginBalancePrev": 405663957210.0,
+      "marginBalance": 210106000000.0,
+      "marginBalancePrev": 208334000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 35670.0,
       "shortBalancePrev": 38377.0,
       "shortUnit": "張"
@@ -2138,9 +2250,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 407616095500.0,
-      "marginBalancePrev": 406409879790.0,
+      "marginBalance": 211115000000.0,
+      "marginBalancePrev": 210106000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34304.0,
       "shortBalancePrev": 35670.0,
       "shortUnit": "張"
@@ -2157,9 +2270,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 372859414710.0,
-      "marginBalancePrev": 382717519540.0,
+      "marginBalance": 204853000000.00003,
+      "marginBalancePrev": 211115000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34006.0,
       "shortBalancePrev": 34304.0,
       "shortUnit": "張"
@@ -2176,9 +2290,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 368170864080.0,
-      "marginBalancePrev": 369708974390.0,
+      "marginBalance": 203596000000.0,
+      "marginBalancePrev": 204853000000.00003,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32941.0,
       "shortBalancePrev": 34006.0,
       "shortUnit": "張"
@@ -2195,9 +2310,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 389602515910.0,
-      "marginBalancePrev": 383485129820.0,
+      "marginBalance": 207084000000.0,
+      "marginBalancePrev": 203596000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 33456.0,
       "shortBalancePrev": 32941.0,
       "shortUnit": "張"
@@ -2214,9 +2330,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 391757137090.0,
-      "marginBalancePrev": 389065864490.0,
+      "marginBalance": 208416000000.0,
+      "marginBalancePrev": 207084000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 33937.0,
       "shortBalancePrev": 33456.0,
       "shortUnit": "張"
@@ -2233,9 +2350,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 399711760910.0,
-      "marginBalancePrev": 396931353990.0,
+      "marginBalance": 210338000000.0,
+      "marginBalancePrev": 208416000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34328.0,
       "shortBalancePrev": 33937.0,
       "shortUnit": "張"
@@ -2252,9 +2370,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 411742370880.0,
-      "marginBalancePrev": 407591098730.0,
+      "marginBalance": 212889000000.0,
+      "marginBalancePrev": 210338000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37599.0,
       "shortBalancePrev": 34328.0,
       "shortUnit": "張"
@@ -2271,9 +2390,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 409415377710.0,
-      "marginBalancePrev": 408607771230.0,
+      "marginBalance": 214564000000.0,
+      "marginBalancePrev": 212889000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36832.0,
       "shortBalancePrev": 37599.0,
       "shortUnit": "張"
@@ -2290,9 +2410,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 380960748700.0,
-      "marginBalancePrev": 387722377250.0,
+      "marginBalance": 210319000000.0,
+      "marginBalancePrev": 214564000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 35820.0,
       "shortBalancePrev": 36832.0,
       "shortUnit": "張"
@@ -2309,9 +2430,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 388558207000.0,
-      "marginBalancePrev": 385887327780.0,
+      "marginBalance": 211513000000.0,
+      "marginBalancePrev": 210319000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36662.0,
       "shortBalancePrev": 35820.0,
       "shortUnit": "張"
@@ -2328,9 +2450,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 393512497140.0,
-      "marginBalancePrev": 392186263090.0,
+      "marginBalance": 212390000000.0,
+      "marginBalancePrev": 211513000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36917.0,
       "shortBalancePrev": 36662.0,
       "shortUnit": "張"
@@ -2347,9 +2470,10 @@
       "shortUnit": "張"
     },
     "tpex": {
-      "marginBalance": 387759811490.0,
-      "marginBalancePrev": 387436973770.0,
+      "marginBalance": 212527000000.0,
+      "marginBalancePrev": 212390000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 37072.0,
       "shortBalancePrev": 36917.0,
       "shortUnit": "張"
@@ -2369,10 +2493,10 @@
       "marginBalance": 206417000000.0,
       "marginBalancePrev": 212527000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 33518.0,
       "shortBalancePrev": 37072.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2387,12 +2511,12 @@
     },
     "tpex": {
       "marginBalance": 210521999999.99997,
-      "marginBalancePrev": 206416999999.99997,
+      "marginBalancePrev": 206417000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34088.0,
       "shortBalancePrev": 33518.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2407,12 +2531,12 @@
     },
     "tpex": {
       "marginBalance": 210217000000.0,
-      "marginBalancePrev": 210502000000.0,
+      "marginBalancePrev": 210521999999.99997,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 32034.0,
-      "shortBalancePrev": 34087.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortBalancePrev": 34088.0,
+      "shortUnit": "張"
     }
   },
   {
@@ -2427,12 +2551,12 @@
     },
     "tpex": {
       "marginBalance": 196200000000.0,
-      "marginBalancePrev": 210216000000.0,
+      "marginBalancePrev": 210217000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 34224.0,
       "shortBalancePrev": 32034.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2447,12 +2571,12 @@
     },
     "tpex": {
       "marginBalance": 188192000000.0,
-      "marginBalancePrev": 196198000000.0,
+      "marginBalancePrev": 196200000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 31555.0,
       "shortBalancePrev": 34224.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2467,12 +2591,12 @@
     },
     "tpex": {
       "marginBalance": 190290000000.0,
-      "marginBalancePrev": 188191000000.0,
+      "marginBalancePrev": 188192000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 29857.0,
       "shortBalancePrev": 31555.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2489,10 +2613,10 @@
       "marginBalance": 192704000000.0,
       "marginBalancePrev": 190290000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 30570.0,
       "shortBalancePrev": 29857.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2509,10 +2633,10 @@
       "marginBalance": 192754000000.0,
       "marginBalancePrev": 192704000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 29937.0,
       "shortBalancePrev": 30570.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2527,12 +2651,12 @@
     },
     "tpex": {
       "marginBalance": 190162000000.0,
-      "marginBalancePrev": 192753000000.0,
+      "marginBalancePrev": 192754000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 36439.0,
       "shortBalancePrev": 29937.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {
@@ -2547,12 +2671,12 @@
     },
     "tpex": {
       "marginBalance": 188347000000.0,
-      "marginBalancePrev": 190161000000.0,
+      "marginBalancePrev": 190162000000.0,
       "marginUnit": "元",
+      "source": "tpex_official",
       "shortBalance": 29972.0,
       "shortBalancePrev": 36439.0,
-      "shortUnit": "張",
-      "source": "tpex_official"
+      "shortUnit": "張"
     }
   },
   {

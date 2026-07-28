@@ -23,7 +23,28 @@
         "net": 19063127949.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2051000000.0000002
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2690000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2461000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 3100000000.0
+      }
+    }
   },
   {
     "date": "2026-01-05",
@@ -49,7 +70,28 @@
         "net": 2794854110.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5248000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1173000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 840499999.9999999
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3234000000.0000005
+      }
+    }
   },
   {
     "date": "2026-01-06",
@@ -75,7 +117,28 @@
         "net": 9260010384.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1621000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1289000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1918000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1586000000.0
+      }
+    }
   },
   {
     "date": "2026-01-07",
@@ -101,7 +164,28 @@
         "net": -35444680088.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -639100000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1386000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1367000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2114000000.0
+      }
+    }
   },
   {
     "date": "2026-01-08",
@@ -127,7 +211,28 @@
         "net": -11487815782.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 820400000.0000001
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1059000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -997800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 881700000.0
+      }
+    }
   },
   {
     "date": "2026-01-09",
@@ -153,7 +258,28 @@
         "net": -11222525184.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2189000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -997100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -266400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3452000000.0000005
+      }
+    }
   },
   {
     "date": "2026-01-12",
@@ -179,7 +305,28 @@
         "net": -14495099821.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2499000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -779000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1068000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2210000000.0
+      }
+    }
   },
   {
     "date": "2026-01-13",
@@ -205,7 +352,28 @@
         "net": 12838953750.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -218800000.00000003
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -111100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1364000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1694000000.0000002
+      }
+    }
   },
   {
     "date": "2026-01-14",
@@ -231,7 +399,28 @@
         "net": 13883925663.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4288000000.0000005
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1344000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 719700000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 6352000000.0
+      }
+    }
   },
   {
     "date": "2026-01-15",
@@ -257,7 +446,28 @@
         "net": -8832604255.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1609000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -876200000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -749200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3235000000.0
+      }
+    }
   },
   {
     "date": "2026-01-16",
@@ -283,7 +493,28 @@
         "net": 37251394460.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5800000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -297900000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -308800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -6406999999.999999
+      }
+    }
   },
   {
     "date": "2026-01-19",
@@ -309,7 +540,28 @@
         "net": -46217974258.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -792500000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 438300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -22600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -376800000.0
+      }
+    }
   },
   {
     "date": "2026-01-20",
@@ -335,7 +587,28 @@
         "net": -15714749555.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4172999999.9999995
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 663000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 309200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5145000000.0
+      }
+    }
   },
   {
     "date": "2026-01-21",
@@ -361,7 +634,28 @@
         "net": -77637249435.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -630500000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3238000000.0000005
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3553000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -945900000.0
+      }
+    }
   },
   {
     "date": "2026-01-22",
@@ -387,7 +681,28 @@
         "net": 24402346890.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4147999999.9999995
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2889000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 879800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 7917000000.0
+      }
+    }
   },
   {
     "date": "2026-01-23",
@@ -413,7 +728,28 @@
         "net": 27058339306.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4743000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 356000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -60000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5039000000.0
+      }
+    }
   },
   {
     "date": "2026-01-26",
@@ -439,7 +775,28 @@
         "net": -8941043184.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1898000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -630800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 175400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1443000000.0
+      }
+    }
   },
   {
     "date": "2026-01-27",
@@ -465,7 +822,28 @@
         "net": 22576145840.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 284200000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 738600000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 61200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1084000000.0
+      }
+    }
   },
   {
     "date": "2026-01-28",
@@ -491,7 +869,28 @@
         "net": 30041341685.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2270000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3256000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 295100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5821000000.0
+      }
+    }
   },
   {
     "date": "2026-01-29",
@@ -517,7 +916,28 @@
         "net": -1715891067.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -4044000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1778000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2723000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4989000000.0
+      }
+    }
   },
   {
     "date": "2026-01-30",
@@ -543,7 +963,28 @@
         "net": -63934202107.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2349000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -230700000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -455400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3035000000.0
+      }
+    }
   },
   {
     "date": "2026-02-02",
@@ -569,7 +1010,28 @@
         "net": -53594802491.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -445200000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -888800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1543000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2877000000.0
+      }
+    }
   },
   {
     "date": "2026-02-03",
@@ -595,7 +1057,28 @@
         "net": 10993171586.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 5222000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -823800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1157000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 3240999999.9999995
+      }
+    }
   },
   {
     "date": "2026-02-04",
@@ -621,7 +1104,28 @@
         "net": 16217175331.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2282000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -774700000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 808600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2316000000.0
+      }
+    }
   },
   {
     "date": "2026-02-05",
@@ -647,7 +1151,28 @@
         "net": -90411633428.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1019000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 473299999.99999994
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -583100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1129000000.0
+      }
+    }
   },
   {
     "date": "2026-02-06",
@@ -673,7 +1198,28 @@
         "net": -19275276067.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -8486000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 181100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1803000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -10110000000.0
+      }
+    }
   },
   {
     "date": "2026-02-09",
@@ -699,7 +1245,28 @@
         "net": 36342162093.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 6091000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 452100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 661200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 7204000000.000001
+      }
+    }
   },
   {
     "date": "2026-02-10",
@@ -725,7 +1292,28 @@
         "net": 63204117694.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2219000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2623000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1484000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1888000000.0
+      }
+    }
   },
   {
     "date": "2026-02-11",
@@ -751,7 +1339,28 @@
         "net": 57825879908.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3528000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1609000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -925100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 993000000.0
+      }
+    }
   },
   {
     "date": "2026-02-23",
@@ -777,7 +1386,28 @@
         "net": -5117124267.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 11450000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1160000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1433000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 8856000000.0
+      }
+    }
   },
   {
     "date": "2026-02-24",
@@ -803,7 +1433,28 @@
         "net": 84241299989.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 20790000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1036000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2642000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 22400000000.0
+      }
+    }
   },
   {
     "date": "2026-02-25",
@@ -829,7 +1480,28 @@
         "net": 42437969685.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3385000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2302000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -166600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -5854000000.0
+      }
+    }
   },
   {
     "date": "2026-02-26",
@@ -855,7 +1527,28 @@
         "net": -13420788534.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1573000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -4200000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 532800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2094000000.0000002
+      }
+    }
   },
   {
     "date": "2026-03-02",
@@ -881,7 +1574,28 @@
         "net": -43214247985.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2904000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -3137000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -408399999.99999994
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -641400000.0
+      }
+    }
   },
   {
     "date": "2026-03-03",
@@ -907,7 +1621,28 @@
         "net": -115502452251.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3198000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -827500000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3882000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -7908000000.0
+      }
+    }
   },
   {
     "date": "2026-03-04",
@@ -933,7 +1668,28 @@
         "net": -129853600163.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -703900000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2208000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3048000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -5960000000.0
+      }
+    }
   },
   {
     "date": "2026-03-05",
@@ -959,7 +1715,28 @@
         "net": -45802174139.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1206000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1710000000.0000002
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -51400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -555500000.0
+      }
+    }
   },
   {
     "date": "2026-03-06",
@@ -985,7 +1762,28 @@
         "net": -28861309557.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1497000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1495000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1094000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1095000000.0
+      }
+    }
   },
   {
     "date": "2026-03-09",
@@ -1011,7 +1809,28 @@
         "net": -165884687097.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 190900000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -354700000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3447999999.9999995
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3611999999.9999995
+      }
+    }
   },
   {
     "date": "2026-03-10",
@@ -1037,7 +1856,28 @@
         "net": -15493167702.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4587000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 960699999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -73300000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5474000000.0
+      }
+    }
   },
   {
     "date": "2026-03-11",
@@ -1063,7 +1903,28 @@
         "net": 52009455693.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3147000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 85100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1796000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5029000000.0
+      }
+    }
   },
   {
     "date": "2026-03-12",
@@ -1089,7 +1950,28 @@
         "net": -81076603472.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2303000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -990900000.0000001
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 168900000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3125000000.0
+      }
+    }
   },
   {
     "date": "2026-03-13",
@@ -1115,7 +1997,28 @@
         "net": -67342232029.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -46200000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -420300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 463400000.00000006
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3000000.0
+      }
+    }
   },
   {
     "date": "2026-03-16",
@@ -1141,7 +2044,28 @@
         "net": -46930250478.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2624000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 971599999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 835399999.9999999
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -816499999.9999999
+      }
+    }
   },
   {
     "date": "2026-03-17",
@@ -1167,7 +2091,28 @@
         "net": 9773449773.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -11940000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1782000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 205200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -9956000000.0
+      }
+    }
   },
   {
     "date": "2026-03-18",
@@ -1193,7 +2138,28 @@
         "net": 18695818922.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2165000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1878000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1275000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5317000000.0
+      }
+    }
   },
   {
     "date": "2026-03-19",
@@ -1219,7 +2185,28 @@
         "net": -102427349962.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1763000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1223000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1466000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 925100000.0
+      }
+    }
   },
   {
     "date": "2026-03-20",
@@ -1245,7 +2232,28 @@
         "net": -49358250410.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3761000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 674000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1336000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4423000000.0
+      }
+    }
   },
   {
     "date": "2026-03-23",
@@ -1271,7 +2279,28 @@
         "net": -104499446898.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -4552000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1277000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1619000000.0000002
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4894000000.0
+      }
+    }
   },
   {
     "date": "2026-03-24",
@@ -1297,7 +2326,28 @@
         "net": -20410711134.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2207000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 918600000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1851000000.0000002
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1275000000.0
+      }
+    }
   },
   {
     "date": "2026-03-25",
@@ -1323,7 +2373,28 @@
         "net": 51775624701.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 10690000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3736999999.9999995
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1825000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 16260000000.0
+      }
+    }
   },
   {
     "date": "2026-03-26",
@@ -1349,7 +2420,28 @@
         "net": 117619797.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 5075000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1693000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -262500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 6506000000.0
+      }
+    }
   },
   {
     "date": "2026-03-27",
@@ -1375,7 +2467,28 @@
         "net": -38338929878.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1630999999.9999998
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -3636000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 998199999.9999999
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1007000000.0
+      }
+    }
   },
   {
     "date": "2026-03-30",
@@ -1401,7 +2514,28 @@
         "net": -74128881803.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5445000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1401000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -656600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4701000000.0
+      }
+    }
   },
   {
     "date": "2026-03-31",
@@ -1427,7 +2561,28 @@
         "net": -98558620286.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3051000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2262000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3825000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4614000000.0
+      }
+    }
   },
   {
     "date": "2026-04-01",
@@ -1453,7 +2608,28 @@
         "net": 55009486201.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1209000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 4587000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 780600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 4158000000.0
+      }
+    }
   },
   {
     "date": "2026-04-02",
@@ -1479,7 +2655,28 @@
         "net": -37259719817.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3590000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3640000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 34400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 84300000.0
+      }
+    }
   },
   {
     "date": "2026-04-07",
@@ -1505,7 +2702,28 @@
         "net": 21486036046.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5132000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3314000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1216000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -602600000.0
+      }
+    }
   },
   {
     "date": "2026-04-08",
@@ -1531,7 +2749,28 @@
         "net": 158360749144.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 6125000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2608000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1655000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 10390000000.0
+      }
+    }
   },
   {
     "date": "2026-04-09",
@@ -1557,7 +2796,28 @@
         "net": 39332571199.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 774600000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2088000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -175400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2687000000.0
+      }
+    }
   },
   {
     "date": "2026-04-10",
@@ -1583,7 +2843,28 @@
         "net": 36765321462.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1767000000.0000002
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -226500000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 930000000.0000001
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1064000000.0
+      }
+    }
   },
   {
     "date": "2026-04-13",
@@ -1609,7 +2890,28 @@
         "net": -6140605131.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -7447000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -219099999.99999997
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 713400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -6953000000.0
+      }
+    }
   },
   {
     "date": "2026-04-14",
@@ -1635,7 +2937,28 @@
         "net": 68430708249.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1582000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 729800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 5000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -847300000.0000001
+      }
+    }
   },
   {
     "date": "2026-04-15",
@@ -1661,7 +2984,28 @@
         "net": 41425129368.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2889000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -942000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1680000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 266800000.00000003
+      }
+    }
   },
   {
     "date": "2026-04-16",
@@ -1687,7 +3031,28 @@
         "net": 53111076186.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 8036000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1668000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1022000000.0000001
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 10730000000.0
+      }
+    }
   },
   {
     "date": "2026-04-17",
@@ -1713,7 +3078,28 @@
         "net": -14007356435.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 5646000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1314000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 611400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 4943000000.0
+      }
+    }
   },
   {
     "date": "2026-04-20",
@@ -1739,7 +3125,28 @@
         "net": -2527192916.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1032000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 5065000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 887900000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 6984999999.999999
+      }
+    }
   },
   {
     "date": "2026-04-21",
@@ -1765,7 +3172,28 @@
         "net": 67499596060.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3103000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 5758000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -419800000.00000006
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2236000000.0
+      }
+    }
   },
   {
     "date": "2026-04-22",
@@ -1791,7 +3219,28 @@
         "net": 16060732270.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 65300000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1857999999.9999998
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 320100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1473000000.0
+      }
+    }
   },
   {
     "date": "2026-04-23",
@@ -1817,7 +3266,28 @@
         "net": -20589265314.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3735000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -4893000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3861999999.9999995
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -5019000000.0
+      }
+    }
   },
   {
     "date": "2026-04-24",
@@ -1843,7 +3313,28 @@
         "net": 55003318855.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3333000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2189000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1217000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -72900000.0
+      }
+    }
   },
   {
     "date": "2026-04-27",
@@ -1869,7 +3360,28 @@
         "net": -47237547906.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 9189000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -4534000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 541100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5196000000.0
+      }
+    }
   },
   {
     "date": "2026-04-28",
@@ -1895,7 +3407,28 @@
         "net": -33304721222.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -9294000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -5267000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2628000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -11930000000.0
+      }
+    }
   },
   {
     "date": "2026-04-29",
@@ -1921,7 +3454,28 @@
         "net": -47618241341.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3693000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 763300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 178900000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2750000000.0
+      }
+    }
   },
   {
     "date": "2026-04-30",
@@ -1947,7 +3501,28 @@
         "net": -53267381916.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -9100000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1579000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -358500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -7880000000.0
+      }
+    }
   },
   {
     "date": "2026-05-04",
@@ -1973,7 +3548,28 @@
         "net": 77944759435.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3690999999.9999995
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3204000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2303000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1816000000.0
+      }
+    }
   },
   {
     "date": "2026-05-05",
@@ -1999,7 +3595,28 @@
         "net": -2370051699.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1757000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 233300000.00000003
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1242000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -281600000.0
+      }
+    }
   },
   {
     "date": "2026-05-06",
@@ -2025,7 +3642,28 @@
         "net": 67015529087.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1550000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 7956000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1288000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5119000000.0
+      }
+    }
   },
   {
     "date": "2026-05-07",
@@ -2051,7 +3689,28 @@
         "net": 57321588835.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -7283000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3251000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1248000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2783000000.0
+      }
+    }
   },
   {
     "date": "2026-05-08",
@@ -2077,7 +3736,28 @@
         "net": -20163968613.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2646000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 103499999.99999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -704500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2045000000.0
+      }
+    }
   },
   {
     "date": "2026-05-11",
@@ -2103,7 +3783,28 @@
         "net": 5235094907.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 9067000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -568700000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1798000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 10300000000.0
+      }
+    }
   },
   {
     "date": "2026-05-12",
@@ -2129,7 +3830,28 @@
         "net": -12840297093.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5759000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 4685000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 307800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -766100000.0
+      }
+    }
   },
   {
     "date": "2026-05-13",
@@ -2155,7 +3877,28 @@
         "net": -47634089429.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2009000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1870000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2105999999.9999998
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1967000000.0000002
+      }
+    }
   },
   {
     "date": "2026-05-14",
@@ -2181,7 +3924,28 @@
         "net": 17576007775.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2420000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 950700000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -24200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1493000000.0
+      }
+    }
   },
   {
     "date": "2026-05-15",
@@ -2207,7 +3971,28 @@
         "net": -36737307114.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -289900000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -207300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -4159000000.0000005
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4656000000.0
+      }
+    }
   },
   {
     "date": "2026-05-18",
@@ -2233,7 +4018,28 @@
         "net": -42502596429.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 25550000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -824200000.0000001
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -308500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 24410000000.0
+      }
+    }
   },
   {
     "date": "2026-05-19",
@@ -2259,7 +4065,28 @@
         "net": -77419906104.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -13440000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 882499999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2102000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -14660000000.0
+      }
+    }
   },
   {
     "date": "2026-05-20",
@@ -2285,7 +4112,28 @@
         "net": -55981788973.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3519000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -803800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3542000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -826600000.0
+      }
+    }
   },
   {
     "date": "2026-05-21",
@@ -2311,7 +4159,28 @@
         "net": 85317075104.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1042000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2366000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2903000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -504100000.00000006
+      }
+    }
   },
   {
     "date": "2026-05-22",
@@ -2337,7 +4206,28 @@
         "net": 106838645081.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2005999999.9999998
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -552600000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2645000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 4099000000.0
+      }
+    }
   },
   {
     "date": "2026-05-25",
@@ -2363,7 +4253,28 @@
         "net": 64760891255.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3994000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -561300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2168000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5600000000.0
+      }
+    }
   },
   {
     "date": "2026-05-26",
@@ -2389,7 +4300,28 @@
         "net": 45728519215.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4140000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2199000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 358800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 6698000000.0
+      }
+    }
   },
   {
     "date": "2026-05-27",
@@ -2415,7 +4347,28 @@
         "net": 30778204645.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5787000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2914000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -240200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3114000000.0
+      }
+    }
   },
   {
     "date": "2026-05-28",
@@ -2441,7 +4394,28 @@
         "net": -59381074337.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1463000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2972000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2266000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2169000000.0
+      }
+    }
   },
   {
     "date": "2026-05-29",
@@ -2467,7 +4441,28 @@
         "net": 102770738307.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -16730000000.000002
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1336000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 628400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -14760000000.0
+      }
+    }
   },
   {
     "date": "2026-06-01",
@@ -2493,7 +4488,28 @@
         "net": 38067402952.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2620000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -4463000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 713500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -6370000000.0
+      }
+    }
   },
   {
     "date": "2026-06-02",
@@ -2519,7 +4535,28 @@
         "net": -2104918455.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4746000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -6584000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1703000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3542000000.0
+      }
+    }
   },
   {
     "date": "2026-06-03",
@@ -2545,7 +4582,28 @@
         "net": 51544672021.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -11520000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1641000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 936200000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -12230000000.0
+      }
+    }
   },
   {
     "date": "2026-06-04",
@@ -2571,7 +4629,28 @@
         "net": -92882741902.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5199000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -273200000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3265999999.9999995
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -8737000000.0
+      }
+    }
   },
   {
     "date": "2026-06-05",
@@ -2597,7 +4676,28 @@
         "net": -109441687199.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2071000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -5804000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3784000000.0000005
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -11660000000.0
+      }
+    }
   },
   {
     "date": "2026-06-08",
@@ -2623,7 +4723,28 @@
         "net": -134222664138.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 11250000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -2974000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3249000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5026000000.0
+      }
+    }
   },
   {
     "date": "2026-06-09",
@@ -2649,7 +4770,28 @@
         "net": -75141552738.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -12110000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 451499999.99999994
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 111500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -11550000000.0
+      }
+    }
   },
   {
     "date": "2026-06-10",
@@ -2675,7 +4817,28 @@
         "net": -117428986380.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2928000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1514000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -4848000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3434000000.0000005
+      }
+    }
   },
   {
     "date": "2026-06-11",
@@ -2701,7 +4864,28 @@
         "net": -34934666931.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 12380000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -3513000000.0000005
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2138000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 6727000000.0
+      }
+    }
   },
   {
     "date": "2026-06-12",
@@ -2727,7 +4911,28 @@
         "net": 51866049543.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1105000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 3863000000.0000005
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 286800000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 3045000000.0
+      }
+    }
   },
   {
     "date": "2026-06-15",
@@ -2753,7 +4958,28 @@
         "net": 65499603263.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2762000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 881900000.0000001
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 703600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 4348000000.0
+      }
+    }
   },
   {
     "date": "2026-06-16",
@@ -2779,7 +5005,28 @@
         "net": 58710628595.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 333300000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 419200000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -246300000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 506100000.0
+      }
+    }
   },
   {
     "date": "2026-06-17",
@@ -2805,7 +5052,28 @@
         "net": -25158662128.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5347000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1932999999.9999998
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -757400000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4171000000.0
+      }
+    }
   },
   {
     "date": "2026-06-18",
@@ -2831,7 +5099,28 @@
         "net": 31278202977.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 14750000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2312000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 3400000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 20460000000.0
+      }
+    }
   },
   {
     "date": "2026-06-22",
@@ -2857,7 +5146,28 @@
         "net": 70043444315.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1208000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1679000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 795100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 1267000000.0
+      }
+    }
   },
   {
     "date": "2026-06-23",
@@ -2883,7 +5193,28 @@
         "net": -48340546063.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -7803000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1536000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -186700000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -6454000000.000001
+      }
+    }
   },
   {
     "date": "2026-06-24",
@@ -2909,7 +5240,28 @@
         "net": -210589718405.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -18150000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 789100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -364100000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -17720000000.0
+      }
+    }
   },
   {
     "date": "2026-06-25",
@@ -2935,7 +5287,28 @@
         "net": -30094460140.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -11920000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 273100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1360000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -13010000000.0
+      }
+    }
   },
   {
     "date": "2026-06-26",
@@ -2961,7 +5334,28 @@
         "net": -203819730760.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -7187000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1846000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3838000000.0000005
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -12869999999.999998
+      }
+    }
   },
   {
     "date": "2026-06-29",
@@ -2987,7 +5381,28 @@
         "net": 5589984887.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 8591000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -3795000000.0000005
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 209600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 5006000000.0
+      }
+    }
   },
   {
     "date": "2026-06-30",
@@ -3013,7 +5428,28 @@
         "net": 14441470181.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -3279999999.9999995
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1390000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 2182000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2488000000.0
+      }
+    }
   },
   {
     "date": "2026-07-01",
@@ -3039,7 +5475,28 @@
         "net": 53916810335.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 1590000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -4563000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 504100000.00000006
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2469000000.0
+      }
+    }
   },
   {
     "date": "2026-07-02",
@@ -3065,7 +5522,28 @@
         "net": -83419118109.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 3694000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1580000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 869699999.9999999
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2983000000.0
+      }
+    }
   },
   {
     "date": "2026-07-03",
@@ -3091,7 +5569,28 @@
         "net": -73540030852.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 2553000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -808799999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 894900000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 2639000000.0
+      }
+    }
   },
   {
     "date": "2026-07-06",
@@ -3117,7 +5616,28 @@
         "net": -28062054575.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -11080000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -451000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2744000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -14280000000.000002
+      }
+    }
   },
   {
     "date": "2026-07-07",
@@ -3143,7 +5663,28 @@
         "net": -93781788588.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -4552000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1017000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -4763000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -10330000000.0
+      }
+    }
   },
   {
     "date": "2026-07-08",
@@ -3169,7 +5710,28 @@
         "net": -42211435541.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -4228000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 34100000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -152000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4346000000.0
+      }
+    }
   },
   {
     "date": "2026-07-09",
@@ -3195,7 +5757,28 @@
         "net": -35023381577.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -2122000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1747000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 455300000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 80200000.0
+      }
+    }
   },
   {
     "date": "2026-07-13",
@@ -3221,7 +5804,28 @@
         "net": -18079511583.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -156100000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1846000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -739900000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -2742000000.0
+      }
+    }
   },
   {
     "date": "2026-07-14",
@@ -3247,7 +5851,28 @@
         "net": -79182397513.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 13780000000.000002
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -870299999.9999999
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3592000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 9314000000.0
+      }
+    }
   },
   {
     "date": "2026-07-15",
@@ -3273,7 +5898,28 @@
         "net": 21247002621.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -6545000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1798999999.9999998
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -1896000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -6642000000.0
+      }
+    }
   },
   {
     "date": "2026-07-16",
@@ -3299,7 +5945,28 @@
         "net": -43047444657.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 4213000000.0000005
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -3951000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -315500000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -53600000.0
+      }
+    }
   },
   {
     "date": "2026-07-17",
@@ -3325,7 +5992,28 @@
         "net": -263146678136.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 15180000000.000002
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1592000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -3809000000.0000005
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 12960000000.0
+      }
+    }
   },
   {
     "date": "2026-07-20",
@@ -3351,7 +6039,28 @@
         "net": 2173675764.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": 7848000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -839800000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -2226000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": 4782000000.0
+      }
+    }
   },
   {
     "date": "2026-07-21",
@@ -3377,7 +6086,28 @@
         "net": 16289463484.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -9870000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": -1132000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 1902000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -9100000000.0
+      }
+    }
   },
   {
     "date": "2026-07-22",
@@ -3403,7 +6133,28 @@
         "net": 33848889590.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -6258000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 2300000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": 446600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -3511000000.0
+      }
+    }
   },
   {
     "date": "2026-07-23",
@@ -3429,7 +6180,28 @@
         "net": 18521852579.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -5265000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 541400000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -270000000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -4993000000.0
+      }
+    }
   },
   {
     "date": "2026-07-24",
@@ -3455,7 +6227,28 @@
         "net": -67338493066.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -6253000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 1088000000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -191600000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -5356000000.0
+      }
+    }
   },
   {
     "date": "2026-07-27",
@@ -3481,7 +6274,28 @@
         "net": 664533511.0
       }
     },
-    "tpex": null
+    "tpex": {
+      "foreign": {
+        "buy": null,
+        "sell": null,
+        "net": -1141000000.0
+      },
+      "trust": {
+        "buy": null,
+        "sell": null,
+        "net": 483300000.0
+      },
+      "dealer": {
+        "buy": null,
+        "sell": null,
+        "net": -742300000.0
+      },
+      "total": {
+        "buy": null,
+        "sell": null,
+        "net": -1400000000.0
+      }
+    }
   },
   {
     "date": "2026-07-28",
