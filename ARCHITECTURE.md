@@ -96,7 +96,7 @@
 
 ## 排程邏輯
 
-- Cron：`0 10 * * 1-5`（UTC）= 台北時間平日 18:00。訂得比原先規劃的 15:30 晚，是因為實測發現三大法人／融資融券常常比大盤指數晚公布（見上面「資料來源」的說明）。
+- Cron：兩個時段，平日各跑一次，UTC 08:30／13:30 = 台北時間 **16:30**／**21:30**。每次都是全量抓取（`fetch_daily.py` 對同一天重跑是安全的），16:30 這次主要是讓三大法人買賣超（通常較早公布）進 repo；21:30 這次主要是補上融資融券（實測約 21:10 前後才公布，比三大法人晚很多）。哪個時段實際抓到哪些欄位取決於當天官方公布時間，不是寫死的，兩個時段互補、有缺就等下一次補上。
 - 另外開 `workflow_dispatch`，可帶一個 `date`（YYYY-MM-DD）輸入手動重跑或補資料；不帶就抓今天。`fetch_daily.py` 對同一天重跑是安全的，會直接覆蓋舊檔案。
 - 若當天不是交易日（TWSE 回傳空值），腳本直接結束，不寫檔、不 commit，維持 repo 乾淨、可重複執行（idempotent）。
 - 抓完資料後：`git add data/ && git commit && git push`，用 workflow 內建的 `GITHUB_TOKEN`（需開 `permissions: contents: write`）。
@@ -133,6 +133,7 @@
 5. **看到的資料是舊的，但部署內容其實是對的（發生兩次）**：GitHub Pages 的 CDN／瀏覽器對 `data/*.json` 快取的時間比資料實際更新頻率長。前端所有抓 JSON 的地方統一改用 `assets/app.js` 裡的 `fetchJSON()` helper，自動加上時間戳記查詢參數避免快取。
 6. **拿掉「官方優先、估算 fallback」，改成「只信任官方，沒有就顯示尚未公布」**：item 3 那個 fallback 邏輯有個縫隙——`dayChart.json`（官方金額）跟逐檔張數資料（`tpex_mainboard_margin_balance`）不是同時更新，如果張數先出來、官方金額還沒出來，`fetch_tpex_margin_latest()` 會退回去用估算值，顯示沒扣融資成數、偏高的市值當融資餘額，跟 item 3 修的問題一樣會誤導人。改成 `fetch_tpex_margin_latest()` 只信任 `fetch_tpex_margin_value_official()`：官方數字還沒出來時 `marginBalance`／`marginBalancePrev` 是 `null`、`source` 是 `"pending"`，前端顯示「尚未公布」而不是錯誤的估算數字；融券張數不受影響（一律用逐檔資料加總，本來就準確，沒有估算問題，跟融資金額是否公布無關）。因為「latest」路徑不再需要估算邏輯，順手刪掉了已經沒人呼叫的 `_build_tpex_margin()` 與 `fetch_tpex_close_prices_latest()`（`fetch_tpex_margin_by_date()` 那條 backfill 專用路徑不受影響，繼續保留自己的估算邏輯，只用在 CSV 涵蓋不到的未來回補情境）。
 7. **上櫃融資金額跟融券張數公布時間不同步，導致有資料也顯示不出來**：item 6 修完後，實測發現融資金額（`dayChart.json`）跟融券張數（原本用另一支逐檔資料 `tpex_mainboard_margin_balance` 加總）公布時間常常對不上，某天融資金額已經出來、逐檔張數卻還停在前一天，而 `fetch_tpex_margin_latest()` 是用「張數資料的日期」當進入判斷的關卡，張數沒到就連已經公布的融資金額也一起被吃掉、整包回傳 `None`。後來發現 `dayChart.json` 本身同時有 `marginPurchaseValue10Days`（融資）跟 `shortSell10Days`（融券張數），是同一次呼叫拿到的，`dataDate` 保證一致——改成兩個數字都從 `dayChart.json` 拿（新的 `fetch_tpex_credit_official()`），不再需要 `tpex_mainboard_margin_balance`，從根本解決同步問題，而不是讓兩邊各自判斷日期去繞過它。
+8. **單一排程時間抓不齊三大法人跟融資融券**：兩者公布時間差很多（三大法人較早、融資融券實測約 21:10 前後才出來），單一個 18:00 的排程沒辦法兩個都保證抓到。改成兩個時段：台北時間 16:30（主要抓三大法人）與 21:30（主要補融資融券），`fetch-daily.yml` 的 `on.schedule` 加了第二筆 cron。兩次執行都是全量抓取，沒有互相依賴，缺的欄位由較晚那次自然補上。
 
 ## 驗證方式
 
