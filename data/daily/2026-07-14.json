@@ -45,12 +45,13 @@
     },
     "institutional": null,
     "margin": {
-      "marginBalance": 366299049620.0,
-      "marginBalancePrev": 372957268100.0,
+      "marginBalance": 206417000000.0,
+      "marginBalancePrev": 212527000000.0,
       "marginUnit": "元",
       "shortBalance": 33518.0,
       "shortBalancePrev": 37072.0,
-      "shortUnit": "張"
+      "shortUnit": "張",
+      "source": "tpex_official"
     }
   }
 }

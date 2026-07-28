@@ -35,7 +35,13 @@
 
 因為這幾個端點沒有日期參數，程式會核對回傳資料裡的 `Date` 是不是真的等於目標日期，對不上（代表當天還沒公布）就回傳 `null`，避免把前一天的資料誤標成今天。
 
-⚠️ **TPEx 融資融券只公布張數，沒有官方金額**（不像 TWSE 有現成的「融資金額(仟元)」）。為了跟 TWSE 的融資金額（新台幣）可以直接比較，程式用「張數 × 1000股 × 收盤價」自行換算成金額——這是**估算值**，不是官方公布數字，前端有加註說明。融券維持張數（TWSE 那邊本來就只有張數、沒有金額，兩邊算是打平）。
+⚠️ **TPEx 逐檔融資融券資料只有張數，沒有官方金額**（不像 TWSE 有現成的「融資金額(仟元)」）。原本用「張數 × 1000股 × 收盤價」自行換算金額，但這只是**市值**，不是實際融資金額（沒扣掉融資成數，一般股票只借得到市值 6 成），比真實數字高了約 40%。後來找到下面這支官方端點可以直接拿到正確金額，改成「官方優先、估算 fallback」：
+
+| 項目 | 端點 | 說明 |
+|---|---|---|
+| 融資金額（官方，優先使用） | `https://www.tpex.org.tw/data/home/dayChart.json` | TPEx 首頁走勢圖 widget 用的內部 API，**沒有出現在 `openapi/swagger.json` 裡，非正式文件化端點**，沒有官方保證長期可用。`dataDate`（民國年）是最新一筆的日期；`marginPurchaseValue.mbal`／`.mdif` 是當天的融資餘額／增減（億元）；`marginPurchaseValue10Days` 是最近約 10 個交易日的 `{date:"MM-DD", amt, dif}` 陣列（無年份，程式用 `dataDate` 的年份推回去、月份比 `dataDate` 大時代表跨年、要退一年）。已用 wantgoo 網站的公開數字交叉驗證，07/27 兩邊都是 1883.47 億，完全一致 |
+
+`fetch_tpex_margin_value_official()`（`common.py`）呼叫這支端點，回傳最近 10 天的 `{iso_date: {marginBalance, marginBalancePrev}}`（元）。`fetch_tpex_margin_latest()` 拿到估算值後，若該日期有官方資料就覆蓋掉，並在回傳的 `margin` 物件裡標記 `"source": "tpex_official"`；抓不到就維持估算值、標記 `"source": "estimated"`。**這支端點只回溯約 10 個交易日**，回補更久的歷史（`fetch_tpex_margin_by_date`）沒有官方資料可用，只能用估算值（一樣標記 `"source": "estimated"`）。融券維持張數（TWSE 那邊本來就只有張數、沒有金額，兩邊算是打平）。
 
 *回補歷史用（`fetch_tpex_index_month` / `fetch_tpex_margin_by_date`，legacy 網頁端點，民國年日期格式，已實測）：*
 
@@ -56,9 +62,10 @@
 ├── .github/workflows/
 │   └── fetch-daily.yml        # 排程：平日 18:00 台北時間跑，另開 workflow_dispatch 手動觸發（可帶 date 參數補特定一天）
 ├── scripts/
-│   ├── common.py              # 共用：呼叫 API、正規化 schema、寫入 data/ 的邏輯
-│   ├── fetch_daily.py         # 抓「今天」資料，寫入 daily + 附加進 series
-│   └── backfill.py            # 一次性：迴圈 2026-01-01 至今的交易日，補齊 data/
+│   ├── common.py                       # 共用：呼叫 API、正規化 schema、寫入 data/ 的邏輯
+│   ├── fetch_daily.py                  # 抓「今天」資料，寫入 daily + 附加進 series
+│   ├── backfill.py                     # 一次性：迴圈 2026-01-01 至今的交易日，補齊 data/
+│   └── apply_official_tpex_margin.py   # 一次性：把最近 10 個交易日的 TPEx 融資估算值換成官方值
 ├── data/
 │   ├── daily/{date}.json      # 當日完整快照（index / institutional / margin，各分 twse、tpex）
 │   ├── series/index.json      # 逐日累積的指數時間序列，前端畫趨勢圖用，避免要抓幾百個 daily 檔案
@@ -105,8 +112,9 @@
 
 網站上線、GitHub Pages 打得開之後，使用者實測回饋了兩個問題並已修正：
 
-1. **TPEx 融資餘額單位跟 TWSE 對不起來**：原本 TPEx 顯示張數、TWSE 顯示金額，改成上面「⚠️ TPEx 融資融券只公布張數」那段講的張數×收盤價換算法，統一都用「元」，前端統一用「億元」呈現。因為這個改動影響所有歷史資料的 schema，`data/` 整批清空後用新版 `common.py` 重新跑過一次 `backfill.py`。
+1. **TPEx 融資餘額單位跟 TWSE 對不起來**：原本 TPEx 顯示張數、TWSE 顯示金額，改成用張數×收盤價換算法，統一都用「元」，前端統一用「億元」呈現。因為這個改動影響所有歷史資料的 schema，`data/` 整批清空後用新版 `common.py` 重新跑過一次 `backfill.py`。
 2. **趨勢圖 Y 軸太短、沒刻度，且要求拆成上市／上櫃各一張**：原因是 canvas 寫死了 `height="90"` 又沒設 `maintainAspectRatio: false`，改成外層 `.chart-wrap` 給固定高度（320px）＋ `maintainAspectRatio: false`；並把單一圖表拆成 `#twse-chart` / `#tpex-chart` 兩張，各自疊加指數（左軸）與融資餘額（右軸）。
+3. **TPEx 融資金額（張數×收盤價換算法）比外部網站（wantgoo）高了約 40%**：漏乘融資成數，換算的其實是市值不是融資金額。找到 `data/home/dayChart.json` 這支非正式端點可以拿到官方正確數字後，改成「官方優先、估算 fallback」（見上面「資料來源」段落），並寫了一次性腳本 `scripts/apply_official_tpex_margin.py` 把已經回補的最近 10 個交易日換成官方值（10 天以前的歷史資料因為官方端點也回溯不到，維持估算值不動，`margin.source` 會顯示 `"estimated"` 跟 `"tpex_official"` 兩種混合存在，這是預期行為）。
 
 ## 驗證方式
 

@@ -331,18 +331,61 @@ def fetch_tpex_close_prices_by_date(roc_date):
     return {row[0]: _num(row[2]) for row in rows}
 
 
+def fetch_tpex_margin_value_official():
+    """呼叫 TPEx 首頁走勢圖 widget 用的內部 API，取得官方算好的融資金額（億元）。
+
+    ⚠️ 這不是 openapi/swagger.json 裡正式文件化的端點，沒有官方保證長期可用；
+    只回溯最近約 10 個交易日，不能拿來回補更久以前的歷史，只能當「今天」或
+    「最近幾天」的權威資料來源，抓不到或格式跑掉時呼叫端要 fallback 到估算值。
+
+    回傳 {iso_date: {"marginBalance": 元, "marginBalancePrev": 元}}，失敗時回傳 {}。
+    """
+    try:
+        r = SESSION.get(
+            "https://www.tpex.org.tw/data/home/dayChart.json", headers=TPEX_HEADERS, timeout=20
+        )
+        r.raise_for_status()
+        data = r.json()
+        latest_iso = roc7_to_iso(data["dataDate"])
+        rows = data["marginPurchaseValue10Days"]
+    except (requests.RequestException, ValueError, KeyError):
+        return {}
+
+    latest_year, latest_month = int(latest_iso[:4]), int(latest_iso[5:7])
+    result = {}
+    for row in rows:
+        mm, dd = row["date"].split("-")
+        # 10 天內若跨年（例如現在 1 月、列表裡有去年 12 月），月份會比最新一筆大，要退一年。
+        year = latest_year - 1 if int(mm) > latest_month else latest_year
+        amt_yuan = row["amt"] * 1e8
+        dif_yuan = row["dif"] * 1e8
+        result[f"{year}-{mm}-{dd}"] = {
+            "marginBalance": amt_yuan,
+            "marginBalancePrev": amt_yuan - dif_yuan,
+        }
+    return result
+
+
 def fetch_tpex_margin_latest(target_date_iso):
     data = fetch_tpex_openapi("tpex_mainboard_margin_balance")
     if not data or roc7_to_iso(data[0]["Date"]) != target_date_iso:
         return None
     prices = fetch_tpex_close_prices_latest(target_date_iso) or {}
-    return _build_tpex_margin(data, prices)
+    result = _build_tpex_margin(data, prices)
+
+    official = fetch_tpex_margin_value_official().get(target_date_iso)
+    if official:
+        result["marginBalance"] = official["marginBalance"]
+        result["marginBalancePrev"] = official["marginBalancePrev"]
+        result["source"] = "tpex_official"
+    return result
 
 
 def _build_tpex_margin(rows, prices):
     """rows: tpex_mainboard_margin_balance 的逐檔資料；prices: {代號: 收盤價}。
-    融資金額用「張數 × 1000股 × 收盤價」換算（估算值）；沒有對到收盤價的個股當天金額算 0。
-    融券維持張數（跟 TWSE 一樣沒有官方金額可用）。
+    融資金額用「張數 × 1000股 × 收盤價」換算——這只是市值估算，不是實際融資金額（沒扣掉
+    融資成數，通常只借得到市值 6 成），有官方資料（fetch_tpex_margin_value_official）
+    可用時呼叫端會覆蓋掉這個估算值。融券維持張數（跟 TWSE 一樣沒有官方金額可用）。
     """
     margin_yuan = margin_prev_yuan = 0.0
     for r in rows:
@@ -353,6 +396,7 @@ def _build_tpex_margin(rows, prices):
         "marginBalance": margin_yuan,
         "marginBalancePrev": margin_prev_yuan,
         "marginUnit": "元",
+        "source": "estimated",
         "shortBalance": sum(_num(r["ShortSaleBalance"]) for r in rows),
         "shortBalancePrev": sum(_num(r["ShortSaleBalancePreviousDay"]) for r in rows),
         "shortUnit": "張",
@@ -436,6 +480,7 @@ def fetch_tpex_margin_by_date(roc_date):
         "marginBalance": margin_yuan,
         "marginBalancePrev": margin_prev_yuan,
         "marginUnit": "元",
+        "source": "estimated",
         "shortBalance": short_today,
         "shortBalancePrev": short_prev,
         "shortUnit": "張",
