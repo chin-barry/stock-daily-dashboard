@@ -80,14 +80,21 @@ function renderMarket(market, data) {
   const marginDeltaEl = col.querySelector(".margin-delta");
   const shortBalanceEl = col.querySelector(".short-balance");
   const shortDeltaEl = col.querySelector(".short-delta");
-  if (margin) {
+
+  // 融資金額只信任官方來源，官方數字還沒出來時 marginBalance 會是 null——這種情況跟
+  // margin 整包都還沒有（null）分開處理，因為融券張數（shortBalance）通常還是有的。
+  if (margin && margin.marginBalance != null) {
     marginBalanceEl.textContent = fmtBalance(margin.marginBalance, margin.marginUnit);
     marginDeltaEl.textContent = fmtDelta(margin.marginBalance, margin.marginBalancePrev, margin.marginUnit);
+  } else {
+    marginBalanceEl.textContent = margin ? "尚未公布" : "尚無資料";
+    marginDeltaEl.textContent = "";
+  }
+
+  if (margin && margin.shortBalance != null) {
     shortBalanceEl.textContent = fmtBalance(margin.shortBalance, margin.shortUnit);
     shortDeltaEl.textContent = fmtDelta(margin.shortBalance, margin.shortBalancePrev, margin.shortUnit);
   } else {
-    marginBalanceEl.textContent = "尚無資料";
-    marginDeltaEl.textContent = "";
     shortBalanceEl.textContent = "尚無資料";
     shortDeltaEl.textContent = "";
   }
@@ -159,7 +166,7 @@ async function renderCharts() {
   const marginYi = (date, market) => {
     const row = marginByDate.get(date);
     const m = row && row[market];
-    return m ? m.marginBalance / 1e8 : null;
+    return m && m.marginBalance != null ? m.marginBalance / 1e8 : null;
   };
 
   buildMarketChart(

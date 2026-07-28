@@ -295,24 +295,6 @@ def fetch_tpex_institutional_latest(target_date_iso):
     }
 
 
-def fetch_tpex_close_prices_latest(target_date_iso):
-    """target_date_iso: 'YYYY-MM-DD'。回傳 {股票代號: 收盤價} 或 None（日期對不上）。
-
-    TPEx 融資融券餘額只有「張數」沒有金額，這裡另外抓收盤價，用「張數 × 1000股 × 收盤價」
-    換算成新台幣金額，跟 TWSE 的融資金額（TWSE 自己就有官方彙總金額）口徑對齊、方便比較。
-    這是估算值，不是官方公布的金額數字。
-    """
-    data = fetch_tpex_openapi("tpex_mainboard_daily_close_quotes")
-    if not data:
-        return None
-    prices = {}
-    for row in data:
-        if roc7_to_iso(row["Date"]) != target_date_iso:
-            continue
-        prices[row["SecuritiesCompanyCode"]] = _num(row["Close"])
-    return prices or None
-
-
 def fetch_tpex_close_prices_by_date(roc_date):
     """roc_date: 民國年日期，如 '115/07/27'。回傳 {股票代號: 收盤價}，legacy 端點，供回補使用。"""
     r = SESSION.get(
@@ -367,38 +349,26 @@ def fetch_tpex_margin_value_official():
 
 
 def fetch_tpex_margin_latest(target_date_iso):
+    """融券張數一定用逐檔資料算（準確、沒有估算問題）；融資金額只信任官方來源
+    （fetch_tpex_margin_value_official），官方數字還沒出來就讓 marginBalance/
+    marginBalancePrev 是 None——寧可讓前端顯示「尚無資料」，也不要顯示「張數 x 收盤價」
+    這種沒扣融資成數、可能誤導的估算金額（之前吃過這個虧）。
+    """
     data = fetch_tpex_openapi("tpex_mainboard_margin_balance")
     if not data or roc7_to_iso(data[0]["Date"]) != target_date_iso:
         return None
-    prices = fetch_tpex_close_prices_latest(target_date_iso) or {}
-    result = _build_tpex_margin(data, prices)
 
+    short_balance = sum(_num(r["ShortSaleBalance"]) for r in data)
+    short_balance_prev = sum(_num(r["ShortSaleBalancePreviousDay"]) for r in data)
     official = fetch_tpex_margin_value_official().get(target_date_iso)
-    if official:
-        result["marginBalance"] = official["marginBalance"]
-        result["marginBalancePrev"] = official["marginBalancePrev"]
-        result["source"] = "tpex_official"
-    return result
 
-
-def _build_tpex_margin(rows, prices):
-    """rows: tpex_mainboard_margin_balance 的逐檔資料；prices: {代號: 收盤價}。
-    融資金額用「張數 × 1000股 × 收盤價」換算——這只是市值估算，不是實際融資金額（沒扣掉
-    融資成數，通常只借得到市值 6 成），有官方資料（fetch_tpex_margin_value_official）
-    可用時呼叫端會覆蓋掉這個估算值。融券維持張數（跟 TWSE 一樣沒有官方金額可用）。
-    """
-    margin_yuan = margin_prev_yuan = 0.0
-    for r in rows:
-        price = prices.get(r["SecuritiesCompanyCode"], 0.0)
-        margin_yuan += _num(r["MarginPurchaseBalance"]) * 1000 * price
-        margin_prev_yuan += _num(r["MarginPurchaseBalancePreviousDay"]) * 1000 * price
     return {
-        "marginBalance": margin_yuan,
-        "marginBalancePrev": margin_prev_yuan,
+        "marginBalance": official["marginBalance"] if official else None,
+        "marginBalancePrev": official["marginBalancePrev"] if official else None,
         "marginUnit": "元",
-        "source": "estimated",
-        "shortBalance": sum(_num(r["ShortSaleBalance"]) for r in rows),
-        "shortBalancePrev": sum(_num(r["ShortSaleBalancePreviousDay"]) for r in rows),
+        "source": "tpex_official" if official else "pending",
+        "shortBalance": short_balance,
+        "shortBalancePrev": short_balance_prev,
         "shortUnit": "張",
     }
 
