@@ -39,9 +39,13 @@
 
 | 項目 | 端點 | 說明 |
 |---|---|---|
-| 融資金額（官方，優先使用） | `https://www.tpex.org.tw/data/home/dayChart.json` | TPEx 首頁走勢圖 widget 用的內部 API，**沒有出現在 `openapi/swagger.json` 裡，非正式文件化端點**，沒有官方保證長期可用。`dataDate`（民國年）是最新一筆的日期；`marginPurchaseValue.mbal`／`.mdif` 是當天的融資餘額／增減（億元）；`marginPurchaseValue10Days` 是最近約 10 個交易日的 `{date:"MM-DD", amt, dif}` 陣列（無年份，程式用 `dataDate` 的年份推回去、月份比 `dataDate` 大時代表跨年、要退一年）。已用 wantgoo 網站的公開數字交叉驗證，07/27 兩邊都是 1883.47 億，完全一致 |
+| 融資融券（官方，唯一來源） | `https://www.tpex.org.tw/data/home/dayChart.json` | TPEx 首頁走勢圖 widget 用的內部 API，**沒有出現在 `openapi/swagger.json` 裡，非正式文件化端點**，沒有官方保證長期可用。`dataDate`（民國年）是最新一筆的日期；`marginPurchaseValue10Days` 是最近約 10 個交易日的融資餘額 `{date:"MM-DD", amt(億元), dif(億元)}` 陣列；`shortSell10Days` 是同樣天數的融券張數 `{date, bal(千張), dif(千張)}` 陣列（無年份，程式用 `dataDate` 的年份推回去、月份比 `dataDate` 大時代表跨年、要退一年）。融資已用 wantgoo 網站的公開數字交叉驗證，07/27 兩邊都是 1883.47 億，完全一致；融券已用 `Report.csv` 的官方數字交叉驗證 |
 
-`fetch_tpex_margin_value_official()`（`common.py`）呼叫這支端點，回傳最近 10 天的 `{iso_date: {marginBalance, marginBalancePrev}}`（元）。`fetch_tpex_margin_latest()`（每日排程用）**只信任這個官方來源**：官方資料有該日期就用，標記 `"source": "tpex_official"`；沒有就讓 `marginBalance`／`marginBalancePrev` 是 `null`、標記 `"source": "pending"`——**不會**再退回去用「張數 × 收盤價」估算（早期版本會這樣 fallback，但估算值沒扣融資成數、容易誤導，出過一次狀況後改成寧可顯示「尚無資料」）。融券張數不受影響，一律用逐檔資料加總（準確、沒有估算問題），跟融資金額是否公布無關。**這支端點只回溯約 10 個交易日**，所以只能用在「今天」之後的每日排程；更久的歷史資料改用下面「用 Report.csv 補齊」那段的方式一次性匯入，不是靠這支端點回補。
+`fetch_tpex_credit_official()`（`common.py`）呼叫這支端點，**一次拿到融資金額和融券張數**，回傳 `{iso_date: {marginBalance, marginBalancePrev, shortBalance, shortBalancePrev}}`（元／張）。`fetch_tpex_margin_latest()`（每日排程用）只信任這個來源：當天有資料就用，標記 `"source": "tpex_official"`；沒有就整包回傳 `None`——**不會**再退回去用「張數 × 收盤價」估算（早期版本會這樣 fallback，估算值沒扣融資成數、容易誤導，出過一次狀況後改掉）。
+
+⚠️ 早期版本融資金額用這支端點、融券張數改用另一支逐檔資料（`tpex_mainboard_margin_balance`）加總，實測發現**兩者公布時間不同步**——某天融資金額已經更新、逐檔張數卻還停在前一天，導致融資明明已經公布卻被融券拖累顯示不出來。後來發現 `dayChart.json` 本身就同時有 `marginPurchaseValue10Days`（融資）跟 `shortSell10Days`（融券），是同一次呼叫、同一個 `dataDate`，兩個數字保證同步，才改成兩者都從這支端點拿，不再需要 `tpex_mainboard_margin_balance`。
+
+**這支端點只回溯約 10 個交易日**，所以只能用在「今天」之後的每日排程；更久的歷史資料改用下面「用 Report.csv 補齊」那段的方式一次性匯入，不是靠這支端點回補。
 
 *回補歷史用（`fetch_tpex_index_month` / `fetch_tpex_margin_by_date`，legacy 網頁端點，民國年日期格式，已實測）：*
 
@@ -128,6 +132,7 @@
 4. **10 天以前的 TPEx 融資餘額仍是市值估算、櫃買三大法人歷史資料整片空白**：`dayChart.json` 只能回溯 10 天，原本打算用融資成數 0.6 當係數修正舊資料。後來使用者直接從 TPEx 官網下載官方報表 `Report.csv`（涵蓋 2026-01-02 ~ 2026-07-27），改用 `scripts/import_tpex_report_csv.py` 一次性匯入真正的官方逐日數字，取代係數修正的做法，同時把整片空白的歷史三大法人資料補齊（見上面「用 Report.csv 補齊」段落）。匯入後全部 134 天的 `tpex.margin.source` 都是 `"tpex_official"`；`tpex.institutional` 的 `buy`／`sell` 是 `null`（CSV 只有淨額）。
 5. **看到的資料是舊的，但部署內容其實是對的（發生兩次）**：GitHub Pages 的 CDN／瀏覽器對 `data/*.json` 快取的時間比資料實際更新頻率長。前端所有抓 JSON 的地方統一改用 `assets/app.js` 裡的 `fetchJSON()` helper，自動加上時間戳記查詢參數避免快取。
 6. **拿掉「官方優先、估算 fallback」，改成「只信任官方，沒有就顯示尚未公布」**：item 3 那個 fallback 邏輯有個縫隙——`dayChart.json`（官方金額）跟逐檔張數資料（`tpex_mainboard_margin_balance`）不是同時更新，如果張數先出來、官方金額還沒出來，`fetch_tpex_margin_latest()` 會退回去用估算值，顯示沒扣融資成數、偏高的市值當融資餘額，跟 item 3 修的問題一樣會誤導人。改成 `fetch_tpex_margin_latest()` 只信任 `fetch_tpex_margin_value_official()`：官方數字還沒出來時 `marginBalance`／`marginBalancePrev` 是 `null`、`source` 是 `"pending"`，前端顯示「尚未公布」而不是錯誤的估算數字；融券張數不受影響（一律用逐檔資料加總，本來就準確，沒有估算問題，跟融資金額是否公布無關）。因為「latest」路徑不再需要估算邏輯，順手刪掉了已經沒人呼叫的 `_build_tpex_margin()` 與 `fetch_tpex_close_prices_latest()`（`fetch_tpex_margin_by_date()` 那條 backfill 專用路徑不受影響，繼續保留自己的估算邏輯，只用在 CSV 涵蓋不到的未來回補情境）。
+7. **上櫃融資金額跟融券張數公布時間不同步，導致有資料也顯示不出來**：item 6 修完後，實測發現融資金額（`dayChart.json`）跟融券張數（原本用另一支逐檔資料 `tpex_mainboard_margin_balance` 加總）公布時間常常對不上，某天融資金額已經出來、逐檔張數卻還停在前一天，而 `fetch_tpex_margin_latest()` 是用「張數資料的日期」當進入判斷的關卡，張數沒到就連已經公布的融資金額也一起被吃掉、整包回傳 `None`。後來發現 `dayChart.json` 本身同時有 `marginPurchaseValue10Days`（融資）跟 `shortSell10Days`（融券張數），是同一次呼叫拿到的，`dataDate` 保證一致——改成兩個數字都從 `dayChart.json` 拿（新的 `fetch_tpex_credit_official()`），不再需要 `tpex_mainboard_margin_balance`，從根本解決同步問題，而不是讓兩邊各自判斷日期去繞過它。
 
 ## 驗證方式
 

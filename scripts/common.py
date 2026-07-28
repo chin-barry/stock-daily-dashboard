@@ -313,14 +313,21 @@ def fetch_tpex_close_prices_by_date(roc_date):
     return {row[0]: _num(row[2]) for row in rows}
 
 
-def fetch_tpex_margin_value_official():
-    """呼叫 TPEx 首頁走勢圖 widget 用的內部 API，取得官方算好的融資金額（億元）。
+def fetch_tpex_credit_official():
+    """呼叫 TPEx 首頁走勢圖 widget 用的內部 API，一次拿到融資金額與融券張數的官方數字。
 
     ⚠️ 這不是 openapi/swagger.json 裡正式文件化的端點，沒有官方保證長期可用；
     只回溯最近約 10 個交易日，不能拿來回補更久以前的歷史，只能當「今天」或
-    「最近幾天」的權威資料來源，抓不到或格式跑掉時呼叫端要 fallback 到估算值。
+    「最近幾天」的權威資料來源。
 
-    回傳 {iso_date: {"marginBalance": 元, "marginBalancePrev": 元}}，失敗時回傳 {}。
+    融資金額（`marginPurchaseValue10Days`，億元）跟融券張數（`shortSell10Days`，千張）
+    是同一次 API 呼叫、同一個 `dataDate` 出來的，保證兩者同步更新，不會有「融資出來了但
+    融券還沒出來」（或反過來）的情況——早期版本融資用這支端點、融券用另一支逐檔資料
+    （`tpex_mainboard_margin_balance`）湊出來，結果兩邊實測公布時間不同步，一邊有資料
+    就會被另一邊還沒出來拖累。改成兩個數字都從這支端點拿，從根本解決同步問題。
+
+    回傳 {iso_date: {"marginBalance", "marginBalancePrev", "shortBalance", "shortBalancePrev"}}
+    （元／張），失敗時回傳 {}。
     """
     try:
         r = SESSION.get(
@@ -329,46 +336,48 @@ def fetch_tpex_margin_value_official():
         r.raise_for_status()
         data = r.json()
         latest_iso = roc7_to_iso(data["dataDate"])
-        rows = data["marginPurchaseValue10Days"]
+        margin_rows = data["marginPurchaseValue10Days"]
+        short_rows = data["shortSell10Days"]
     except (requests.RequestException, ValueError, KeyError):
         return {}
 
     latest_year, latest_month = int(latest_iso[:4]), int(latest_iso[5:7])
-    result = {}
-    for row in rows:
-        mm, dd = row["date"].split("-")
+
+    def date_key(mmdd):
+        mm, dd = mmdd.split("-")
         # 10 天內若跨年（例如現在 1 月、列表裡有去年 12 月），月份會比最新一筆大，要退一年。
         year = latest_year - 1 if int(mm) > latest_month else latest_year
+        return f"{year}-{mm}-{dd}"
+
+    result = {}
+    for row in margin_rows:
         amt_yuan = row["amt"] * 1e8
-        dif_yuan = row["dif"] * 1e8
-        result[f"{year}-{mm}-{dd}"] = {
-            "marginBalance": amt_yuan,
-            "marginBalancePrev": amt_yuan - dif_yuan,
-        }
+        entry = result.setdefault(date_key(row["date"]), {})
+        entry["marginBalance"] = amt_yuan
+        entry["marginBalancePrev"] = amt_yuan - row["dif"] * 1e8
+    for row in short_rows:
+        bal_zhang = row["bal"] * 1000
+        entry = result.setdefault(date_key(row["date"]), {})
+        entry["shortBalance"] = bal_zhang
+        entry["shortBalancePrev"] = bal_zhang - row["dif"] * 1000
     return result
 
 
 def fetch_tpex_margin_latest(target_date_iso):
-    """融券張數一定用逐檔資料算（準確、沒有估算問題）；融資金額只信任官方來源
-    （fetch_tpex_margin_value_official），官方數字還沒出來就讓 marginBalance/
-    marginBalancePrev 是 None——寧可讓前端顯示「尚無資料」，也不要顯示「張數 x 收盤價」
-    這種沒扣融資成數、可能誤導的估算金額（之前吃過這個虧）。
+    """融資融券只信任 fetch_tpex_credit_official() 這個官方來源，沒有當天資料就整包回傳
+    None——寧可顯示「尚無資料」，也不要退回去用「張數 x 收盤價」這種沒扣融資成數、可能
+    誤導的估算金額（之前吃過這個虧）。
     """
-    data = fetch_tpex_openapi("tpex_mainboard_margin_balance")
-    if not data or roc7_to_iso(data[0]["Date"]) != target_date_iso:
+    official = fetch_tpex_credit_official().get(target_date_iso)
+    if not official:
         return None
-
-    short_balance = sum(_num(r["ShortSaleBalance"]) for r in data)
-    short_balance_prev = sum(_num(r["ShortSaleBalancePreviousDay"]) for r in data)
-    official = fetch_tpex_margin_value_official().get(target_date_iso)
-
     return {
-        "marginBalance": official["marginBalance"] if official else None,
-        "marginBalancePrev": official["marginBalancePrev"] if official else None,
+        "marginBalance": official.get("marginBalance"),
+        "marginBalancePrev": official.get("marginBalancePrev"),
         "marginUnit": "元",
-        "source": "tpex_official" if official else "pending",
-        "shortBalance": short_balance,
-        "shortBalancePrev": short_balance_prev,
+        "source": "tpex_official",
+        "shortBalance": official.get("shortBalance"),
+        "shortBalancePrev": official.get("shortBalancePrev"),
         "shortUnit": "張",
     }
 
@@ -384,7 +393,9 @@ def fetch_tpex_margin_latest(target_date_iso):
 # 排程執行之後才有（用 fetch_tpex_institutional_latest 那組乾淨的彙總端點）。
 #
 # 融資融券（margin_bal_result.php）逐檔個股欄位都有清楚命名，張數可以安全加總；金額則另外
-# 用同一天的收盤價（stk_wn1430_result.php）換算，作法跟 fetch_tpex_margin_latest 一致。
+# 用同一天的收盤價（stk_wn1430_result.php）換算成市值估算（沒有官方金額可用時的次選）。
+# 這條路徑只用在 Report.csv 涵蓋不到、且 dayChart.json 也回溯不到的更久以前歷史，
+# 「今天」的每日排程改用 fetch_tpex_margin_latest（只信任 dayChart.json 官方數字）。
 
 
 def fetch_tpex_index_month(roc_year_month):
