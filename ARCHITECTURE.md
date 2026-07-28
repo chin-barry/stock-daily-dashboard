@@ -16,7 +16,7 @@
 |---|---|---|
 | 大盤指數 | `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?response=json&date=YYYYMMDD&type=ALL` | 從 `tables` 裡找列名為「發行量加權股價指數」的那一列。⚠️「漲跌點數」欄只給量值（要配合顏色 `color:red`/`color:green` 判斷正負），但「漲跌百分比」欄有時已經自帶負號——兩欄簽名慣例不一致，程式裡分開處理 |
 | 三大法人買賣金額（全市場合計） | `https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&dayDate=YYYYMMDD&type=day` | 回傳自營商(自行買賣)／自營商(避險)／投信／外資及陸資／外資自營商／合計 六列的買進、賣出、買賣差額。⚠️「外資及陸資」這列名稱偶爾會帶「(不含外資自營商)」字尾，比對時用前綴比對而非完全相等；「外資自營商」金額官方已經算進自營商合計裡了，不能再另外加總一次 |
-| 融資融券餘額（全市場合計） | `https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?response=json&date=YYYYMMDD&selectType=ALL` | 回傳的 `tables[0]`「信用交易統計」就是全市場彙總，不用自己加總個股：`融資金額(仟元)` 列有前日/今日餘額（新台幣仟元），`融券(交易單位)` 列有前日/今日餘額（張）；這份資料**沒有**融券金額的仟元合計，只有張數 |
+| 融資融券餘額（全市場合計） | `https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?response=json&date=YYYYMMDD&selectType=ALL` | 回傳的 `tables[0]`「信用交易統計」就是全市場彙總，不用自己加總個股：`融資金額(仟元)` 列有前日/今日餘額（程式裡換算成「元」存，跟 TPEx 那邊單位統一），`融券(交易單位)` 列有前日/今日餘額（張）；這份資料**沒有**融券金額的仟元合計，只有張數 |
 
 ⚠️ 實測發現的兩個 TWSE 限制：(1) 每日 13:30–13:45（台北時間）尖峰時段會暫停「整批查詢」，改回傳提示訊息，程式遇到會自動 sleep 後重試；(2) 請求太密集（回補歷史時連續打很多天）偶爾會回傳空白內容（非合法 JSON），一樣視為暫時性錯誤、短暫等待後重試，回補腳本每個請求之間也加了 0.3 秒間隔。
 
@@ -30,16 +30,19 @@
 |---|---|---|
 | 大盤指數 | `https://www.tpex.org.tw/openapi/v1/tpex_index` | 欄位 `Date, Open, High, Low, Close, Change`。只回傳近期滾動資料（實測回傳當月 1 日至今），不支援日期參數 |
 | 三大法人買賣超（全市場合計） | `https://www.tpex.org.tw/openapi/v1/tpex_3insti_summary` | 欄位 `Date, Investor, PurchaseAmount, SaleAmount, Net`；`Investor` 用到的三個精確字串是「外資及陸資合計」「投信」「自營商合計」，另外有現成的「三大法人合計*」總計列可以直接用，不用自己加總 |
-| 融資融券餘額 | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance` | 欄位 `MarginPurchaseBalance, MarginPurchaseBalancePreviousDay, ShortSaleBalance, ShortSaleBalancePreviousDay`（張），是逐檔個股資料，腳本裡加總全部個股成大盤合計 |
+| 融資融券餘額 | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance` | 欄位 `MarginPurchaseBalance, MarginPurchaseBalancePreviousDay, ShortSaleBalance, ShortSaleBalancePreviousDay`（張），是逐檔個股資料，腳本裡加總全部個股 |
+| 收盤價（換算融資金額用） | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes` | 逐檔個股收盤價，跟上面融資融券資料用同一個 `SecuritiesCompanyCode` 欄位對應股票代號 |
 
 因為這幾個端點沒有日期參數，程式會核對回傳資料裡的 `Date` 是不是真的等於目標日期，對不上（代表當天還沒公布）就回傳 `null`，避免把前一天的資料誤標成今天。
+
+⚠️ **TPEx 融資融券只公布張數，沒有官方金額**（不像 TWSE 有現成的「融資金額(仟元)」）。為了跟 TWSE 的融資金額（新台幣）可以直接比較，程式用「張數 × 1000股 × 收盤價」自行換算成金額——這是**估算值**，不是官方公布數字，前端有加註說明。融券維持張數（TWSE 那邊本來就只有張數、沒有金額，兩邊算是打平）。
 
 *回補歷史用（`fetch_tpex_index_month` / `fetch_tpex_margin_by_date`，legacy 網頁端點，民國年日期格式，已實測）：*
 
 | 項目 | 端點 | 說明 |
 |---|---|---|
 | 大盤指數 | `https://www.tpex.org.tw/web/stock/iNdex_info/inxh/Inx_result.php?l=zh-tw&d=115/07&o=json` | 帶「民國年/月」（不含日）一次回傳整個月每個交易日的開高低收與漲跌，回補時用月份迴圈抓，比逐日呼叫有效率 |
-| 融資融券餘額 | `https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&d=115/07/27&o=json` | 逐檔個股資料，欄位有清楚命名（`前資餘額(張)`、`資餘額`、`前券餘額(張)`、`券餘額`…），腳本裡加總成大盤合計 |
+| 融資融券餘額 | `https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&d=115/07/27&o=json` | 逐檔個股資料，欄位有清楚命名（`前資餘額(張)`、`資餘額`、`前券餘額(張)`、`券餘額`…）；金額換算跟每日排程一樣，另外用 `stk_wn1430_result.php?l=zh-tw&d=115/07/27&se=EW&o=json`（同一天的收盤價，legacy 版）做 join |
 | ~~三大法人買賣超~~ | ~~`3itrade_hedge_result.php`~~ | **沒有實作歷史回補**：這支 legacy 端點雖然存在（`/web/stock/3insti/daily_trade/3itrade_hedge_result.php`），但回傳的是逐檔個股、7 組買賣超股數，7 組欄位沒有標名稱、分類順序沒有官方文件佐證，貿然假設順序去加總誤植的風險太高，所以選擇不做，2026-01-01 到程式開始每日排程之間的 TPEx 三大法人資料會是空的 |
 
 ⚠️ `www.tpex.org.tw` 對沒有瀏覽器標頭的請求會回 403（WAF 擋爬蟲），抓取時務必帶上 `User-Agent`（設成常見瀏覽器字串）與 `Referer: https://www.tpex.org.tw/`。
@@ -82,7 +85,7 @@
 純靜態頁面，讀取 `data/manifest.json` 取得可選日期，預設顯示最新一天：
 
 - 今日卡片：大盤指數（含漲跌／漲跌%）、三大法人買賣超金額、融資融券餘額（含較前日增減），上市／上櫃分開顯示
-- 趨勢圖（Chart.js）：讀 `data/series/*.json`，畫大盤指數走勢
+- 趨勢圖（Chart.js）：兩張獨立圖表（上市一張、上櫃一張），各自疊加「指數」與「融資餘額（億元）」雙 Y 軸，讀 `data/series/index.json` + `data/series/margin.json` 依日期 join
 - 日期選單：切換查看任一歷史交易日的完整快照
 
 ## 實作步驟
@@ -97,6 +100,13 @@
 7. commit 全部檔案，push 到 GitHub repo（push 前會先確認）。
 8. Repo Settings → Pages，設定 Deploy from branch：`main` / `(root)`。
 9. 手動觸發一次 `workflow_dispatch`，確認 Actions 能成功寫入新 commit，GitHub Pages 網址能看到資料。
+
+## 上線後的修正紀錄
+
+網站上線、GitHub Pages 打得開之後，使用者實測回饋了兩個問題並已修正：
+
+1. **TPEx 融資餘額單位跟 TWSE 對不起來**：原本 TPEx 顯示張數、TWSE 顯示金額，改成上面「⚠️ TPEx 融資融券只公布張數」那段講的張數×收盤價換算法，統一都用「元」，前端統一用「億元」呈現。因為這個改動影響所有歷史資料的 schema，`data/` 整批清空後用新版 `common.py` 重新跑過一次 `backfill.py`。
+2. **趨勢圖 Y 軸太短、沒刻度，且要求拆成上市／上櫃各一張**：原因是 canvas 寫死了 `height="90"` 又沒設 `maintainAspectRatio: false`，改成外層 `.chart-wrap` 給固定高度（320px）＋ `maintainAspectRatio: false`；並把單一圖表拆成 `#twse-chart` / `#tpex-chart` 兩張，各自疊加指數（左軸）與融資餘額（右軸）。
 
 ## 驗證方式
 

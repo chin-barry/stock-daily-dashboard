@@ -240,9 +240,9 @@ def fetch_twse_margin(date_ymd):
     if not margin_row or not short_row:
         return None
     return {
-        "marginBalance": _num(margin_row[5]),
-        "marginBalancePrev": _num(margin_row[4]),
-        "marginUnit": "仟元",
+        "marginBalance": _num(margin_row[5]) * 1000,  # 仟元 -> 元，跟 TPEx 那邊統一單位
+        "marginBalancePrev": _num(margin_row[4]) * 1000,
+        "marginUnit": "元",
         "shortBalance": _num(short_row[5]),
         "shortBalancePrev": _num(short_row[4]),
         "shortUnit": "張",
@@ -295,16 +295,66 @@ def fetch_tpex_institutional_latest(target_date_iso):
     }
 
 
+def fetch_tpex_close_prices_latest(target_date_iso):
+    """target_date_iso: 'YYYY-MM-DD'。回傳 {股票代號: 收盤價} 或 None（日期對不上）。
+
+    TPEx 融資融券餘額只有「張數」沒有金額，這裡另外抓收盤價，用「張數 × 1000股 × 收盤價」
+    換算成新台幣金額，跟 TWSE 的融資金額（TWSE 自己就有官方彙總金額）口徑對齊、方便比較。
+    這是估算值，不是官方公布的金額數字。
+    """
+    data = fetch_tpex_openapi("tpex_mainboard_daily_close_quotes")
+    if not data:
+        return None
+    prices = {}
+    for row in data:
+        if roc7_to_iso(row["Date"]) != target_date_iso:
+            continue
+        prices[row["SecuritiesCompanyCode"]] = _num(row["Close"])
+    return prices or None
+
+
+def fetch_tpex_close_prices_by_date(roc_date):
+    """roc_date: 民國年日期，如 '115/07/27'。回傳 {股票代號: 收盤價}，legacy 端點，供回補使用。"""
+    r = SESSION.get(
+        "https://www.tpex.org.tw/web/stock/aftertrading/otc_quotes_no1430/stk_wn1430_result.php",
+        params={"l": "zh-tw", "d": roc_date, "se": "EW", "o": "json"},
+        headers=TPEX_HEADERS,
+        timeout=20,
+    )
+    r.raise_for_status()
+    data = r.json()
+    tables = data.get("tables") or []
+    rows = tables[0].get("data") if tables else None
+    if not rows:
+        return {}
+    # row: [代號, 名稱, 收盤, 漲跌, 開盤, 最高, 最低, ...]
+    return {row[0]: _num(row[2]) for row in rows}
+
+
 def fetch_tpex_margin_latest(target_date_iso):
     data = fetch_tpex_openapi("tpex_mainboard_margin_balance")
     if not data or roc7_to_iso(data[0]["Date"]) != target_date_iso:
         return None
+    prices = fetch_tpex_close_prices_latest(target_date_iso) or {}
+    return _build_tpex_margin(data, prices)
+
+
+def _build_tpex_margin(rows, prices):
+    """rows: tpex_mainboard_margin_balance 的逐檔資料；prices: {代號: 收盤價}。
+    融資金額用「張數 × 1000股 × 收盤價」換算（估算值）；沒有對到收盤價的個股當天金額算 0。
+    融券維持張數（跟 TWSE 一樣沒有官方金額可用）。
+    """
+    margin_yuan = margin_prev_yuan = 0.0
+    for r in rows:
+        price = prices.get(r["SecuritiesCompanyCode"], 0.0)
+        margin_yuan += _num(r["MarginPurchaseBalance"]) * 1000 * price
+        margin_prev_yuan += _num(r["MarginPurchaseBalancePreviousDay"]) * 1000 * price
     return {
-        "marginBalance": sum(_num(r["MarginPurchaseBalance"]) for r in data),
-        "marginBalancePrev": sum(_num(r["MarginPurchaseBalancePreviousDay"]) for r in data),
-        "marginUnit": "張",
-        "shortBalance": sum(_num(r["ShortSaleBalance"]) for r in data),
-        "shortBalancePrev": sum(_num(r["ShortSaleBalancePreviousDay"]) for r in data),
+        "marginBalance": margin_yuan,
+        "marginBalancePrev": margin_prev_yuan,
+        "marginUnit": "元",
+        "shortBalance": sum(_num(r["ShortSaleBalance"]) for r in rows),
+        "shortBalancePrev": sum(_num(r["ShortSaleBalancePreviousDay"]) for r in rows),
         "shortUnit": "張",
     }
 
@@ -319,7 +369,8 @@ def fetch_tpex_margin_latest(target_date_iso):
 # 實作 TPEx 歷史三大法人回補——這段期間的 TPEx 三大法人資料留白，只能從程式開始每日
 # 排程執行之後才有（用 fetch_tpex_institutional_latest 那組乾淨的彙總端點）。
 #
-# 融資融券（margin_bal_result.php）逐檔個股欄位都有清楚命名，可以安全加總成大盤合計。
+# 融資融券（margin_bal_result.php）逐檔個股欄位都有清楚命名，張數可以安全加總；金額則另外
+# 用同一天的收盤價（stk_wn1430_result.php）換算，作法跟 fetch_tpex_margin_latest 一致。
 
 
 def fetch_tpex_index_month(roc_year_month):
@@ -354,7 +405,10 @@ def fetch_tpex_index_month(roc_year_month):
 
 
 def fetch_tpex_margin_by_date(roc_date):
-    """roc_date: 民國年日期，如 '115/07/27'。回傳 None 表示當天查無資料。"""
+    """roc_date: 民國年日期，如 '115/07/27'。回傳 None 表示當天查無資料。
+
+    融資金額一樣用「張數 × 1000股 × 當天收盤價」換算成新台幣（估算值，見 _build_tpex_margin）。
+    """
     r = SESSION.get(
         "https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php",
         params={"l": "zh-tw", "d": roc_date, "o": "json"},
@@ -369,14 +423,19 @@ def fetch_tpex_margin_by_date(roc_date):
         return None
     # fields: 代號,名稱,前資餘額(張),資買,資賣,現償,資餘額,資屬證金,資使用率(%),資限額,
     #         前券餘額(張),券賣,券買,券償,券餘額,券屬證金,券使用率(%),券限額,資券相抵(張),備註
-    margin_prev = sum(_num(row[2]) for row in rows)
-    margin_today = sum(_num(row[6]) for row in rows)
-    short_prev = sum(_num(row[10]) for row in rows)
-    short_today = sum(_num(row[14]) for row in rows)
+    prices = fetch_tpex_close_prices_by_date(roc_date)
+    margin_yuan = margin_prev_yuan = 0.0
+    short_today = short_prev = 0.0
+    for row in rows:
+        price = prices.get(row[0], 0.0)
+        margin_yuan += _num(row[6]) * 1000 * price
+        margin_prev_yuan += _num(row[2]) * 1000 * price
+        short_today += _num(row[14])
+        short_prev += _num(row[10])
     return {
-        "marginBalance": margin_today,
-        "marginBalancePrev": margin_prev,
-        "marginUnit": "張",
+        "marginBalance": margin_yuan,
+        "marginBalancePrev": margin_prev_yuan,
+        "marginUnit": "元",
         "shortBalance": short_today,
         "shortBalancePrev": short_prev,
         "shortUnit": "張",

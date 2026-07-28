@@ -20,18 +20,16 @@ function fmtNetYi(yuan) {
 }
 
 function fmtBalance(value, unit) {
-  if (unit === "仟元") {
-    const yi = (value * 1000) / 1e8;
-    return `${yi.toFixed(2)} 億元`;
+  if (unit === "元") {
+    return `${(value / 1e8).toFixed(2)} 億元`;
   }
   return `${Math.round(value).toLocaleString("zh-TW")} 張`;
 }
 
 function fmtDelta(curr, prev, unit) {
   const diff = curr - prev;
-  if (unit === "仟元") {
-    const yi = (diff * 1000) / 1e8;
-    return `${fmtSigned(yi, 2)} 億`;
+  if (unit === "元") {
+    return `${fmtSigned(diff / 1e8, 2)} 億`;
   }
   return `${fmtSigned(Math.round(diff), 0)} 張`;
 }
@@ -94,47 +92,91 @@ async function loadDate(date) {
   renderMarket("tpex", data.tpex);
 }
 
-async function renderChart() {
-  const res = await fetch("data/series/index.json");
-  const series = await res.json();
-  const ctx = document.getElementById("index-chart");
-  new Chart(ctx, {
+function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues, labels) {
+  new Chart(document.getElementById(canvasId), {
     type: "line",
     data: {
-      labels: series.map((r) => r.date),
+      labels,
       datasets: [
         {
-          label: "加權指數（上市）",
-          data: series.map((r) => r.twseClose),
-          borderColor: "#2f5fd6",
+          label: indexLabel,
+          data: indexValues,
+          borderColor: indexColor,
           yAxisID: "y",
           tension: 0.15,
           pointRadius: 0,
+          spanGaps: true,
         },
         {
-          label: "櫃買指數（上櫃）",
-          data: series.map((r) => r.tpexClose),
-          borderColor: "#d68c2f",
+          label: marginLabel,
+          data: marginValues,
+          borderColor: marginColor,
           yAxisID: "y1",
           tension: 0.15,
           pointRadius: 0,
+          spanGaps: true,
         },
       ],
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: "index", intersect: false },
       scales: {
-        y: { type: "linear", position: "left", title: { display: true, text: "加權指數" } },
+        y: {
+          type: "linear",
+          position: "left",
+          title: { display: true, text: "指數" },
+          ticks: { display: true },
+        },
         y1: {
           type: "linear",
           position: "right",
-          title: { display: true, text: "櫃買指數" },
+          title: { display: true, text: "融資餘額（億元）" },
+          ticks: { display: true },
           grid: { drawOnChartArea: false },
         },
       },
     },
   });
+}
+
+async function renderCharts() {
+  const [indexRes, marginRes] = await Promise.all([
+    fetch("data/series/index.json"),
+    fetch("data/series/margin.json"),
+  ]);
+  const indexSeries = await indexRes.json();
+  const marginByDate = new Map((await marginRes.json()).map((r) => [r.date, r]));
+
+  const labels = indexSeries.map((r) => r.date);
+  const marginYi = (date, market) => {
+    const row = marginByDate.get(date);
+    const m = row && row[market];
+    return m ? m.marginBalance / 1e8 : null;
+  };
+
+  buildMarketChart(
+    "twse-chart",
+    "加權指數",
+    "#2f5fd6",
+    indexSeries.map((r) => r.twseClose),
+    "融資餘額（億元）",
+    "#d5382f",
+    labels.map((d) => marginYi(d, "twse")),
+    labels
+  );
+
+  buildMarketChart(
+    "tpex-chart",
+    "櫃買指數",
+    "#d68c2f",
+    indexSeries.map((r) => r.tpexClose),
+    "融資餘額（億元）",
+    "#d5382f",
+    labels.map((d) => marginYi(d, "tpex")),
+    labels
+  );
 }
 
 async function init() {
@@ -156,7 +198,7 @@ async function init() {
     await loadDate(dates[0]);
   }
 
-  await renderChart();
+  await renderCharts();
 }
 
 init();

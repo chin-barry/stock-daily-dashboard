@@ -133,9 +133,19 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
 .total-row th, .total-row td { font-weight: 700; border-top: 1px solid var(--border); padding-top: 0.5rem; }
 .margin-table td:last-child { color: var(--text-soft); font-size: 0.82rem; padding-left: 0.5rem; }
 
+.card-note {
+  margin: 0.6rem 0 0;
+  font-size: 0.76rem;
+  color: var(--text-soft);
+  line-height: 1.4;
+}
+
 .chart-card { padding-bottom: 1.5rem; }
-.chart-wrap { overflow-x: auto; }
-#index-chart { width: 100%; }
+.chart-wrap {
+  position: relative;
+  height: 320px;
+  overflow-x: auto;
+}
 
 .page-footer {
   text-align: center;

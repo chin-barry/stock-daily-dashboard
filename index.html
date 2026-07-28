@@ -73,14 +73,22 @@
               <tr><th>融券餘額</th><td class="short-balance">--</td><td class="short-delta">--</td></tr>
             </tbody>
           </table>
+          <p class="card-note">融資餘額為估算值：櫃買中心只公布張數，這裡用「張數 × 1000股 × 當日收盤價」換算金額。</p>
         </div>
       </article>
     </section>
 
     <section class="card chart-card">
-      <div class="card-title">大盤指數走勢</div>
+      <div class="card-title">上市：加權指數 ／ 融資餘額</div>
       <div class="chart-wrap">
-        <canvas id="index-chart" height="90"></canvas>
+        <canvas id="twse-chart"></canvas>
+      </div>
+    </section>
+
+    <section class="card chart-card">
+      <div class="card-title">上櫃：櫃買指數 ／ 融資餘額</div>
+      <div class="chart-wrap">
+        <canvas id="tpex-chart"></canvas>
       </div>
     </section>
   </main>

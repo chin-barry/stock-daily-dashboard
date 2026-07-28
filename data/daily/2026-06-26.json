@@ -29,9 +29,9 @@
       }
     },
     "margin": {
-      "marginBalance": 590925882.0,
-      "marginBalancePrev": 611000560.0,
-      "marginUnit": "仟元",
+      "marginBalance": 590925882000.0,
+      "marginBalancePrev": 611000560000.0,
+      "marginUnit": "元",
       "shortBalance": 203932.0,
       "shortBalancePrev": 199161.0,
       "shortUnit": "張"
@@ -45,9 +45,9 @@
     },
     "institutional": null,
     "margin": {
-      "marginBalance": 2397249.0,
-      "marginBalancePrev": 2447374.0,
-      "marginUnit": "張",
+      "marginBalance": 372859414710.0,
+      "marginBalancePrev": 382717519540.0,
+      "marginUnit": "元",
       "shortBalance": 34006.0,
       "shortBalancePrev": 34304.0,
       "shortUnit": "張"
