@@ -87,7 +87,7 @@
 │   ├── series/index.json      # 逐日累積的指數時間序列，前端畫趨勢圖用，避免要抓幾百個 daily 檔案
 │   ├── series/institutional.json
 │   ├── series/margin.json
-│   └── manifest.json          # 有資料的日期清單 + lastUpdated，前端用來產生日期選單
+│   └── manifest.json          # 有資料的日期清單 + lastUpdated，前端用來設定日期選擇的可選範圍
 ├── index.html                 # 靜態前端：今日卡片 + Chart.js 趨勢圖 + 歷史日期選擇
 ├── assets/style.css
 ├── assets/app.js
@@ -117,7 +117,7 @@
   全部在前端算，資料來源是已經載入的 `data/series/{index,margin,institutional}.json`，換區間不用重新打 API。
 - **近一個月表格**：兩張趨勢圖下方，抓最近 22 個交易日（約一個月），欄位是日期＋上市／上櫃各自的指數、融資餘額（億）、融資增減，增減用紅漲綠跌上色。
 - 趨勢圖（Chart.js）：兩張獨立圖表（上市一張、上櫃一張），各自疊加「指數」與「融資餘額（億元）」雙 Y 軸
-- 日期選單：切換查看任一歷史交易日的完整快照
+- 日期選擇：頂部日期、區間比較的起始／結束都是原生 `<input type="date">`（月曆式選擇，不是下拉選單，避免資料累積後選單太長），`min`/`max` 設成 `manifest.dates` 的範圍。原生 date input 沒辦法把範圍內個別沒資料的日子（週末、假日）標成不可選，選到這種日子時前端會優雅顯示「尚無資料」（`loadDate()` 改用 `fetchJSONOrNull()`，404 時回傳 `null` 而不是丟例外）。
 - **圖表放大燈箱**：4 張圖表（2 張區間比較走勢圖 + 2 張長期趨勢圖）的外層容器都有 `.chart-clickable`，點擊會跳出置中的彈出視窗，用同一份資料重畫一張大圖。做法是每個 `buildMarketChart()`／`buildRangeChart()` 呼叫時，把「重新產生目前 config」的函式存進 `chartConfigProviders[canvasId]`，點擊當下才呼叫這個函式建立 modal 圖表——這樣區間比較換日期後再點放大，看到的一定是當下選的區間，不是開燈箱那一刻的舊快照。關閉方式：點背景遮罩、點右上角關閉鈕、按 Esc。
 
 `assets/app.js` 的 `init()` 只在頁面載入時打一次 `data/series/{index,margin,institutional}.json`，存成三個 `Map`（`indexByDate`／`marginByDate`／`institutionalByDate`），區間比較、近一月表格、趨勢圖都共用這三個 Map，不會每個功能各自重複 fetch。
@@ -153,6 +153,6 @@
 
 - 本機執行 `python scripts/fetch_daily.py`，檢查 `data/daily/{today}.json` 內容與欄位。
 - 本機執行 `python scripts/backfill.py`，抽查幾個日期（含週末、國定假日應自動跳過）。
-- 本機起 `python -m http.server` 開 `index.html`，確認畫面讀得到 `data/`、圖表與卡片正確、切換日期選單資料會變。
+- 本機起 `python -m http.server` 開 `index.html`，確認畫面讀得到 `data/`、圖表與卡片正確、切換日期資料會變。
 - push 後檢查 GitHub repo 的 Actions 分頁 workflow 是否綠勾、`data/` 是否有新 commit。
 - 開啟 GitHub Pages 網址，確認能正常顯示當天資料。

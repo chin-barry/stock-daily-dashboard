@@ -11,7 +11,7 @@
     <h1>股市每日資訊</h1>
     <div class="controls">
       <label for="date-select">日期</label>
-      <select id="date-select"></select>
+      <input type="date" id="date-select">
       <span id="last-updated" class="last-updated"></span>
     </div>
   </header>
@@ -80,9 +80,9 @@
     <section class="card range-card">
       <div class="card-title">區間比較</div>
       <div class="range-controls">
-        <label>起始 <select id="range-start"></select></label>
+        <label>起始 <input type="date" id="range-start"></label>
         <span class="range-sep">～</span>
-        <label>結束 <select id="range-end"></select></label>
+        <label>結束 <input type="date" id="range-end"></label>
       </div>
 
       <div class="range-grid">

@@ -56,13 +56,16 @@ body {
   font-size: 0.9rem;
 }
 
-.controls select {
+.controls select,
+.controls input[type="date"] {
   font-size: 0.95rem;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
+  font-family: inherit;
+  color-scheme: light dark;
 }
 
 .last-updated {
@@ -220,13 +223,16 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
   margin-bottom: 1.2rem;
 }
 
-.range-controls select {
+.range-controls select,
+.range-controls input[type="date"] {
   font-size: 0.92rem;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text);
+  font-family: inherit;
+  color-scheme: light dark;
   margin-left: 0.4rem;
 }
 

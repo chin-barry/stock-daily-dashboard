@@ -6,6 +6,19 @@ async function fetchJSON(url) {
   return res.json();
 }
 
+// 月曆式日期選擇可以選到沒有資料的日子（週末、假日），這個版本抓不到（404）時
+// 回傳 null 而不是丟例外，讓呼叫端可以優雅顯示「尚無資料」。
+async function fetchJSONOrNull(url) {
+  const sep = url.includes("?") ? "&" : "?";
+  const res = await fetch(`${url}${sep}_=${Date.now()}`);
+  if (!res.ok) return null;
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 function signClass(n) {
   if (n > 0) return "up";
   if (n < 0) return "down";
@@ -101,9 +114,10 @@ function renderMarket(market, data) {
 }
 
 async function loadDate(date) {
-  const data = await fetchJSON(`data/daily/${date}.json`);
-  renderMarket("twse", data.twse);
-  renderMarket("tpex", data.tpex);
+  const data = await fetchJSONOrNull(`data/daily/${date}.json`);
+  const empty = { index: null, institutional: null, margin: null };
+  renderMarket("twse", data ? data.twse : empty);
+  renderMarket("tpex", data ? data.tpex : empty);
 }
 
 // 指數／融資／三大法人三個 series 檔案在好幾個功能裡都會用到（趨勢圖、區間比較、近一月
@@ -431,18 +445,23 @@ function renderRangeComparison() {
 
 function initRangeComparison() {
   const dates = [...indexByDate.keys()].sort(); // 舊到新
-  const optionsHtml = dates.map((d) => `<option value="${d}">${d}</option>`).join("");
-  const startSel = document.getElementById("range-start");
-  const endSel = document.getElementById("range-end");
-  startSel.innerHTML = optionsHtml;
-  endSel.innerHTML = optionsHtml;
+  const startInput = document.getElementById("range-start");
+  const endInput = document.getElementById("range-end");
 
   if (!dates.length) return;
-  endSel.value = dates[dates.length - 1];
-  startSel.value = dates[Math.max(0, dates.length - 21)]; // 預設約近一個月（20 個交易日）
 
-  startSel.addEventListener("change", renderRangeComparison);
-  endSel.addEventListener("change", renderRangeComparison);
+  const min = dates[0];
+  const max = dates[dates.length - 1];
+  startInput.min = min;
+  startInput.max = max;
+  endInput.min = min;
+  endInput.max = max;
+
+  endInput.value = max;
+  startInput.value = dates[Math.max(0, dates.length - 21)]; // 預設約近一個月（20 個交易日）
+
+  startInput.addEventListener("change", renderRangeComparison);
+  endInput.addEventListener("change", renderRangeComparison);
 
   renderRangeComparison();
 }
@@ -521,21 +540,25 @@ function initChartModal() {
 
 async function init() {
   const manifest = await fetchJSON("data/manifest.json");
-  const select = document.getElementById("date-select");
-  const dates = [...manifest.dates].sort().reverse();
-  select.innerHTML = dates.map((d) => `<option value="${d}">${d}</option>`).join("");
+  const dateInput = document.getElementById("date-select");
+  const dates = [...manifest.dates].sort().reverse(); // 新到舊
+
+  if (dates.length) {
+    dateInput.min = dates[dates.length - 1];
+    dateInput.max = dates[0];
+    dateInput.value = dates[0];
+  }
 
   const lastUpdatedEl = document.getElementById("last-updated");
   lastUpdatedEl.textContent = manifest.lastUpdated
     ? `最後更新：${new Date(manifest.lastUpdated).toLocaleString("zh-TW")}`
     : "";
 
-  select.addEventListener("change", () => loadDate(select.value));
+  dateInput.addEventListener("change", () => loadDate(dateInput.value));
 
   await loadAllSeries();
 
   if (dates.length) {
-    select.value = dates[0];
     await loadDate(dates[0]);
   }
 
