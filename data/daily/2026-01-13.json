@@ -4,7 +4,9 @@
     "index": {
       "close": 30707.22,
       "change": 139.93,
-      "changePercent": 0.46
+      "changePercent": 0.46,
+      "high": 30973.85,
+      "low": 30529.33
     },
     "institutional": {
       "foreign": {
@@ -41,7 +43,9 @@
     "index": {
       "close": 285.36,
       "change": -1.21,
-      "changePercent": -0.42223540496213835
+      "changePercent": -0.42223540496213835,
+      "high": 288.94,
+      "low": 282.51
     },
     "institutional": {
       "foreign": {

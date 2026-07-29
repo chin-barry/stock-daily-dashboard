@@ -14,7 +14,8 @@
 
 | 項目 | 端點 | 說明 |
 |---|---|---|
-| 大盤指數 | `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?response=json&date=YYYYMMDD&type=ALL` | 從 `tables` 裡找列名為「發行量加權股價指數」的那一列。⚠️「漲跌點數」欄只給量值（要配合顏色 `color:red`/`color:green` 判斷正負），但「漲跌百分比」欄有時已經自帶負號——兩欄簽名慣例不一致，程式裡分開處理 |
+| 大盤指數（收盤／漲跌） | `https://www.twse.com.tw/rwd/zh/afterTrading/MI_INDEX?response=json&date=YYYYMMDD&type=ALL` | 從 `tables` 裡找列名為「發行量加權股價指數」的那一列。⚠️「漲跌點數」欄只給量值（要配合顏色 `color:red`/`color:green` 判斷正負），但「漲跌百分比」欄有時已經自帶負號——兩欄簽名慣例不一致，程式裡分開處理 |
+| 大盤指數（日內最高／最低） | `https://www.twse.com.tw/rwd/zh/TAIEX/MI_5MINS_HIST?response=json&date=YYYYMMDD` | 帶任一天的日期會回傳「整個月」每個交易日的開高低收（`fields: 日期,開盤指數,最高指數,最低指數,收盤指數`，日期格式民國年 `115/06/23`）。已用 6/23 實測數字（最高 48218.87）驗證。`fetch_twse_index()` 內部會另外呼叫這支端點取得 `high`／`low`，`MI_INDEX` 只提供收盤／漲跌，兩支合併成完整的 index 物件；`fetch_twse_index_month_high_low()` 是月批次版本，backfill 情境用來避免同一個月重複打好幾次 |
 | 三大法人買賣金額（全市場合計） | `https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&dayDate=YYYYMMDD&type=day` | 回傳自營商(自行買賣)／自營商(避險)／投信／外資及陸資／外資自營商／合計 六列的買進、賣出、買賣差額。⚠️「外資及陸資」這列名稱偶爾會帶「(不含外資自營商)」字尾，比對時用前綴比對而非完全相等；「外資自營商」金額官方已經算進自營商合計裡了，不能再另外加總一次 |
 | 融資融券餘額（全市場合計） | `https://www.twse.com.tw/rwd/zh/marginTrading/MI_MARGN?response=json&date=YYYYMMDD&selectType=ALL` | 回傳的 `tables[0]`「信用交易統計」就是全市場彙總，不用自己加總個股：`融資金額(仟元)` 列有前日/今日餘額（程式裡換算成「元」存，跟 TPEx 那邊單位統一），`融券(交易單位)` 列有前日/今日餘額（張）；這份資料**沒有**融券金額的仟元合計，只有張數 |
 
@@ -28,7 +29,7 @@
 
 | 項目 | 端點 | 說明 |
 |---|---|---|
-| 大盤指數 | `https://www.tpex.org.tw/openapi/v1/tpex_index` | 欄位 `Date, Open, High, Low, Close, Change`。只回傳近期滾動資料（實測回傳當月 1 日至今），不支援日期參數 |
+| 大盤指數 | `https://www.tpex.org.tw/openapi/v1/tpex_index` | 欄位 `Date, Open, High, Low, Close, Change`，`High`／`Low` 就是當天日內最高/最低價，直接取用。只回傳近期滾動資料（實測回傳當月 1 日至今），不支援日期參數 |
 | 三大法人買賣超（全市場合計） | `https://www.tpex.org.tw/openapi/v1/tpex_3insti_summary` | 欄位 `Date, Investor, PurchaseAmount, SaleAmount, Net`；`Investor` 用到的三個精確字串是「外資及陸資合計」「投信」「自營商合計」，另外有現成的「三大法人合計*」總計列可以直接用，不用自己加總 |
 | 融資融券餘額 | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_margin_balance` | 欄位 `MarginPurchaseBalance, MarginPurchaseBalancePreviousDay, ShortSaleBalance, ShortSaleBalancePreviousDay`（張），是逐檔個股資料，腳本裡加總全部個股 |
 | 收盤價（換算融資金額用） | `https://www.tpex.org.tw/openapi/v1/tpex_mainboard_daily_close_quotes` | 逐檔個股收盤價，跟上面融資融券資料用同一個 `SecuritiesCompanyCode` 欄位對應股票代號 |
@@ -51,7 +52,7 @@
 
 | 項目 | 端點 | 說明 |
 |---|---|---|
-| 大盤指數 | `https://www.tpex.org.tw/web/stock/iNdex_info/inxh/Inx_result.php?l=zh-tw&d=115/07&o=json` | 帶「民國年/月」（不含日）一次回傳整個月每個交易日的開高低收與漲跌，回補時用月份迴圈抓，比逐日呼叫有效率 |
+| 大盤指數 | `https://www.tpex.org.tw/web/stock/iNdex_info/inxh/Inx_result.php?l=zh-tw&d=115/07&o=json` | 帶「民國年/月」（不含日）一次回傳整個月每個交易日的開高低收與漲跌，`high`／`low` 直接取用，回補時用月份迴圈抓，比逐日呼叫有效率 |
 | 融資融券餘額 | `https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&d=115/07/27&o=json` | 逐檔個股資料，欄位有清楚命名（`前資餘額(張)`、`資餘額`、`前券餘額(張)`、`券餘額`…）；金額換算跟每日排程一樣，另外用 `stk_wn1430_result.php?l=zh-tw&d=115/07/27&se=EW&o=json`（同一天的收盤價，legacy 版）做 join |
 | ~~三大法人買賣超~~ | ~~`3itrade_hedge_result.php`~~ | **沒有用這支端點做歷史回補**：這支 legacy 端點雖然存在（`/web/stock/3insti/daily_trade/3itrade_hedge_result.php`），但回傳的是逐檔個股、7 組買賣超股數，7 組欄位沒有標名稱、分類順序沒有官方文件佐證，貿然假設順序去加總誤植的風險太高，所以選擇不做。歷史三大法人資料後來改用下面「用 Report.csv 補齊」的方式一次性匯入 |
 
@@ -79,7 +80,8 @@
 │   ├── fetch_daily.py                  # 抓「今天」資料，寫入 daily + 附加進 series
 │   ├── backfill.py                     # 一次性：迴圈 2026-01-01 至今的交易日，補齊 data/
 │   ├── apply_official_tpex_margin.py   # 一次性：把最近 10 個交易日的 TPEx 融資估算值換成 dayChart.json 官方值
-│   └── import_tpex_report_csv.py       # 一次性：用 Report.csv 補齊 TPEx 歷史融資融券與三大法人（見下方說明）
+│   ├── import_tpex_report_csv.py       # 一次性：用 Report.csv 補齊 TPEx 歷史融資融券與三大法人（見下方說明）
+│   └── backfill_index_high_low.py      # 一次性：幫已回補的 data/daily 補上指數日內最高/最低價
 ├── data/
 │   ├── daily/{date}.json      # 當日完整快照（index / institutional / margin，各分 twse、tpex）
 │   ├── series/index.json      # 逐日累積的指數時間序列，前端畫趨勢圖用，避免要抓幾百個 daily 檔案
@@ -107,7 +109,7 @@
 
 - 今日卡片：大盤指數（含漲跌／漲跌%）、三大法人買賣超金額、融資融券餘額（含較前日增減），上市／上櫃分開顯示
 - **區間比較**：兩個日期選擇器（起始／結束，內容來自 `manifest.dates`，預設抓最近約 20 個交易日），上市／上櫃各自顯示：
-  - 指數漲跌：直接用「起始日收盤 → 結束日收盤」算點數／%（使用者本來就會挑波段最高那天當起始日，不用另外搜尋）。
+  - 指數漲跌：用「起始日最高價 → 結束日最低價」算點數／%（使用者本來就會挑波段最高那天當起始日，不用另外在區間裡搜尋）。
   - 融資餘額變化：**高點是在整個區間裡搜尋最大值**（不限定哪一天，融資部位的高峰常常跟指數高點對不上同一天）、**低點固定用結束日當天的實際餘額**，算出金額／%——跟指數「端點對端點」的算法不一樣，兩個 stat tile 底下都有小字註明實際取用的日期和數值，方便核對。
   - 三大法人買賣超區間累計（把區間內每天的 `net` 加總）。
   - 一張「相對起始日變化 %」的走勢圖（指數與融資餘額都換算成 % 疊在同一張圖，方便看兩者是不是同向；這張圖的基準點固定用起始日，跟上面融資 stat tile 用「區間最高點」當基準不同，圖表著重看整段走勢、stat tile 著重抓最大變化量）。
@@ -144,7 +146,7 @@
 6. **拿掉「官方優先、估算 fallback」，改成「只信任官方，沒有就顯示尚未公布」**：item 3 那個 fallback 邏輯有個縫隙——`dayChart.json`（官方金額）跟逐檔張數資料（`tpex_mainboard_margin_balance`）不是同時更新，如果張數先出來、官方金額還沒出來，`fetch_tpex_margin_latest()` 會退回去用估算值，顯示沒扣融資成數、偏高的市值當融資餘額，跟 item 3 修的問題一樣會誤導人。改成 `fetch_tpex_margin_latest()` 只信任 `fetch_tpex_margin_value_official()`：官方數字還沒出來時 `marginBalance`／`marginBalancePrev` 是 `null`、`source` 是 `"pending"`，前端顯示「尚未公布」而不是錯誤的估算數字；融券張數不受影響（一律用逐檔資料加總，本來就準確，沒有估算問題，跟融資金額是否公布無關）。因為「latest」路徑不再需要估算邏輯，順手刪掉了已經沒人呼叫的 `_build_tpex_margin()` 與 `fetch_tpex_close_prices_latest()`（`fetch_tpex_margin_by_date()` 那條 backfill 專用路徑不受影響，繼續保留自己的估算邏輯，只用在 CSV 涵蓋不到的未來回補情境）。
 7. **上櫃融資金額跟融券張數公布時間不同步，導致有資料也顯示不出來**：item 6 修完後，實測發現融資金額（`dayChart.json`）跟融券張數（原本用另一支逐檔資料 `tpex_mainboard_margin_balance` 加總）公布時間常常對不上，某天融資金額已經出來、逐檔張數卻還停在前一天，而 `fetch_tpex_margin_latest()` 是用「張數資料的日期」當進入判斷的關卡，張數沒到就連已經公布的融資金額也一起被吃掉、整包回傳 `None`。後來發現 `dayChart.json` 本身同時有 `marginPurchaseValue10Days`（融資）跟 `shortSell10Days`（融券張數），是同一次呼叫拿到的，`dataDate` 保證一致——改成兩個數字都從 `dayChart.json` 拿（新的 `fetch_tpex_credit_official()`），不再需要 `tpex_mainboard_margin_balance`，從根本解決同步問題，而不是讓兩邊各自判斷日期去繞過它。
 8. **單一排程時間抓不齊三大法人跟融資融券**：兩者公布時間差很多（三大法人較早、融資融券實測約 21:10 前後才出來），單一個 18:00 的排程沒辦法兩個都保證抓到。改成兩個時段：台北時間 16:30（主要抓三大法人）與 21:30（主要補融資融券），`fetch-daily.yml` 的 `on.schedule` 加了第二筆 cron。兩次執行都是全量抓取，沒有互相依賴，缺的欄位由較晚那次自然補上。
-9. **區間比較的指數「高/低」本來想抓當日真正的最高/最低價，暫時用收盤價代替**：使用者原本的需求是「起始日的最高點 → 結束日的最低點」（日內最高/最低價，不是收盤價）。實測發現目前用的 TWSE 端點（`MI_INDEX`）**沒有加權指數的日內最高/最低價**，只有收盤指數；TPEx 這邊資料來源（`tpex_index` openapi、`Inx_result.php`）其實有 Open/High/Low/Close，只是程式目前只抓了收盤、把最高最低丟掉沒存。討論後決定：**先用收盤價代替兩邊都先上線**（`起始日收盤 → 結束日收盤`，上市/上櫃算法一致），之後有空再找 TWSE 有沒有提供加權指數日內高低價的端點，找到後兩邊一起改成真正的日內最高/最低價（TPEx 到時候只要改抓 High/Low 欄位就好，不用再找新端點）。
+9. **區間比較的指數「高/低」補上真正的日內最高/最低價**：一開始 TWSE 端點（`MI_INDEX`）沒有加權指數的日內高低價，只能先用收盤價代替上線（見上一版本紀錄）。後來找到 `MI_5MINS_HIST` 這支端點（用 6/23 實測驗證：收盤 47100.65、真正最高 48218.87，兩者換算跌幅差了 2.37 個百分點，證實有必要修正），`fetch_twse_index()` 改成同時打 `MI_INDEX`（收盤/漲跌）跟 `MI_5MINS_HIST`（高/低）合併成完整的 index 物件；TPEx 那邊的資料來源本來就有 High/Low，只是補上兩個欄位。寫了一次性腳本 `scripts/backfill_index_high_low.py`，只更新已回補 135 天的 `index.high`／`index.low`（照月份批次抓，不會同一個月重複打好幾次），不動 margin／institutional。前端 `renderRangeMarket()` 的指數段落改成「起始日最高 → 結束日最低」。
 
 ## 驗證方式
 

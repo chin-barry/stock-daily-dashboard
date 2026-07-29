@@ -258,6 +258,8 @@ function shortDate(iso) {
 function renderRangeMarket(market, start, end) {
   const panel = document.querySelector(`.range-market[data-market="${market}"]`);
   const closeKey = market === "twse" ? "twseClose" : "tpexClose";
+  const highKey = market === "twse" ? "twseHigh" : "tpexHigh";
+  const lowKey = market === "twse" ? "twseLow" : "tpexLow";
   const indexLabel = market === "twse" ? "加權指數 %" : "櫃買指數 %";
   const indexColor = market === "twse" ? "#2f5fd6" : "#d68c2f";
 
@@ -268,21 +270,21 @@ function renderRangeMarket(market, start, end) {
   const marginChangePctEl = panel.querySelector('[data-field="marginChangePct"]');
   const marginDetailEl = panel.querySelector('[data-field="marginDetail"]');
 
-  // 指數：起始日當高點、結束日當低點（使用者本來就會挑波段最高那天當起始日，
-  // 所以不用另外在區間裡搜尋，直接用兩個端點的收盤值）。
+  // 指數：起始日的最高價 → 結束日的最低價（使用者本來就會挑波段最高那天當起始日，
+  // 所以不用另外在區間裡搜尋，直接用兩個端點當天的高/低價）。
   const startIdxRow = indexByDate.get(start);
   const endIdxRow = indexByDate.get(end);
-  const startClose = startIdxRow ? startIdxRow[closeKey] : null;
-  const endClose = endIdxRow ? endIdxRow[closeKey] : null;
+  const startHigh = startIdxRow ? startIdxRow[highKey] : null;
+  const endLow = endIdxRow ? endIdxRow[lowKey] : null;
 
-  if (startClose != null && endClose != null) {
-    const diff = endClose - startClose;
-    const pct = (diff / startClose) * 100;
+  if (startHigh != null && endLow != null) {
+    const diff = endLow - startHigh;
+    const pct = (diff / startHigh) * 100;
     indexChangeEl.textContent = fmtSigned(diff, 2);
     indexChangeEl.className = `stat-value ${signClass(diff)}`;
     indexChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
     indexChangePctEl.className = `stat-sub ${signClass(diff)}`;
-    indexDetailEl.textContent = `${fmtIndexValue(startClose)}(${shortDate(start)}) → ${fmtIndexValue(endClose)}(${shortDate(end)})`;
+    indexDetailEl.textContent = `高 ${fmtIndexValue(startHigh)}(${shortDate(start)}) → 低 ${fmtIndexValue(endLow)}(${shortDate(end)})`;
   } else {
     indexChangeEl.textContent = "資料不足";
     indexChangeEl.className = "stat-value flat";
@@ -319,7 +321,9 @@ function renderRangeMarket(market, start, end) {
     marginDetailEl.textContent = "";
   }
 
-  // 走勢圖：區間內每個交易日，指數／融資都換算成「相對起始日」的變化 %，方便比較走勢
+  // 走勢圖：區間內每個交易日的收盤，換算成「相對起始日收盤」的變化 %（跟上面 stat tile
+  // 用高/低價的算法不同，這裡是為了畫出平滑的逐日走勢，用收盤價當基準比較合理）。
+  const startClose = startIdxRow ? startIdxRow[closeKey] : null;
   const startMarginRow = marginByDate.get(start);
   const startMarginValue = startMarginRow && startMarginRow[market] ? startMarginRow[market].marginBalance : null;
   const indexPctSeries = [];

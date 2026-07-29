@@ -185,18 +185,49 @@ def fetch_twse_index(date_ymd):
     )
     if not data:
         return None
+    result = None
     for table in data.get("tables", []):
         for row in table.get("data") or []:
             if row and row[0] == "發行量加權股價指數":
                 # TWSE 的「漲跌點數」欄只給量值（要靠顏色判斷正負），但「漲跌百分比」欄
                 # 有時已經自帶負號——兩欄的簽名慣例不一致，所以分開判斷、已有負號的直接信任。
                 sign = -1 if "green" in row[2] else 1
-                return {
+                result = {
                     "close": _num(row[1]),
                     "change": _signed(row[3], sign),
                     "changePercent": _signed(row[4], sign),
                 }
-    return None
+                break
+        if result:
+            break
+    if not result:
+        return None
+
+    # MI_INDEX 沒有日內最高/最低，另外從 MI_5MINS_HIST 撈（同樣是整個月一次回來，這裡只挑
+    # 目標那一天）。抓不到就用收盤價頂著，不讓整個 index 因為這個次要欄位變成 None。
+    month_high_low = fetch_twse_index_month_high_low(date_ymd)
+    high, low = month_high_low.get(ymd8_to_iso(date_ymd), (None, None))
+    result["high"] = high if high is not None else result["close"]
+    result["low"] = low if low is not None else result["close"]
+    return result
+
+
+def fetch_twse_index_month_high_low(date_ymd):
+    """date_ymd: 西元 'YYYYMMDD'（月份內任一天皆可，端點本身是照月份回傳整批）。
+    回傳 {iso_date: (high, low)}，查無資料時回傳 {}。獨立成月批次函式方便 backfill
+    情境重複使用同一個月的資料，不用每天都重打一次同一個月的請求。
+    """
+    data = fetch_twse_legacy(
+        "https://www.twse.com.tw/rwd/zh/TAIEX/MI_5MINS_HIST",
+        {"response": "json", "date": date_ymd},
+    )
+    if not data:
+        return {}
+    result = {}
+    for row in data.get("data", []):
+        roc_y, m, d = row[0].split("/")
+        result[f"{int(roc_y) + 1911}-{m}-{d}"] = (_num(row[2]), _num(row[3]))
+    return result
 
 
 def fetch_twse_institutional(date_ymd):
@@ -268,7 +299,13 @@ def fetch_tpex_index_latest(target_date_iso):
     change = _num(last["Change"])
     prev_close = close - change
     change_pct = (change / prev_close * 100) if prev_close else 0.0
-    return {"close": close, "change": change, "changePercent": change_pct}
+    return {
+        "close": close,
+        "change": change,
+        "changePercent": change_pct,
+        "high": _num(last["High"]),
+        "low": _num(last["Low"]),
+    }
 
 
 def fetch_tpex_institutional_latest(target_date_iso):
@@ -424,6 +461,8 @@ def fetch_tpex_index_month(roc_year_month):
                 "close": close,
                 "change": change,
                 "changePercent": change_pct,
+                "high": _num(row[2]),
+                "low": _num(row[3]),
             }
         )
     return result
