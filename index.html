@@ -111,7 +111,7 @@
               <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
             </tbody>
           </table>
-          <div class="chart-wrap range-chart-wrap">
+          <div class="chart-wrap range-chart-wrap chart-clickable" data-title="上市：融資餘額相對起始日變化 %">
             <canvas id="twse-range-chart"></canvas>
           </div>
         </div>
@@ -141,7 +141,7 @@
               <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
             </tbody>
           </table>
-          <div class="chart-wrap range-chart-wrap">
+          <div class="chart-wrap range-chart-wrap chart-clickable" data-title="上櫃：融資餘額相對起始日變化 %">
             <canvas id="tpex-range-chart"></canvas>
           </div>
         </div>
@@ -150,14 +150,14 @@
 
     <section class="card chart-card">
       <div class="card-title">上市：加權指數 ／ 融資餘額</div>
-      <div class="chart-wrap">
+      <div class="chart-wrap chart-clickable" data-title="上市：加權指數 ／ 融資餘額">
         <canvas id="twse-chart"></canvas>
       </div>
     </section>
 
     <section class="card chart-card">
       <div class="card-title">上櫃：櫃買指數 ／ 融資餘額</div>
-      <div class="chart-wrap">
+      <div class="chart-wrap chart-clickable" data-title="上櫃：櫃買指數 ／ 融資餘額">
         <canvas id="tpex-chart"></canvas>
       </div>
     </section>
@@ -187,6 +187,19 @@
     資料來源：<a href="https://openapi.twse.com.tw/" target="_blank" rel="noopener">台灣證券交易所</a>、
     <a href="https://www.tpex.org.tw/openapi/" target="_blank" rel="noopener">證券櫃檯買賣中心</a>
   </footer>
+
+  <div id="chart-modal" class="chart-modal">
+    <div class="chart-modal-backdrop"></div>
+    <div class="chart-modal-panel">
+      <div class="chart-modal-header">
+        <span id="chart-modal-title"></span>
+        <button type="button" class="chart-modal-close" aria-label="關閉">✕</button>
+      </div>
+      <div class="chart-modal-body">
+        <canvas id="modal-chart"></canvas>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="assets/app.js"></script>

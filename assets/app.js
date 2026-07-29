@@ -123,8 +123,21 @@ async function loadAllSeries() {
   institutionalByDate = new Map(institutionalSeries.map((r) => [r.date, r]));
 }
 
-function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues, labels) {
-  new Chart(document.getElementById(canvasId), {
+// 圖表放大燈箱要能重畫「目前」的圖（尤其區間比較會隨日期選擇器換資料），所以每張圖表
+// 除了自己的 Chart 實例，另外存一個「重新產生目前 config」的函式，點擊當下才呼叫，
+// 不會拿到開燈箱那一刻已經過期的舊資料快照。
+const chartInstances = {}; // canvasId -> Chart 實例
+const chartConfigProviders = {}; // canvasId -> () => Chart.js config
+
+function renderChart(canvasId, config) {
+  if (chartInstances[canvasId]) {
+    chartInstances[canvasId].destroy();
+  }
+  chartInstances[canvasId] = new Chart(document.getElementById(canvasId), config);
+}
+
+function trendChartConfig(labels, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues) {
+  return {
     type: "line",
     data: {
       labels,
@@ -169,7 +182,13 @@ function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginL
         },
       },
     },
-  });
+  };
+}
+
+function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues, labels) {
+  const config = () => trendChartConfig(labels, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues);
+  chartConfigProviders[canvasId] = config;
+  renderChart(canvasId, config());
 }
 
 function renderCharts() {
@@ -205,13 +224,8 @@ function renderCharts() {
 
 // ---------- 區間比較 ----------
 
-const rangeCharts = {}; // canvasId -> Chart instance，換區間時要先 destroy 舊的再畫新的
-
-function buildRangeChart(canvasId, labels, indexPct, marginPct, indexLabel, indexColor) {
-  if (rangeCharts[canvasId]) {
-    rangeCharts[canvasId].destroy();
-  }
-  rangeCharts[canvasId] = new Chart(document.getElementById(canvasId), {
+function rangeChartConfig(labels, indexPct, marginPct, indexLabel, indexColor) {
+  return {
     type: "line",
     data: {
       labels,
@@ -246,7 +260,13 @@ function buildRangeChart(canvasId, labels, indexPct, marginPct, indexLabel, inde
         },
       },
     },
-  });
+  };
+}
+
+function buildRangeChart(canvasId, labels, indexPct, marginPct, indexLabel, indexColor) {
+  const config = () => rangeChartConfig(labels, indexPct, marginPct, indexLabel, indexColor);
+  chartConfigProviders[canvasId] = config;
+  renderChart(canvasId, config());
 }
 
 // "2026-07-13" -> "7/13"
@@ -462,6 +482,43 @@ function renderMonthlyTable() {
     .join("");
 }
 
+// ---------- 圖表放大燈箱 ----------
+
+let modalChart = null;
+
+function openChartModal(canvasId, title) {
+  const provider = chartConfigProviders[canvasId];
+  if (!provider) return;
+  document.getElementById("chart-modal-title").textContent = title || "";
+  if (modalChart) {
+    modalChart.destroy();
+  }
+  modalChart = new Chart(document.getElementById("modal-chart"), provider());
+  document.getElementById("chart-modal").classList.add("open");
+}
+
+function closeChartModal() {
+  document.getElementById("chart-modal").classList.remove("open");
+  if (modalChart) {
+    modalChart.destroy();
+    modalChart = null;
+  }
+}
+
+function initChartModal() {
+  document.querySelectorAll(".chart-clickable").forEach((el) => {
+    el.addEventListener("click", () => {
+      const canvas = el.querySelector("canvas");
+      if (canvas) openChartModal(canvas.id, el.dataset.title || "");
+    });
+  });
+  document.querySelector(".chart-modal-backdrop").addEventListener("click", closeChartModal);
+  document.querySelector(".chart-modal-close").addEventListener("click", closeChartModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeChartModal();
+  });
+}
+
 async function init() {
   const manifest = await fetchJSON("data/manifest.json");
   const select = document.getElementById("date-select");
@@ -485,6 +542,7 @@ async function init() {
   renderCharts();
   initRangeComparison();
   renderMonthlyTable();
+  initChartModal();
 }
 
 init();

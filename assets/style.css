@@ -147,6 +147,66 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
   overflow-x: auto;
 }
 
+.chart-clickable {
+  cursor: zoom-in;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+.chart-clickable:hover { background: var(--bg); }
+
+/* ---- 圖表放大燈箱 ---- */
+.chart-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.chart-modal.open { display: flex; }
+
+.chart-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.chart-modal-panel {
+  position: relative;
+  width: min(90vw, 900px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.2rem 1.2rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.chart-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.chart-modal-close {
+  border: none;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.chart-modal-close:hover { color: var(--text); }
+
+.chart-modal-body {
+  position: relative;
+  height: min(60vh, 520px);
+}
+
 /* ---- 區間比較 ---- */
 .range-card { padding-bottom: 1.5rem; }
 
