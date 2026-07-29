@@ -292,28 +292,32 @@ function renderRangeMarket(market, start, end) {
     indexDetailEl.textContent = "";
   }
 
-  // 融資：高點要在整個區間裡搜尋（不一定是起始日），低點固定用結束日的實際餘額——
-  // 融資部位的高峰常常跟指數高點對不上同一天，跟指數那組端點對端點的算法不一樣。
+  // 融資：高點、低點都在整個區間裡搜尋（不假設哪一天是高或低）——這樣不管是下跌波段
+  // （高點在前、低點在後）還是上漲波段（低點在前、高點在後）都抓得到；顯示時依實際發生
+  // 的時間先後排序，較早的一筆當起點、較晚的一筆當終點，正負號才會跟漲跌方向一致。
   const datesInRange = [...indexByDate.keys()].filter((d) => d >= start && d <= end).sort();
-  let marginPeak = null; // { date, value }
+  let marginHigh = null; // { date, value }
+  let marginLow = null;
   for (const d of datesInRange) {
     const row = marginByDate.get(d);
     const m = row && row[market];
-    if (m && m.marginBalance != null && (!marginPeak || m.marginBalance > marginPeak.value)) {
-      marginPeak = { date: d, value: m.marginBalance };
+    if (m && m.marginBalance != null) {
+      if (!marginHigh || m.marginBalance > marginHigh.value) marginHigh = { date: d, value: m.marginBalance };
+      if (!marginLow || m.marginBalance < marginLow.value) marginLow = { date: d, value: m.marginBalance };
     }
   }
-  const endMarginRow = marginByDate.get(end);
-  const endMargin = endMarginRow && endMarginRow[market] ? endMarginRow[market].marginBalance : null;
 
-  if (marginPeak && endMargin != null) {
-    const diff = endMargin - marginPeak.value;
-    const pct = (diff / marginPeak.value) * 100;
+  if (marginHigh && marginLow) {
+    const [earlier, later] = marginHigh.date <= marginLow.date ? [marginHigh, marginLow] : [marginLow, marginHigh];
+    const earlierLabel = earlier === marginHigh ? "高" : "低";
+    const laterLabel = later === marginHigh ? "高" : "低";
+    const diff = later.value - earlier.value;
+    const pct = (diff / earlier.value) * 100;
     marginChangeEl.textContent = `${fmtSigned(diff / 1e8, 2)} 億`;
     marginChangeEl.className = `stat-value ${signClass(diff)}`;
     marginChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
     marginChangePctEl.className = `stat-sub ${signClass(diff)}`;
-    marginDetailEl.textContent = `${(marginPeak.value / 1e8).toFixed(2)}億(${shortDate(marginPeak.date)}) → ${(endMargin / 1e8).toFixed(2)}億(${shortDate(end)})`;
+    marginDetailEl.textContent = `${earlierLabel} ${(earlier.value / 1e8).toFixed(2)}億(${shortDate(earlier.date)}) → ${laterLabel} ${(later.value / 1e8).toFixed(2)}億(${shortDate(later.date)})`;
   } else {
     marginChangeEl.textContent = "資料不足";
     marginChangeEl.className = "stat-value flat";
