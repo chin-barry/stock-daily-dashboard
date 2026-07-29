@@ -137,7 +137,7 @@
 
 ## 上線後的修正紀錄
 
-網站上線、GitHub Pages 打得開之後，使用者實測回饋了兩個問題並已修正：
+網站上線、GitHub Pages 打得開之後，陸續修正的問題與新增的功能（依時間順序）：
 
 1. **TPEx 融資餘額單位跟 TWSE 對不起來**：原本 TPEx 顯示張數、TWSE 顯示金額，改成用張數×收盤價換算法，統一都用「元」，前端統一用「億元」呈現。因為這個改動影響所有歷史資料的 schema，`data/` 整批清空後用新版 `common.py` 重新跑過一次 `backfill.py`。
 2. **趨勢圖 Y 軸太短、沒刻度，且要求拆成上市／上櫃各一張**：原因是 canvas 寫死了 `height="90"` 又沒設 `maintainAspectRatio: false`，改成外層 `.chart-wrap` 給固定高度（320px）＋ `maintainAspectRatio: false`；並把單一圖表拆成 `#twse-chart` / `#tpex-chart` 兩張，各自疊加指數（左軸）與融資餘額（右軸）。
@@ -147,7 +147,11 @@
 6. **拿掉「官方優先、估算 fallback」，改成「只信任官方，沒有就顯示尚未公布」**：item 3 那個 fallback 邏輯有個縫隙——`dayChart.json`（官方金額）跟逐檔張數資料（`tpex_mainboard_margin_balance`）不是同時更新，如果張數先出來、官方金額還沒出來，`fetch_tpex_margin_latest()` 會退回去用估算值，顯示沒扣融資成數、偏高的市值當融資餘額，跟 item 3 修的問題一樣會誤導人。改成 `fetch_tpex_margin_latest()` 只信任 `fetch_tpex_margin_value_official()`：官方數字還沒出來時 `marginBalance`／`marginBalancePrev` 是 `null`、`source` 是 `"pending"`，前端顯示「尚未公布」而不是錯誤的估算數字；融券張數不受影響（一律用逐檔資料加總，本來就準確，沒有估算問題，跟融資金額是否公布無關）。因為「latest」路徑不再需要估算邏輯，順手刪掉了已經沒人呼叫的 `_build_tpex_margin()` 與 `fetch_tpex_close_prices_latest()`（`fetch_tpex_margin_by_date()` 那條 backfill 專用路徑不受影響，繼續保留自己的估算邏輯，只用在 CSV 涵蓋不到的未來回補情境）。
 7. **上櫃融資金額跟融券張數公布時間不同步，導致有資料也顯示不出來**：item 6 修完後，實測發現融資金額（`dayChart.json`）跟融券張數（原本用另一支逐檔資料 `tpex_mainboard_margin_balance` 加總）公布時間常常對不上，某天融資金額已經出來、逐檔張數卻還停在前一天，而 `fetch_tpex_margin_latest()` 是用「張數資料的日期」當進入判斷的關卡，張數沒到就連已經公布的融資金額也一起被吃掉、整包回傳 `None`。後來發現 `dayChart.json` 本身同時有 `marginPurchaseValue10Days`（融資）跟 `shortSell10Days`（融券張數），是同一次呼叫拿到的，`dataDate` 保證一致——改成兩個數字都從 `dayChart.json` 拿（新的 `fetch_tpex_credit_official()`），不再需要 `tpex_mainboard_margin_balance`，從根本解決同步問題，而不是讓兩邊各自判斷日期去繞過它。
 8. **單一排程時間抓不齊三大法人跟融資融券**：兩者公布時間差很多（三大法人較早、融資融券實測約 21:10 前後才出來），單一個 18:00 的排程沒辦法兩個都保證抓到。改成兩個時段：台北時間 16:30（主要抓三大法人）與 21:30（主要補融資融券），`fetch-daily.yml` 的 `on.schedule` 加了第二筆 cron。兩次執行都是全量抓取，沒有互相依賴，缺的欄位由較晚那次自然補上。
-9. **區間比較的指數「高/低」補上真正的日內最高/最低價**：一開始 TWSE 端點（`MI_INDEX`）沒有加權指數的日內高低價，只能先用收盤價代替上線（見上一版本紀錄）。後來找到 `MI_5MINS_HIST` 這支端點（用 6/23 實測驗證：收盤 47100.65、真正最高 48218.87，兩者換算跌幅差了 2.37 個百分點，證實有必要修正），`fetch_twse_index()` 改成同時打 `MI_INDEX`（收盤/漲跌）跟 `MI_5MINS_HIST`（高/低）合併成完整的 index 物件；TPEx 那邊的資料來源本來就有 High/Low，只是補上兩個欄位。寫了一次性腳本 `scripts/backfill_index_high_low.py`，只更新已回補 135 天的 `index.high`／`index.low`（照月份批次抓，不會同一個月重複打好幾次），不動 margin／institutional。前端 `renderRangeMarket()` 的指數段落改成「起始日最高 → 結束日最低」。
+9. **區間比較的指數「高/低」補上真正的日內最高/最低價**：一開始 TWSE 端點（`MI_INDEX`）沒有加權指數的日內高低價，只能先用收盤價代替上線（見上一版本紀錄）。後來找到 `MI_5MINS_HIST` 這支端點（用 6/23 實測驗證：收盤 47100.65、真正最高 48218.87，兩者換算跌幅差了 2.37 個百分點，證實有必要修正），`fetch_twse_index()` 改成同時打 `MI_INDEX`（收盤/漲跌）跟 `MI_5MINS_HIST`（高/低）合併成完整的 index 物件；TPEx 那邊的資料來源本來就有 High/Low，只是補上兩個欄位。寫了一次性腳本 `scripts/backfill_index_high_low.py`，只更新已回補 135 天的 `index.high`／`index.low`（照月份批次抓，不會同一個月重複打好幾次），不動 margin／institutional。前端當時改成「起始日最高 → 結束日最低」——這個算法後來在 item 11 又被修正過，見下方。
+10. **區間比較的融資餘額高低點都改成區間內搜尋，不再固定用結束日**：原本融資低點固定用結束日的實際餘額，分析下跌波段沒問題，但上漲波段（融資低點通常在區間中段偏前，不是結束日）比較不出來。改成高點、低點都在區間內搜尋，依實際發生的時間先後排序決定起訖點與正負號方向，兩種波段都驗證過（1/2~1/28 上漲、6/23~7/28 下跌）。
+11. **區間比較的指數改成依漲跌方向決定起點與搜尋方式**：item 9 那版「起始日最高 → 結束日最低」只適用於使用者刻意選「波段最高那天當起始日」的下跌分析情境，遇到上漲區間（例如 1/2~7/28，指數從約 29000 漲到 41600）會把方向跟數字都搞反。改成先用起始/結束日收盤判斷這段是漲是跌：上漲時起始日最低點當起漲點、最高點在整個區間裡搜尋（不一定是結束日）；下跌時起始日最高點當起跌點、最低點在區間裡搜尋。因為錨點固定在起始日，搜尋到的極值日期必定不早於起始日，不用再額外判斷時間先後。
+12. **四張圖表加上點擊放大功能**：兩張區間比較走勢圖與兩張長期趨勢圖的外層容器都加上 `.chart-clickable`，點擊會跳出置中的彈出視窗（`#chart-modal`），用同一份資料重畫一張大圖。每個 `buildMarketChart()`／`buildRangeChart()` 呼叫時會把「重新產生目前 config」的函式存進 `chartConfigProviders[canvasId]`，點擊當下才呼叫，確保換過日期的區間比較圖表放大時顯示的是當下資料，不是舊快照。關閉方式：背景遮罩、右上角關閉鈕、Esc。
+13. **三個日期選擇改成月曆式**：原本用 `<select>` 塞滿 `manifest.dates` 全部日期，資料累積後下拉選單會越來越長。改成原生 `<input type="date">`，`min`/`max` 限制在資料範圍內。原生 date input 沒辦法把範圍內個別沒資料的日子（週末、假日）標成不可選，選到這種日子時 `loadDate()` 改用新增的 `fetchJSONOrNull()`（404 時回傳 `null` 而不是丟例外），前端優雅顯示「尚無資料」。
 
 ## 驗證方式
 
