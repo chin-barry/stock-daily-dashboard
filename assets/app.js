@@ -106,6 +106,23 @@ async function loadDate(date) {
   renderMarket("tpex", data.tpex);
 }
 
+// 指數／融資／三大法人三個 series 檔案在好幾個功能裡都會用到（趨勢圖、區間比較、近一月
+// 表格），只在 init() 抓一次，之後都從這幾個 Map 查，避免重複打好幾次網路請求。
+let indexByDate = new Map();
+let marginByDate = new Map();
+let institutionalByDate = new Map();
+
+async function loadAllSeries() {
+  const [indexSeries, marginSeries, institutionalSeries] = await Promise.all([
+    fetchJSON("data/series/index.json"),
+    fetchJSON("data/series/margin.json"),
+    fetchJSON("data/series/institutional.json"),
+  ]);
+  indexByDate = new Map(indexSeries.map((r) => [r.date, r]));
+  marginByDate = new Map(marginSeries.map((r) => [r.date, r]));
+  institutionalByDate = new Map(institutionalSeries.map((r) => [r.date, r]));
+}
+
 function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginLabel, marginColor, marginValues, labels) {
   new Chart(document.getElementById(canvasId), {
     type: "line",
@@ -155,14 +172,8 @@ function buildMarketChart(canvasId, indexLabel, indexColor, indexValues, marginL
   });
 }
 
-async function renderCharts() {
-  const [indexSeries, marginSeries] = await Promise.all([
-    fetchJSON("data/series/index.json"),
-    fetchJSON("data/series/margin.json"),
-  ]);
-  const marginByDate = new Map(marginSeries.map((r) => [r.date, r]));
-
-  const labels = indexSeries.map((r) => r.date);
+function renderCharts() {
+  const labels = [...indexByDate.keys()].sort();
   const marginYi = (date, market) => {
     const row = marginByDate.get(date);
     const m = row && row[market];
@@ -173,7 +184,7 @@ async function renderCharts() {
     "twse-chart",
     "加權指數",
     "#2f5fd6",
-    indexSeries.map((r) => r.twseClose),
+    labels.map((d) => indexByDate.get(d).twseClose),
     "融資餘額（億元）",
     "#d5382f",
     labels.map((d) => marginYi(d, "twse")),
@@ -184,12 +195,211 @@ async function renderCharts() {
     "tpex-chart",
     "櫃買指數",
     "#d68c2f",
-    indexSeries.map((r) => r.tpexClose),
+    labels.map((d) => indexByDate.get(d).tpexClose),
     "融資餘額（億元）",
     "#d5382f",
     labels.map((d) => marginYi(d, "tpex")),
     labels
   );
+}
+
+// ---------- 區間比較 ----------
+
+const rangeCharts = {}; // canvasId -> Chart instance，換區間時要先 destroy 舊的再畫新的
+
+function buildRangeChart(canvasId, labels, indexPct, marginPct, indexLabel, indexColor) {
+  if (rangeCharts[canvasId]) {
+    rangeCharts[canvasId].destroy();
+  }
+  rangeCharts[canvasId] = new Chart(document.getElementById(canvasId), {
+    type: "line",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: indexLabel,
+          data: indexPct,
+          borderColor: indexColor,
+          tension: 0.15,
+          pointRadius: 0,
+          spanGaps: true,
+        },
+        {
+          label: "融資餘額 %",
+          data: marginPct,
+          borderColor: "#d5382f",
+          tension: 0.15,
+          pointRadius: 0,
+          spanGaps: true,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: "index", intersect: false },
+      scales: {
+        y: {
+          type: "linear",
+          title: { display: true, text: "相對起始日變化 %" },
+          ticks: { callback: (v) => `${v}%` },
+        },
+      },
+    },
+  });
+}
+
+function renderRangeMarket(market, start, end) {
+  const panel = document.querySelector(`.range-market[data-market="${market}"]`);
+  const closeKey = market === "twse" ? "twseClose" : "tpexClose";
+  const indexLabel = market === "twse" ? "加權指數 %" : "櫃買指數 %";
+  const indexColor = market === "twse" ? "#2f5fd6" : "#d68c2f";
+
+  const indexChangeEl = panel.querySelector('[data-field="indexChange"]');
+  const indexChangePctEl = panel.querySelector('[data-field="indexChangePct"]');
+  const marginChangeEl = panel.querySelector('[data-field="marginChange"]');
+  const marginChangePctEl = panel.querySelector('[data-field="marginChangePct"]');
+
+  const startIdxRow = indexByDate.get(start);
+  const endIdxRow = indexByDate.get(end);
+  const startClose = startIdxRow ? startIdxRow[closeKey] : null;
+  const endClose = endIdxRow ? endIdxRow[closeKey] : null;
+
+  if (startClose != null && endClose != null) {
+    const diff = endClose - startClose;
+    const pct = (diff / startClose) * 100;
+    indexChangeEl.textContent = fmtSigned(diff, 2);
+    indexChangeEl.className = `stat-value ${signClass(diff)}`;
+    indexChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
+    indexChangePctEl.className = `stat-sub ${signClass(diff)}`;
+  } else {
+    indexChangeEl.textContent = "資料不足";
+    indexChangeEl.className = "stat-value flat";
+    indexChangePctEl.textContent = "";
+  }
+
+  const startMarginRow = marginByDate.get(start);
+  const endMarginRow = marginByDate.get(end);
+  const startMargin = startMarginRow && startMarginRow[market] ? startMarginRow[market].marginBalance : null;
+  const endMargin = endMarginRow && endMarginRow[market] ? endMarginRow[market].marginBalance : null;
+
+  if (startMargin != null && endMargin != null) {
+    const diff = endMargin - startMargin;
+    const pct = (diff / startMargin) * 100;
+    marginChangeEl.textContent = `${fmtSigned(diff / 1e8, 2)} 億`;
+    marginChangeEl.className = `stat-value ${signClass(diff)}`;
+    marginChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
+    marginChangePctEl.className = `stat-sub ${signClass(diff)}`;
+  } else {
+    marginChangeEl.textContent = "資料不足";
+    marginChangeEl.className = "stat-value flat";
+    marginChangePctEl.textContent = "";
+  }
+
+  // 區間內每個交易日，依序算指數／融資相對起始日的變化 %，畫成走勢圖比較兩者是否同向
+  const datesInRange = [...indexByDate.keys()].filter((d) => d >= start && d <= end).sort();
+  const indexPctSeries = [];
+  const marginPctSeries = [];
+  for (const d of datesInRange) {
+    const row = indexByDate.get(d);
+    indexPctSeries.push(
+      row && row[closeKey] != null && startClose != null ? ((row[closeKey] - startClose) / startClose) * 100 : null
+    );
+    const mRow = marginByDate.get(d);
+    const mVal = mRow && mRow[market] ? mRow[market].marginBalance : null;
+    marginPctSeries.push(mVal != null && startMargin != null ? ((mVal - startMargin) / startMargin) * 100 : null);
+  }
+  buildRangeChart(`${market}-range-chart`, datesInRange, indexPctSeries, marginPctSeries, indexLabel, indexColor);
+
+  // 三大法人買賣超區間累計：把區間內每天的 net 加總
+  const totals = { foreign: 0, trust: 0, dealer: 0, total: 0 };
+  let hasAny = false;
+  for (const d of datesInRange) {
+    const row = institutionalByDate.get(d);
+    const m = row && row[market];
+    if (!m) continue;
+    for (const cat of ["foreign", "trust", "dealer", "total"]) {
+      if (m[cat] && m[cat].net != null) {
+        totals[cat] += m[cat].net;
+        hasAny = true;
+      }
+    }
+  }
+  panel.querySelectorAll(".range-insti-table .net").forEach((td) => {
+    const cat = td.dataset.cat;
+    if (hasAny) {
+      td.textContent = fmtNetYi(totals[cat]);
+      td.className = `net ${signClass(totals[cat])}`;
+    } else {
+      td.textContent = "資料不足";
+      td.className = "net flat";
+    }
+  });
+}
+
+function renderRangeComparison() {
+  const startSel = document.getElementById("range-start");
+  const endSel = document.getElementById("range-end");
+  let start = startSel.value;
+  let end = endSel.value;
+  if (start > end) {
+    [start, end] = [end, start];
+  }
+  renderRangeMarket("twse", start, end);
+  renderRangeMarket("tpex", start, end);
+}
+
+function initRangeComparison() {
+  const dates = [...indexByDate.keys()].sort(); // 舊到新
+  const optionsHtml = dates.map((d) => `<option value="${d}">${d}</option>`).join("");
+  const startSel = document.getElementById("range-start");
+  const endSel = document.getElementById("range-end");
+  startSel.innerHTML = optionsHtml;
+  endSel.innerHTML = optionsHtml;
+
+  if (!dates.length) return;
+  endSel.value = dates[dates.length - 1];
+  startSel.value = dates[Math.max(0, dates.length - 21)]; // 預設約近一個月（20 個交易日）
+
+  startSel.addEventListener("change", renderRangeComparison);
+  endSel.addEventListener("change", renderRangeComparison);
+
+  renderRangeComparison();
+}
+
+// ---------- 近一個月表格 ----------
+
+function marketTableCells(date, market, closeKey) {
+  const idxRow = indexByDate.get(date);
+  const close = idxRow ? idxRow[closeKey] : null;
+  const closeText = close != null ? fmtIndexValue(close) : "--";
+
+  const marginRow = marginByDate.get(date);
+  const m = marginRow && marginRow[market];
+  let balanceText = "--";
+  let deltaText = "--";
+  let deltaCls = "flat";
+  if (m && m.marginBalance != null) {
+    balanceText = (m.marginBalance / 1e8).toFixed(2);
+    if (m.marginBalancePrev != null) {
+      const diff = m.marginBalance - m.marginBalancePrev;
+      deltaText = `${fmtSigned(diff / 1e8, 2)} 億`;
+      deltaCls = signClass(diff);
+    }
+  }
+  return `<td>${closeText}</td><td>${balanceText}</td><td class="${deltaCls}">${deltaText}</td>`;
+}
+
+function renderMonthlyTable() {
+  const RECENT_DAYS = 22; // 約一個月的交易日數
+  const dates = [...indexByDate.keys()].sort().slice(-RECENT_DAYS).reverse(); // 近到遠
+  const tbody = document.getElementById("monthly-table-body");
+  tbody.innerHTML = dates
+    .map(
+      (d) =>
+        `<tr><td>${d}</td>${marketTableCells(d, "twse", "twseClose")}${marketTableCells(d, "tpex", "tpexClose")}</tr>`
+    )
+    .join("");
 }
 
 async function init() {
@@ -205,12 +415,16 @@ async function init() {
 
   select.addEventListener("change", () => loadDate(select.value));
 
+  await loadAllSeries();
+
   if (dates.length) {
     select.value = dates[0];
     await loadDate(dates[0]);
   }
 
-  await renderCharts();
+  renderCharts();
+  initRangeComparison();
+  renderMonthlyTable();
 }
 
 init();

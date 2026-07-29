@@ -147,6 +147,122 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
   overflow-x: auto;
 }
 
+/* ---- 區間比較 ---- */
+.range-card { padding-bottom: 1.5rem; }
+
+.range-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  margin-bottom: 1.2rem;
+}
+
+.range-controls select {
+  font-size: 0.92rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  margin-left: 0.4rem;
+}
+
+.range-sep { color: var(--text-soft); }
+
+.range-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 720px) {
+  .range-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.range-market h3 {
+  font-size: 0.95rem;
+  margin: 0 0 0.75rem;
+  color: var(--text-soft);
+}
+
+.stat-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.stat-tile {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.7rem 0.85rem;
+}
+
+.stat-label {
+  font-size: 0.76rem;
+  color: var(--text-soft);
+  margin-bottom: 0.3rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-sub {
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.1rem;
+}
+
+.range-insti-table {
+  margin-bottom: 1rem;
+}
+
+.range-insti-table caption {
+  text-align: left;
+  font-size: 0.76rem;
+  color: var(--text-soft);
+  margin-bottom: 0.4rem;
+}
+
+.range-chart-wrap {
+  height: 200px;
+}
+
+/* ---- 近一月表格 ---- */
+.table-card { padding-bottom: 1.5rem; }
+
+.table-wrap { overflow-x: auto; }
+
+.monthly-table { min-width: 640px; width: 100%; }
+.monthly-table thead th {
+  text-align: right;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--border);
+  padding: 0.4rem 0.6rem;
+}
+.monthly-table thead tr:first-child th {
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.monthly-table thead th:first-child,
+.monthly-table tbody td:first-child { text-align: left; }
+.monthly-table tbody td {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.86rem;
+  border-bottom: 1px solid var(--border);
+}
+.monthly-table tbody tr:last-child td { border-bottom: none; }
+.monthly-table tbody tr:hover { background: var(--bg); }
+.monthly-table td.section-gap { border-left: 1px solid var(--border); }
+
 .page-footer {
   text-align: center;
   color: var(--text-soft);

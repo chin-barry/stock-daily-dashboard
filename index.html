@@ -73,9 +73,75 @@
               <tr><th>融券餘額</th><td class="short-balance">--</td><td class="short-delta">--</td></tr>
             </tbody>
           </table>
-          <p class="card-note">融資餘額為估算值：櫃買中心只公布張數，這裡用「張數 × 1000股 × 當日收盤價」換算金額。</p>
         </div>
       </article>
+    </section>
+
+    <section class="card range-card">
+      <div class="card-title">區間比較</div>
+      <div class="range-controls">
+        <label>起始 <select id="range-start"></select></label>
+        <span class="range-sep">～</span>
+        <label>結束 <select id="range-end"></select></label>
+      </div>
+
+      <div class="range-grid">
+        <div class="range-market" data-market="twse">
+          <h3>上市</h3>
+          <div class="stat-row">
+            <div class="stat-tile">
+              <div class="stat-label">加權指數</div>
+              <div class="stat-value" data-field="indexChange">--</div>
+              <div class="stat-sub" data-field="indexChangePct">--</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-label">融資餘額</div>
+              <div class="stat-value" data-field="marginChange">--</div>
+              <div class="stat-sub" data-field="marginChangePct">--</div>
+            </div>
+          </div>
+          <table class="insti-table range-insti-table">
+            <caption>三大法人買賣超累計</caption>
+            <tbody>
+              <tr><th>外資及陸資</th><td class="net" data-cat="foreign">--</td></tr>
+              <tr><th>投信</th><td class="net" data-cat="trust">--</td></tr>
+              <tr><th>自營商</th><td class="net" data-cat="dealer">--</td></tr>
+              <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
+            </tbody>
+          </table>
+          <div class="chart-wrap range-chart-wrap">
+            <canvas id="twse-range-chart"></canvas>
+          </div>
+        </div>
+
+        <div class="range-market" data-market="tpex">
+          <h3>上櫃</h3>
+          <div class="stat-row">
+            <div class="stat-tile">
+              <div class="stat-label">櫃買指數</div>
+              <div class="stat-value" data-field="indexChange">--</div>
+              <div class="stat-sub" data-field="indexChangePct">--</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-label">融資餘額</div>
+              <div class="stat-value" data-field="marginChange">--</div>
+              <div class="stat-sub" data-field="marginChangePct">--</div>
+            </div>
+          </div>
+          <table class="insti-table range-insti-table">
+            <caption>三大法人買賣超累計</caption>
+            <tbody>
+              <tr><th>外資及陸資</th><td class="net" data-cat="foreign">--</td></tr>
+              <tr><th>投信</th><td class="net" data-cat="trust">--</td></tr>
+              <tr><th>自營商</th><td class="net" data-cat="dealer">--</td></tr>
+              <tr class="total-row"><th>合計</th><td class="net" data-cat="total">--</td></tr>
+            </tbody>
+          </table>
+          <div class="chart-wrap range-chart-wrap">
+            <canvas id="tpex-range-chart"></canvas>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="card chart-card">
@@ -89,6 +155,26 @@
       <div class="card-title">上櫃：櫃買指數 ／ 融資餘額</div>
       <div class="chart-wrap">
         <canvas id="tpex-chart"></canvas>
+      </div>
+    </section>
+
+    <section class="card table-card">
+      <div class="card-title">近一個月每日數據</div>
+      <div class="table-wrap">
+        <table class="monthly-table">
+          <thead>
+            <tr>
+              <th rowspan="2">日期</th>
+              <th colspan="3">上市</th>
+              <th colspan="3">上櫃</th>
+            </tr>
+            <tr>
+              <th>指數</th><th>融資餘額(億)</th><th>融資增減</th>
+              <th>指數</th><th>融資餘額(億)</th><th>融資增減</th>
+            </tr>
+          </thead>
+          <tbody id="monthly-table-body"></tbody>
+        </table>
       </div>
     </section>
   </main>
