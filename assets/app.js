@@ -270,21 +270,47 @@ function renderRangeMarket(market, start, end) {
   const marginChangePctEl = panel.querySelector('[data-field="marginChangePct"]');
   const marginDetailEl = panel.querySelector('[data-field="marginDetail"]');
 
-  // 指數：起始日的最高價 → 結束日的最低價（使用者本來就會挑波段最高那天當起始日，
-  // 所以不用另外在區間裡搜尋，直接用兩個端點當天的高/低價）。
+  // 指數：先用起始/結束日收盤判斷這段區間是漲是跌，決定起點跟搜尋方向——
+  // 上漲：起始日「最低點」當起漲點，「最高點」在整個區間裡搜尋（不一定是結束日）；
+  // 下跌：起始日「最高點」當起跌點，「最低點」在整個區間裡搜尋（不一定是結束日）。
+  // 錨點固定在起始日、搜尋到的極值日期必定 >= 起始日，時間先後已經確定，不用再排序。
   const startIdxRow = indexByDate.get(start);
   const endIdxRow = indexByDate.get(end);
-  const startHigh = startIdxRow ? startIdxRow[highKey] : null;
-  const endLow = endIdxRow ? endIdxRow[lowKey] : null;
+  const startCloseForDir = startIdxRow ? startIdxRow[closeKey] : null;
+  const endCloseForDir = endIdxRow ? endIdxRow[closeKey] : null;
+  const datesInRangeForIndex = [...indexByDate.keys()].filter((d) => d >= start && d <= end).sort();
 
-  if (startHigh != null && endLow != null) {
-    const diff = endLow - startHigh;
-    const pct = (diff / startHigh) * 100;
+  let indexAnchor = null; // { date, value, label }
+  let indexExtreme = null;
+  if (startIdxRow && startCloseForDir != null && endCloseForDir != null) {
+    const isRise = endCloseForDir >= startCloseForDir;
+    if (isRise) {
+      indexAnchor = { date: start, value: startIdxRow[lowKey], label: "低" };
+      for (const d of datesInRangeForIndex) {
+        const row = indexByDate.get(d);
+        if (row && row[highKey] != null && (!indexExtreme || row[highKey] > indexExtreme.value)) {
+          indexExtreme = { date: d, value: row[highKey], label: "高" };
+        }
+      }
+    } else {
+      indexAnchor = { date: start, value: startIdxRow[highKey], label: "高" };
+      for (const d of datesInRangeForIndex) {
+        const row = indexByDate.get(d);
+        if (row && row[lowKey] != null && (!indexExtreme || row[lowKey] < indexExtreme.value)) {
+          indexExtreme = { date: d, value: row[lowKey], label: "低" };
+        }
+      }
+    }
+  }
+
+  if (indexAnchor && indexAnchor.value != null && indexExtreme) {
+    const diff = indexExtreme.value - indexAnchor.value;
+    const pct = (diff / indexAnchor.value) * 100;
     indexChangeEl.textContent = fmtSigned(diff, 2);
     indexChangeEl.className = `stat-value ${signClass(diff)}`;
     indexChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
     indexChangePctEl.className = `stat-sub ${signClass(diff)}`;
-    indexDetailEl.textContent = `高 ${fmtIndexValue(startHigh)}(${shortDate(start)}) → 低 ${fmtIndexValue(endLow)}(${shortDate(end)})`;
+    indexDetailEl.textContent = `${indexAnchor.label} ${fmtIndexValue(indexAnchor.value)}(${shortDate(indexAnchor.date)}) → ${indexExtreme.label} ${fmtIndexValue(indexExtreme.value)}(${shortDate(indexExtreme.date)})`;
   } else {
     indexChangeEl.textContent = "資料不足";
     indexChangeEl.className = "stat-value flat";
