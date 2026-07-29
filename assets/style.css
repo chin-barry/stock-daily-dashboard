@@ -220,6 +220,14 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
   margin-top: 0.1rem;
 }
 
+.stat-detail {
+  font-size: 0.74rem;
+  color: var(--text-soft);
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
 .range-insti-table {
   margin-bottom: 1rem;
 }

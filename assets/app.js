@@ -249,6 +249,12 @@ function buildRangeChart(canvasId, labels, indexPct, marginPct, indexLabel, inde
   });
 }
 
+// "2026-07-13" -> "7/13"
+function shortDate(iso) {
+  const [, mm, dd] = iso.split("-");
+  return `${Number(mm)}/${Number(dd)}`;
+}
+
 function renderRangeMarket(market, start, end) {
   const panel = document.querySelector(`.range-market[data-market="${market}"]`);
   const closeKey = market === "twse" ? "twseClose" : "tpexClose";
@@ -257,9 +263,13 @@ function renderRangeMarket(market, start, end) {
 
   const indexChangeEl = panel.querySelector('[data-field="indexChange"]');
   const indexChangePctEl = panel.querySelector('[data-field="indexChangePct"]');
+  const indexDetailEl = panel.querySelector('[data-field="indexDetail"]');
   const marginChangeEl = panel.querySelector('[data-field="marginChange"]');
   const marginChangePctEl = panel.querySelector('[data-field="marginChangePct"]');
+  const marginDetailEl = panel.querySelector('[data-field="marginDetail"]');
 
+  // 指數：起始日當高點、結束日當低點（使用者本來就會挑波段最高那天當起始日，
+  // 所以不用另外在區間裡搜尋，直接用兩個端點的收盤值）。
   const startIdxRow = indexByDate.get(start);
   const endIdxRow = indexByDate.get(end);
   const startClose = startIdxRow ? startIdxRow[closeKey] : null;
@@ -272,32 +282,46 @@ function renderRangeMarket(market, start, end) {
     indexChangeEl.className = `stat-value ${signClass(diff)}`;
     indexChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
     indexChangePctEl.className = `stat-sub ${signClass(diff)}`;
+    indexDetailEl.textContent = `${fmtIndexValue(startClose)}(${shortDate(start)}) → ${fmtIndexValue(endClose)}(${shortDate(end)})`;
   } else {
     indexChangeEl.textContent = "資料不足";
     indexChangeEl.className = "stat-value flat";
     indexChangePctEl.textContent = "";
+    indexDetailEl.textContent = "";
   }
 
-  const startMarginRow = marginByDate.get(start);
+  // 融資：高點要在整個區間裡搜尋（不一定是起始日），低點固定用結束日的實際餘額——
+  // 融資部位的高峰常常跟指數高點對不上同一天，跟指數那組端點對端點的算法不一樣。
+  const datesInRange = [...indexByDate.keys()].filter((d) => d >= start && d <= end).sort();
+  let marginPeak = null; // { date, value }
+  for (const d of datesInRange) {
+    const row = marginByDate.get(d);
+    const m = row && row[market];
+    if (m && m.marginBalance != null && (!marginPeak || m.marginBalance > marginPeak.value)) {
+      marginPeak = { date: d, value: m.marginBalance };
+    }
+  }
   const endMarginRow = marginByDate.get(end);
-  const startMargin = startMarginRow && startMarginRow[market] ? startMarginRow[market].marginBalance : null;
   const endMargin = endMarginRow && endMarginRow[market] ? endMarginRow[market].marginBalance : null;
 
-  if (startMargin != null && endMargin != null) {
-    const diff = endMargin - startMargin;
-    const pct = (diff / startMargin) * 100;
+  if (marginPeak && endMargin != null) {
+    const diff = endMargin - marginPeak.value;
+    const pct = (diff / marginPeak.value) * 100;
     marginChangeEl.textContent = `${fmtSigned(diff / 1e8, 2)} 億`;
     marginChangeEl.className = `stat-value ${signClass(diff)}`;
     marginChangePctEl.textContent = `${fmtSigned(pct, 2)}%`;
     marginChangePctEl.className = `stat-sub ${signClass(diff)}`;
+    marginDetailEl.textContent = `${(marginPeak.value / 1e8).toFixed(2)}億(${shortDate(marginPeak.date)}) → ${(endMargin / 1e8).toFixed(2)}億(${shortDate(end)})`;
   } else {
     marginChangeEl.textContent = "資料不足";
     marginChangeEl.className = "stat-value flat";
     marginChangePctEl.textContent = "";
+    marginDetailEl.textContent = "";
   }
 
-  // 區間內每個交易日，依序算指數／融資相對起始日的變化 %，畫成走勢圖比較兩者是否同向
-  const datesInRange = [...indexByDate.keys()].filter((d) => d >= start && d <= end).sort();
+  // 走勢圖：區間內每個交易日，指數／融資都換算成「相對起始日」的變化 %，方便比較走勢
+  const startMarginRow = marginByDate.get(start);
+  const startMarginValue = startMarginRow && startMarginRow[market] ? startMarginRow[market].marginBalance : null;
   const indexPctSeries = [];
   const marginPctSeries = [];
   for (const d of datesInRange) {
@@ -307,7 +331,9 @@ function renderRangeMarket(market, start, end) {
     );
     const mRow = marginByDate.get(d);
     const mVal = mRow && mRow[market] ? mRow[market].marginBalance : null;
-    marginPctSeries.push(mVal != null && startMargin != null ? ((mVal - startMargin) / startMargin) * 100 : null);
+    marginPctSeries.push(
+      mVal != null && startMarginValue != null ? ((mVal - startMarginValue) / startMarginValue) * 100 : null
+    );
   }
   buildRangeChart(`${market}-range-chart`, datesInRange, indexPctSeries, marginPctSeries, indexLabel, indexColor);
 
