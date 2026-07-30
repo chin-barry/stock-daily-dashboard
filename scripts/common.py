@@ -114,9 +114,13 @@ def save_snapshot(snapshot):
             "twseClose": twse_idx.get("close"),
             "twseChange": twse_idx.get("change"),
             "twseChangePercent": twse_idx.get("changePercent"),
+            "twseHigh": twse_idx.get("high"),
+            "twseLow": twse_idx.get("low"),
             "tpexClose": tpex_idx.get("close"),
             "tpexChange": tpex_idx.get("change"),
             "tpexChangePercent": tpex_idx.get("changePercent"),
+            "tpexHigh": tpex_idx.get("high"),
+            "tpexLow": tpex_idx.get("low"),
         },
     )
     _append_series(

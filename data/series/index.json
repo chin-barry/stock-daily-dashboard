@@ -1759,17 +1759,25 @@
     "twseClose": 40039.18,
     "twseChange": -1564.18,
     "twseChangePercent": -3.76,
+    "twseHigh": 41698.39,
+    "twseLow": 39384.85,
     "tpexClose": 334.24,
     "tpexChange": -18.18,
-    "tpexChangePercent": -5.158617558594858
+    "tpexChangePercent": -5.158617558594858,
+    "tpexHigh": 354.18,
+    "tpexLow": 327.79
   },
   {
     "date": "2026-07-30",
     "twseClose": 39933.3,
     "twseChange": -105.88,
     "twseChangePercent": -0.26,
+    "twseHigh": 41155.42,
+    "twseLow": 39404.65,
     "tpexClose": 326.23,
     "tpexChange": -8.01,
-    "tpexChangePercent": -2.3964815701292483
+    "tpexChangePercent": -2.3964815701292483,
+    "tpexHigh": 340.7,
+    "tpexLow": 322.74
   }
 ]
