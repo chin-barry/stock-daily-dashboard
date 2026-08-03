@@ -30,7 +30,14 @@
         "net": -16519607403.0
       }
     },
-    "margin": null
+    "margin": {
+      "marginBalance": 514755393000.0,
+      "marginBalancePrev": 507462771000.0,
+      "marginUnit": "元",
+      "shortBalance": 185322.0,
+      "shortBalancePrev": 188324.0,
+      "shortUnit": "張"
+    }
   },
   "tpex": {
     "index": {
@@ -47,9 +54,9 @@
         "net": 1315735009.0
       },
       "trust": {
-        "buy": 2666336345.0,
-        "sell": 2272492961.0,
-        "net": 393843384.0
+        "buy": 3771228275.0,
+        "sell": 2898716570.0,
+        "net": 872511705.0
       },
       "dealer": {
         "buy": 4315712122.0,
@@ -57,11 +64,19 @@
         "net": 15429217.0
       },
       "total": {
-        "buy": 53804110723.0,
-        "sell": 52079103113.0,
-        "net": 1725007610.0
+        "buy": 54909002653.0,
+        "sell": 52705326722.0,
+        "net": 2203675931.0
       }
     },
-    "margin": null
+    "margin": {
+      "marginBalance": 167008000000.0,
+      "marginBalancePrev": 166159000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 31860.0,
+      "shortBalancePrev": 30650.0,
+      "shortUnit": "張"
+    }
   }
 }
