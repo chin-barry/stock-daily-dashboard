@@ -103,6 +103,8 @@
 - 若當天不是交易日（TWSE 回傳空值），腳本直接結束，不寫檔、不 commit，維持 repo 乾淨、可重複執行（idempotent）。
 - 抓完資料後：`git add data/ && git commit && git push`，用 workflow 內建的 `GITHUB_TOKEN`（需開 `permissions: contents: write`）。
 
+⚠️ **GitHub 的 `schedule` cron 觸發時間不保證準時**：實測 2026-07-29 起連續多天觀察，兩個排定時段常常延遲 2~3.5 小時才真正開跑（例如 21:30 那班拖到 23:30 後才執行），這是 GitHub Actions 平台本身在高負載時延後或佇列排程事件的已知問題（GitHub 官方文件也承認 `schedule` 事件負載高時會延遲甚至被丟棄），不是這個專案的 workflow 設定錯誤。社群回報這個問題近期有惡化趨勢。目前先接受這個限制（資料本身正確、只是進 repo 的時間點不準時），若要更準時可以改用外部排程服務（例如 cron-job.org）直接呼叫 `workflow_dispatch` API 觸發，繞過 GitHub 自己的 `schedule` 佇列，但需要額外設定一個 PAT 交給第三方服務保管，目前尚未採用。
+
 ## 前端
 
 純靜態頁面，讀取 `data/manifest.json` 取得可選日期，預設顯示最新一天：
@@ -152,6 +154,8 @@
 11. **區間比較的指數改成依漲跌方向決定起點與搜尋方式**：item 9 那版「起始日最高 → 結束日最低」只適用於使用者刻意選「波段最高那天當起始日」的下跌分析情境，遇到上漲區間（例如 1/2~7/28，指數從約 29000 漲到 41600）會把方向跟數字都搞反。改成先用起始/結束日收盤判斷這段是漲是跌：上漲時起始日最低點當起漲點、最高點在整個區間裡搜尋（不一定是結束日）；下跌時起始日最高點當起跌點、最低點在區間裡搜尋。因為錨點固定在起始日，搜尋到的極值日期必定不早於起始日，不用再額外判斷時間先後。
 12. **四張圖表加上點擊放大功能**：兩張區間比較走勢圖與兩張長期趨勢圖的外層容器都加上 `.chart-clickable`，點擊會跳出置中的彈出視窗（`#chart-modal`），用同一份資料重畫一張大圖。每個 `buildMarketChart()`／`buildRangeChart()` 呼叫時會把「重新產生目前 config」的函式存進 `chartConfigProviders[canvasId]`，點擊當下才呼叫，確保換過日期的區間比較圖表放大時顯示的是當下資料，不是舊快照。關閉方式：背景遮罩、右上角關閉鈕、Esc。
 13. **三個日期選擇改成月曆式**：原本用 `<select>` 塞滿 `manifest.dates` 全部日期，資料累積後下拉選單會越來越長。改成原生 `<input type="date">`，`min`/`max` 限制在資料範圍內。原生 date input 沒辦法把範圍內個別沒資料的日子（週末、假日）標成不可選，選到這種日子時 `loadDate()` 改用新增的 `fetchJSONOrNull()`（404 時回傳 `null` 而不是丟例外），前端優雅顯示「尚無資料」。
+14. **`series/index.json` 漏寫指數高低價，區間比較的指數搜尋卡在 7/28**：item 9 那次修正（`fetch_twse_index()` 合併 `MI_5MINS_HIST` 補上 `high`/`low`）只把高低價寫進 `data/daily/{date}.json`，卻忘了同步更新 `save_snapshot()` 寫入 `data/series/index.json` 的欄位——早期資料的 `twseHigh`/`twseLow`/`tpexHigh`/`tpexLow` 是靠一次性腳本 `backfill_index_high_low.py` 補灌歷史資料才有的，但那次修正沒有連帶修到 `save_snapshot()` 本身，導致從那之後每天新寫入 `series/index.json` 的資料都缺這四個欄位。前端區間比較（`assets/app.js`）就是靠 `series/index.json` 的高低價去區間內搜尋極值，缺欄位的日子等於「看不到」，實際表現就是指數的搜尋範圍卡在最後一次一次性腳本執行的那天（7/28），但融資（`series/margin.json`，整包 `margin` 物件存入，沒有手動挑欄位）不受影響。修正：`save_snapshot()` 補上四個欄位，並用已經抓到、存在 `data/daily/` 裡的高低價把 `series/index.json` 缺的兩筆（7/29、7/30）補齊。
+15. **`fetch_tpex_openapi()` 加上 5xx 重試機制**：實測排程遇到 TPEx 新版 OpenAPI（`tpex_index`）回傳 HTTP 520（暫時性伺服器錯誤），原本的 `fetch_tpex_openapi()` 沒有重試、直接 `raise_for_status()` 丟例外，導致整支 `fetch_daily.py` crash——因為 `save_snapshot()` 要整包 snapshot 物件建完才會寫檔，這次 crash 連同一次呼叫裡已經抓成功的 TWSE 資料也一併沒存到。比照 `fetch_twse_legacy()` 既有的重試模式，改成遇到 5xx 才 sleep 後重試（最多 3 次）；4xx（例如標頭有誤的 403）視為永久性問題，不重試、直接讓例外往上丟。
 
 ## 驗證方式
 
