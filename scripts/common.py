@@ -169,13 +169,21 @@ def fetch_twse_legacy(url, params, max_retries=3, retry_wait=120):
     return None
 
 
-def fetch_tpex_openapi(path):
-    """呼叫 TPEx 新版 OpenAPI（僅回傳近期滾動資料，不支援指定歷史日期）。"""
-    r = SESSION.get(
-        f"https://www.tpex.org.tw/openapi/v1/{path}", headers=TPEX_HEADERS, timeout=20
-    )
-    r.raise_for_status()
-    return r.json()
+def fetch_tpex_openapi(path, max_retries=3, retry_wait=10):
+    """呼叫 TPEx 新版 OpenAPI（僅回傳近期滾動資料，不支援指定歷史日期）。
+
+    TPEx 伺服器偶爾會回傳 5xx（實測遇過 520），視為暫時性錯誤，短暫等待後重試；
+    4xx（例如標頭有誤的 403）通常是永久性問題，不重試、直接讓例外往上丟。
+    """
+    for attempt in range(max_retries):
+        r = SESSION.get(
+            f"https://www.tpex.org.tw/openapi/v1/{path}", headers=TPEX_HEADERS, timeout=20
+        )
+        if r.status_code >= 500 and attempt < max_retries - 1:
+            time.sleep(retry_wait)
+            continue
+        r.raise_for_status()
+        return r.json()
 
 
 # ---------- TWSE 上市 ----------
