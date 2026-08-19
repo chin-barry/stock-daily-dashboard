@@ -6,6 +6,7 @@
 """
 import argparse
 import datetime as dt
+import time
 
 import common
 
@@ -37,7 +38,19 @@ def main():
     args = parser.parse_args()
 
     date_ymd = args.date.replace("-", "") if args.date else dt.date.today().strftime("%Y%m%d")
-    snapshot = build_snapshot(date_ymd)
+
+    max_attempts = 3
+    for attempt in range(max_attempts):
+        try:
+            snapshot = build_snapshot(date_ymd)
+            break
+        except Exception as e:
+            if attempt < max_attempts - 1:
+                print(f"抓取失敗（第 {attempt + 1} 次）：{e}，60 秒後重試...")
+                time.sleep(60)
+            else:
+                raise
+
     if snapshot is None:
         print(f"{date_ymd}：TWSE 尚無資料（非交易日或尚未公布），略過。")
         return

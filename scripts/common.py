@@ -147,10 +147,22 @@ def fetch_twse_legacy(url, params, max_retries=3, retry_wait=120):
 
     TWSE 每日 13:30-13:45 尖峰時段會暫停整批查詢、改回傳提示訊息，遇到時 sleep 後重試；
     請求太密集時偶爾會回傳空白內容（非合法 JSON），視為暫時性錯誤、短暫等待後重試；
+    連線層級的例外（timeout、connection reset）與 HTTP 5xx 也視為暫時性錯誤、短暫等待後
+    重試（比照 fetch_tpex_openapi() 的模式）；4xx 視為永久性問題，不重試、直接丟例外；
     非交易日或查無資料則回傳 None（呼叫端應視為「當天略過」，不是錯誤）。
     """
     for attempt in range(max_retries):
-        r = SESSION.get(url, params=params, headers=TWSE_HEADERS, timeout=20)
+        try:
+            r = SESSION.get(url, params=params, headers=TWSE_HEADERS, timeout=20)
+        except requests.RequestException:
+            if attempt < max_retries - 1:
+                time.sleep(10)
+                continue
+            raise
+        if r.status_code >= 500:
+            if attempt < max_retries - 1:
+                time.sleep(10)
+                continue
         r.raise_for_status()
         try:
             data = r.json()
