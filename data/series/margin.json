@@ -2901,13 +2901,43 @@
   },
   {
     "date": "2026-08-12",
-    "twse": null,
-    "tpex": null
+    "twse": {
+      "marginBalance": 548083912000.0,
+      "marginBalancePrev": 544151977000.0,
+      "marginUnit": "元",
+      "shortBalance": 201947.0,
+      "shortBalancePrev": 204819.0,
+      "shortUnit": "張"
+    },
+    "tpex": {
+      "marginBalance": 179060000000.0,
+      "marginBalancePrev": 178178000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 35740.0,
+      "shortBalancePrev": 37300.0,
+      "shortUnit": "張"
+    }
   },
   {
     "date": "2026-08-13",
-    "twse": null,
-    "tpex": null
+    "twse": {
+      "marginBalance": 549780654000.0,
+      "marginBalancePrev": 548083912000.0,
+      "marginUnit": "元",
+      "shortBalance": 214046.0,
+      "shortBalancePrev": 201947.0,
+      "shortUnit": "張"
+    },
+    "tpex": {
+      "marginBalance": 180744000000.0,
+      "marginBalancePrev": 179060000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 36400.0,
+      "shortBalancePrev": 35740.0,
+      "shortUnit": "張"
+    }
   },
   {
     "date": "2026-08-14",
