@@ -2039,5 +2039,18 @@
     "tpexChangePercent": 1.192943436283678,
     "tpexHigh": 401.75,
     "tpexLow": 395.73
+  },
+  {
+    "date": "2026-08-28",
+    "twseClose": 46331.45,
+    "twseChange": 356.23,
+    "twseChangePercent": 0.77,
+    "twseHigh": 46574.52,
+    "twseLow": 46070.83,
+    "tpexClose": 402.83,
+    "tpexChange": 2.45,
+    "tpexChangePercent": 0.6119186772566063,
+    "tpexHigh": 406.24,
+    "tpexLow": 399.31
   }
 ]
