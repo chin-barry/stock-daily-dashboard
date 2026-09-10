@@ -69,6 +69,14 @@
         "net": -11213744674.0
       }
     },
-    "margin": null
+    "margin": {
+      "marginBalance": 201274000000.0,
+      "marginBalancePrev": 200585000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 41310.0,
+      "shortBalancePrev": 38960.0,
+      "shortUnit": "張"
+    }
   }
 }
