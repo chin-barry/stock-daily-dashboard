@@ -3341,6 +3341,14 @@
       "shortBalancePrev": 197447.0,
       "shortUnit": "張"
     },
-    "tpex": null
+    "tpex": {
+      "marginBalance": 199569000000.0,
+      "marginBalancePrev": 201274000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 44650.0,
+      "shortBalancePrev": 41310.0,
+      "shortUnit": "張"
+    }
   }
 ]
