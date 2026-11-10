@@ -4070,5 +4070,25 @@
       "shortBalancePrev": 29980.0,
       "shortUnit": "張"
     }
+  },
+  {
+    "date": "2026-11-10",
+    "twse": {
+      "marginBalance": 536678732000.0,
+      "marginBalancePrev": 539915741000.0,
+      "marginUnit": "元",
+      "shortBalance": 211131.0,
+      "shortBalancePrev": 222026.0,
+      "shortUnit": "張"
+    },
+    "tpex": {
+      "marginBalance": 169309000000.0,
+      "marginBalancePrev": 170138000000.0,
+      "marginUnit": "元",
+      "source": "tpex_official",
+      "shortBalance": 32759.999999999996,
+      "shortBalancePrev": 30919.999999999996,
+      "shortUnit": "張"
+    }
   }
 ]
