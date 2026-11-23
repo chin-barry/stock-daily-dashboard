@@ -1,0 +1,47 @@
+name: 每日抓取全球指數
+
+"on":
+  schedule:
+    # 22:30 UTC = 台北時間隔天 06:30（週一～週六早上）：美股、歐股前一交易日都已收盤。
+    - cron: "30 22 * * 0-5"
+    # 06:30 UTC = 台北時間 14:30（週一～週五）：台、日、韓、港、陸股當天收盤進來。
+    # 這個時段歐股還在盤中，數字會在隔天 06:30 那次被正式收盤覆蓋。
+    - cron: "30 6 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# 跟 fetch-daily.yml 共用同一個群組，兩支排程不會同時 push 而互撞
+concurrency:
+  group: data-push
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch global indices
+        run: python scripts/fetch_global.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/global/
+          if git diff --cached --quiet; then
+            echo "沒有新資料，略過 commit。"
+          else
+            git commit -m "data: update global $(TZ=Asia/Taipei date +%Y-%m-%d)"
+            # 期間若有人或另一支排程先 push，先 rebase 再推（只動 data/global/，不會衝突）
+            git pull --rebase origin main
+            git push
+          fi

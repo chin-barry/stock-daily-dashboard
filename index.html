@@ -9,14 +9,56 @@
 <body>
   <header class="page-header">
     <h1>股市每日資訊</h1>
-    <div class="controls">
-      <label for="date-select">日期</label>
-      <input type="date" id="date-select">
-      <span id="last-updated" class="last-updated"></span>
-    </div>
+    <span id="last-updated" class="last-updated"></span>
   </header>
 
   <main>
+    <!-- 今日總覽：固定顯示最新一天，不受下方日期選擇影響 -->
+    <section class="summary" aria-label="今日總覽">
+      <div class="summary-head">
+        <h2>今日總覽</h2>
+        <span id="summary-date" class="last-updated"></span>
+      </div>
+      <div class="summary-grid">
+        <div class="sum-tile" data-sum="twse-index">
+          <div class="sum-label">加權指數</div>
+          <div class="sum-value">--</div>
+          <div class="sum-sub">--</div>
+        </div>
+        <div class="sum-tile" data-sum="tpex-index">
+          <div class="sum-label">櫃買指數</div>
+          <div class="sum-value">--</div>
+          <div class="sum-sub">--</div>
+        </div>
+        <div class="sum-tile" data-sum="insti">
+          <div class="sum-label">三大法人（上市＋上櫃）</div>
+          <div class="sum-value">--</div>
+          <div class="sum-sub">--</div>
+        </div>
+        <div class="sum-tile" data-sum="margin">
+          <div class="sum-label">融資餘額增減（上市＋上櫃）</div>
+          <div class="sum-value">--</div>
+          <div class="sum-sub">--</div>
+        </div>
+        <div class="sum-tile" data-sum="rank">
+          <div class="sum-label">台股全球排名（近一月）</div>
+          <div class="sum-value">--</div>
+          <div class="sum-sub">--</div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="tabbar" role="tablist" aria-label="分頁">
+      <button type="button" role="tab" data-tab="tw">台股籌碼</button>
+      <button type="button" role="tab" data-tab="global">全球比較</button>
+      <button type="button" role="tab" data-tab="stock" class="soon">個股<small>規劃中</small></button>
+    </nav>
+
+    <div class="tab-panel" id="panel-tw" role="tabpanel">
+    <div class="controls">
+      <label for="date-select">日期</label>
+      <input type="date" id="date-select">
+    </div>
     <section class="market-grid">
       <article class="market-column" data-market="twse">
         <h2>上市（TWSE）</h2>
@@ -181,11 +223,41 @@
         </table>
       </div>
     </section>
+    </div><!-- /panel-tw -->
+
+    <div class="tab-panel" id="panel-global" role="tabpanel" hidden>
+      <p class="gx-sub" id="gx-sub"></p>
+      <p class="gx-err" id="gx-err"></p>
+      <section class="card gx-picker">
+        <div class="gx-pk-head">比較對象：
+          <button type="button" id="gx-all">全選</button>
+          <button type="button" id="gx-none">全不選</button>
+          <span id="gx-count"></span>
+        </div>
+        <div id="gx-groups"></div>
+      </section>
+      <p class="gx-take" id="gx-take"></p>
+      <div class="gx-periods" id="gx-periods"></div>
+      <section class="card"><div id="gx-chart"></div></section>
+      <section class="card table-wrap"><table class="gx-table" id="gx-table"></table></section>
+      <details class="gx-note"><summary>計算方式</summary>
+        漲跌幅＝最新收盤 ÷ 期初收盤 − 1。期初取「最新資料日往前推 7 天，或 1／3／6／12 個月」當天或之前最近一個交易日的收盤；今年以來取去年最後一個交易日收盤。
+        各指數用各自最新的收盤（看「資料日期」欄），遇到該市場休市就沿用前一次收盤。價格指數，不含股息。
+        資料每天台北時間 06:30、14:30 自動更新：06:30 那次美股、歐股都是前一交易日收盤；14:30 那次亞股為當天收盤，但歐股還在盤中。<br>
+        「加權不含台積電」為推估值：R加權＝w×R台積電＋(1−w)×R其他，期末台積電權重設為 <span id="gx-weight"></span>，期初權重由期末反推。圖表中以淡色、表格中以斜體標示。<br>
+        勾選的比較對象會記在這台裝置的瀏覽器裡。
+      </details>
+    </div>
+
+    <div class="tab-panel" id="panel-stock" role="tabpanel" hidden>
+      <section class="card placeholder">個股追蹤規劃中。</section>
+    </div>
   </main>
 
   <footer class="page-footer">
     資料來源：<a href="https://openapi.twse.com.tw/" target="_blank" rel="noopener">台灣證券交易所</a>、
-    <a href="https://www.tpex.org.tw/openapi/" target="_blank" rel="noopener">證券櫃檯買賣中心</a>
+    <a href="https://www.tpex.org.tw/openapi/" target="_blank" rel="noopener">證券櫃檯買賣中心</a>、
+    Yahoo Finance、FinMind（全球指數、櫃買指數歷史）
   </footer>
 
   <div id="chart-modal" class="chart-modal">
@@ -203,5 +275,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/global.js"></script>
 </body>
 </html>

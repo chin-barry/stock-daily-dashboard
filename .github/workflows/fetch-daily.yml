@@ -18,6 +18,11 @@ name: 每日抓取股市資料
 permissions:
   contents: write
 
+# 跟 fetch-global.yml 共用同一個群組，兩支排程不會同時 push 而互撞
+concurrency:
+  group: data-push
+  cancel-in-progress: false
+
 jobs:
   fetch:
     runs-on: ubuntu-latest

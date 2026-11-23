@@ -345,3 +345,71 @@ th { text-align: left; color: var(--text-soft); font-weight: 400; }
 }
 
 .page-footer a { color: var(--accent); }
+
+/* ---------- 今日總覽 ---------- */
+.summary-head { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.6rem; }
+.summary-head h2 { font-size: 1.05rem; margin: 0; }
+.summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+@media (min-width: 720px) { .summary-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+.sum-tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem 0.9rem; min-width: 0; }
+.sum-label { font-size: 0.78rem; color: var(--text-soft); }
+.sum-value { font-size: 1.35rem; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 0.15rem; }
+.sum-sub { font-size: 0.78rem; color: var(--text-soft); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.sum-sub.up { color: var(--up); } .sum-sub.down { color: var(--down); }
+
+/* ---------- 分頁 ---------- */
+.tabbar { display: flex; gap: 0.25rem; border-bottom: 1px solid var(--border); overflow-x: auto; }
+.tabbar button {
+  font: inherit; font-size: 0.98rem; padding: 0.55rem 1rem; border: none; background: none; color: var(--text-soft);
+  border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer; white-space: nowrap;
+}
+.tabbar button.on { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+.tabbar button small { font-size: 0.7rem; margin-left: 0.3rem; color: var(--text-soft); }
+.tab-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+.tab-panel[hidden] { display: none; }
+.placeholder { color: var(--text-soft); }
+
+/* ---------- 全球比較 ---------- */
+.gx-sub { color: var(--text-soft); font-size: 0.85rem; margin: 0; }
+.gx-err { color: var(--up); font-size: 0.85rem; margin: 0; }
+.gx-err:empty { display: none; }
+.gx-picker { display: flex; flex-direction: column; gap: 0.5rem; margin: 0; }
+.gx-pk-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-soft); }
+.gx-pk-head button, .grp button.gl {
+  font: inherit; font-size: 0.82rem; padding: 0.15rem 0.6rem; border: 1px solid var(--border);
+  border-radius: 6px; background: var(--bg); color: var(--text); cursor: pointer;
+}
+#gx-groups { display: flex; flex-direction: column; gap: 0.5rem; }
+.grp { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.grp button.gl { min-width: 3.2rem; font-weight: 600; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.6rem; border: 1px solid var(--border);
+  border-radius: 999px; font-size: 0.82rem; cursor: pointer; user-select: none; background: var(--surface);
+}
+.chip input { margin: 0; cursor: pointer; }
+.chip.off { color: var(--text-soft); background: var(--bg); border-style: dashed; }
+.gx-take { margin: 0; line-height: 1.7; }
+.gx-periods { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: -0.75rem; }
+.gx-periods button {
+  font: inherit; font-size: 0.88rem; padding: 0.3rem 0.85rem; border: 1px solid var(--border); border-radius: 999px;
+  background: var(--surface); color: var(--text); cursor: pointer;
+}
+.gx-periods button.on { background: var(--text); color: var(--surface); border-color: var(--text); }
+.gx-bar { display: grid; grid-template-columns: 9.5rem 1fr; align-items: center; gap: 0.5rem; height: 1.75rem; font-size: 0.88rem; }
+@media (max-width: 520px) { .gx-bar { grid-template-columns: 7rem 1fr; font-size: 0.8rem; } }
+.gx-bar > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gx-track { position: relative; height: 1.1rem; }
+.gx-fill { position: absolute; top: 0; height: 100%; border-radius: 2px; }
+.gx-fill.pos { background: var(--up); } .gx-fill.neg { background: var(--down); }
+.gx-fill.est { opacity: 0.5; }
+.gx-val { position: absolute; top: 0; font-size: 0.75rem; line-height: 1.1rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.gx-zero { position: absolute; top: -0.3rem; bottom: -0.3rem; width: 1px; background: var(--text-soft); }
+.gx-empty { color: var(--text-soft); padding: 0.75rem 0; }
+.gx-table { min-width: 720px; }
+.gx-table th, .gx-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--border); white-space: nowrap; text-align: right; }
+.gx-table th:first-child, .gx-table td:first-child { text-align: left; }
+.gx-table th { font-size: 0.78rem; }
+.gx-table th.on { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.tw { font-weight: 700; }
+.est { color: var(--text-soft); font-style: italic; }
+.gx-note { color: var(--text-soft); font-size: 0.85rem; line-height: 1.7; }

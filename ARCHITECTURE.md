@@ -159,6 +159,14 @@
 16. **`fetch_daily.py` 加上 top-level 重試，8/18 融資融券因排程 crash 缺漏一次**：用 GitHub Actions API 查排程紀錄，發現 8/18、8/12、8/10 都在 `Fetch today's data` 這個 step 直接 crash（8/18 是 21:30 那個時段），導致當次完全沒有 commit，`twse.margin`／`tpex.margin` 停在前一次執行留下的 `null`。根因跟 item 15 是同一類問題，但那次只補了 `fetch_tpex_openapi()` 的 5xx 重試，沒有涵蓋 `fetch_twse_legacy()`（遇 5xx 直接 `raise_for_status()` 不重試）跟連線層級例外（timeout／connection reset，兩支函式都沒接住），也沒有更上層的保護——只要 `build_snapshot()` 裡任何一支 API 呼叫丟出未捕捉的例外，`fetch_daily.py` 的 `main()` 就會直接 crash。曾考慮改成「每個欄位個別包 try/except、失敗就存 `null`」，但使用者指出這樣治標不治本：crash 後的 `null` 跟「尚未公布」的 `null` 在畫面上長得一樣，並不會少一次要人工發現問題的情況。最後採用的方向是加強重試、提高同一次執行內自行恢復的機率：`fetch_twse_legacy()` 比照 `fetch_tpex_openapi()` 補上 5xx／連線例外重試；`fetch_daily.py` 的 `main()` 另外加一層 top-level 重試（最多 3 次、間隔 60 秒包住 `build_snapshot()`），重試用盡後仍讓例外照舊往上丟，維持「job 失敗 → GitHub 寄信通知 repo owner」這個既有的失敗可見性，不吞掉任何錯誤訊號。8/18 的 margin 用一支只重新抓 margin 欄位（不動 `index`／`institutional`）的暫時性腳本手動補回——原本直接整包重跑 `--date 2026-08-18` 一度誤把 `tpex.index`／`tpex.institutional` 也覆蓋成 `null`，因為 TPEx 的「近期滾動資料」端點（`tpex_index`、`tpex_3insti_summary`）只認「最新一筆」，晚一天重跑就抓不到當天的資料了，發現後已 `git checkout` 復原、改用只補 margin 欄位的方式重新處理。
 17. **補齊 8/12、8/13 融資融券，並發現一次「非 crash」的排程失敗（git push 衝突）**：item 16 查 GitHub Actions 紀錄時發現的另外兩天（8/12、8/13）也是同一批 `Fetch today's data` crash 的受害者，比照 8/18 的做法（只重新抓 margin、不動 `index`／`institutional` 的暫時性腳本）補回，兩天當時都還在 `dayChart.json` 約 10 個交易日的回溯窗口內，補到的都是 `source: "tpex_official"` 的正式數字。緊接著同一天（8/19）16:30 那個時段的排程又收到失敗通知，一查發現這次跟 item 15、16 的「fetch 階段 crash」完全不是同一種問題：`Fetch today's data` 這個 step 只花 5 秒就成功、根本沒觸發到剛加的重試機制，失敗的是後面「Commit and push」那步——排程延遲到 09:01 UTC 才真正開始跑，checkout 到的版本剛好是本機推 8/18 補資料那筆 commit，結果它 checkout 完的幾秒內本機又推了下一筆（docs）commit 上去，排程準備 push 自己抓到的 8/19 資料時 remote 已經往前移動、被判定 non-fast-forward 而失敗，8/19 當天的資料因此完全沒進 repo。確認純粹是「本機手動補資料的 push」跟「排程自己的 push」在同一分鐘內撞在一起的巧合，不是程式碼問題；決定先不對 workflow 的 commit/push 步驟加重試或 rebase 邏輯，之後 21:30 那個時段的排程果然順利把 8/19 的資料補上、驗證了這個判斷。
 
+## 全球指數比較（2026-11 整合進來）
+
+- 抓取：`scripts/fetch_global.py`（只用內建模組），從 Yahoo Finance 抓 11 個海外／台灣指數與台積電、從 FinMind 抓櫃買指數，約 420 天日收盤，算近一週／一月／一季／半年／一年／今年以來漲跌幅，另推估「加權不含台積電」（台積電期末權重 `TSMC_WEIGHT`，每月依證交所權值比重手動更新）。邏輯搬自 `../01各國指數比較/global_returns.py`。
+- 輸出：`data/global/latest.json`（網頁讀）、`data/global/history.csv`（收盤歷史，每次累加去重）。
+- 排程：`.github/workflows/fetch-global.yml`，台北 06:30（週一～六，美歐前一日收盤）與 14:30（週一～五，亞股當日收盤；此時歐股仍在盤中，隔天 06:30 會被覆蓋）。
+- 兩支 workflow 共用 `concurrency: data-push`，不會同時 push；global 那支 push 前先 `git pull --rebase`（只動 `data/global/`，不會衝突）。
+- 前端：`index.html` 改成「今日總覽」卡片＋分頁（台股籌碼／全球比較／個股規劃中），全球比較在 `assets/global.js`。總覽的「台股全球排名」只比 `type: index` 的指數，不含台積電與推估值。
+
 ## 驗證方式
 
 - 本機執行 `python scripts/fetch_daily.py`，檢查 `data/daily/{today}.json` 內容與欄位。
