@@ -46,6 +46,10 @@ TSMC_WEIGHT = 0.42
 EX_TSMC = ("EX_TSMC", "加權不含台積電(推估)", "台灣")
 LOOKBACK_DAYS = 420  # 約 13~14 個月，足夠算近一年與今年以來
 FINMIND_IDS = {"TPEx"}
+# 改從 FinMind 抓、失敗才退回 Yahoo 的代號 -> FinMind data_id。
+# 實測 2026-11-25 16:22：Yahoo 的 ^TWII 日線還停在前一天，FinMind 已有當天收盤；
+# 兩邊 278 個交易日收盤比對完全一致。
+FINMIND_FIRST = {"^TWII": "TAIEX"}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "data", "global")
@@ -114,7 +118,17 @@ def fetch_yahoo(symbol):
 
 
 def fetch_closes(symbol):
-    return fetch_finmind(symbol) if symbol in FINMIND_IDS else fetch_yahoo(symbol)
+    if symbol in FINMIND_IDS:
+        return fetch_finmind(symbol)
+    if symbol in FINMIND_FIRST:
+        try:
+            series = fetch_finmind(FINMIND_FIRST[symbol])
+            if series:
+                return series
+            raise RuntimeError("沒有資料")
+        except Exception as e:
+            print(f"    （{symbol} FinMind 失敗：{e}，改用 Yahoo）")
+    return fetch_yahoo(symbol)
 
 
 def minus_months(ds, m):

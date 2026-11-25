@@ -161,7 +161,7 @@
 
 ## 全球指數比較（2026-11 整合進來）
 
-- 抓取：`scripts/fetch_global.py`（只用內建模組），從 Yahoo Finance 抓 11 個海外／台灣指數與台積電、從 FinMind 抓櫃買指數，約 420 天日收盤，算近一週／一月／一季／半年／一年／今年以來漲跌幅，另推估「加權不含台積電」（台積電期末權重 `TSMC_WEIGHT`，每月依證交所權值比重手動更新）。邏輯搬自 `../01各國指數比較/global_returns.py`。
+- 抓取：`scripts/fetch_global.py`（只用內建模組），從 Yahoo Finance 抓 11 個海外／台灣指數與台積電、從 FinMind 抓櫃買指數與加權指數（加權 2026-11-25 起改 FinMind 優先、Yahoo 備援：實測當天 16:22 Yahoo 的 ^TWII 日線仍停在前一天，FinMind 已有當日收盤，兩者 278 日收盤比對一致），約 420 天日收盤，算近一週／一月／一季／半年／一年／今年以來漲跌幅，另推估「加權不含台積電」（台積電期末權重 `TSMC_WEIGHT`，每月依證交所權值比重手動更新）。邏輯搬自 `../01各國指數比較/global_returns.py`。
 - 輸出：`data/global/latest.json`（網頁讀）、`data/global/history.csv`（收盤歷史，每次累加去重）。
 - 排程：`.github/workflows/fetch-global.yml`，台北 06:30（週一～六，美歐前一日收盤）與 14:30（週一～五，亞股當日收盤；此時歐股仍在盤中，隔天 06:30 會被覆蓋）。
 - 兩支 workflow 共用 `concurrency: data-push`，不會同時 push；global 那支 push 前先 `git pull --rebase`（只動 `data/global/`，不會衝突）。
